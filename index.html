@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Оффер Mycelia Tech</title>
+<title>Пропозиція Mycelia Tech</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%84%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -12,7 +12,7 @@
   :root {
     --bg: #F4F6F1; --surface: #FFFFFF; --ink: #1D2823; --muted: #5D6B63; --line: #D9DFD8;
     --accent: #8A6A1F; --accent-soft: #F1E8D2; --red: #A8433A; --red-soft: #F6E4E1;
-    --green: #3D7A52; --green-soft: #E2F0E5;
+    --green: #3D7A52; --green-soft: #E2F0E5; --ann-bg: #EEF3EC;
     --shadow: 0 1px 2px rgba(29,40,35,.06), 0 6px 18px rgba(29,40,35,.05);
     color-scheme: light;
   }
@@ -20,51 +20,60 @@
     :root:not([data-theme="light"]) {
       --bg: #151A17; --surface: #1D2420; --ink: #E7ECE6; --muted: #A2ADA5; --line: #2E3833;
       --accent: #D2A64A; --accent-soft: #2B2618; --red: #E07B70; --red-soft: #3A2321;
-      --green: #7CC38F; --green-soft: #1F3226; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+      --green: #7CC38F; --green-soft: #1F3226; --ann-bg: #232B26;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
       color-scheme: dark;
     }
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif; font-size: 16px; line-height: 1.55; margin: 0; }
-  .page { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  .page { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
   .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
   h1, h2, h3 { font-family: "Vollkorn", Georgia, "Times New Roman", serif; text-wrap: balance; margin: 0; line-height: 1.15; }
   h1 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; margin-top: 10px; }
   h2 { font-size: 24px; font-weight: 700; margin: 44px 0 14px; padding-top: 18px; border-top: 1px solid var(--line); }
+  h2.part { border-top: 3px solid var(--accent); margin-top: 56px; padding-top: 22px; }
   h3 { font-size: 17px; font-weight: 600; margin: 22px 0 8px; font-family: "IBM Plex Sans", sans-serif; }
   p { margin: 0 0 12px; max-width: 72ch; }
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .meta { color: var(--muted); font-size: 14px; }
-  .note, .sub { font-size: 14px; color: var(--muted); }
+  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .meta, .note, .sub { color: var(--muted); font-size: 14px; }
   q, .uk { font-style: italic; }
 
-  /* Шапка: что обязательно спросить и на что смотреть завтра */
+  /* Пояснення */
+  details.ann { margin: 6px 0 0; font-size: 14px; }
+  details.ann summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 500; font-size: 13px; user-select: none; }
+  details.ann summary::-webkit-details-marker { display: none; }
+  details.ann summary::before { content: "▸"; font-size: 11px; transition: transform .15s ease; }
+  details.ann[open] summary::before { transform: rotate(90deg); }
+  details.ann > div { margin-top: 6px; background: var(--ann-bg); border-left: 3px solid var(--green); border-radius: 4px; padding: 8px 12px; color: var(--ink); font-size: 14px; line-height: 1.5; max-width: 72ch; }
+  details.ann > div p { margin: 0 0 6px; } details.ann > div p:last-child { margin: 0; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+  .btn { font: inherit; font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Шапка з чеклистами */
   .tomorrow { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 8px; box-shadow: var(--shadow); padding: 22px 24px; margin: 18px 0 26px; }
   .tomorrow .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 6px; }
   .tomorrow h2 { border: 0; margin: 0; padding: 0; font-size: 22px; }
   .tomorrow .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .tomorrow .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 8px 28px; margin-top: 10px; }
+  .tomorrow .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 8px 28px; margin-top: 10px; }
   .tomorrow h3 { margin: 10px 0 4px; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
   .tomorrow .tools { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 14px; color: var(--muted); }
-  .tomorrow button { font: inherit; font-size: 13px; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
-  .tomorrow button:hover { border-color: var(--accent); color: var(--accent); }
 
   .check { list-style: none; padding: 0; margin: 0 0 10px; }
   .check li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
   .check li:last-child { border-bottom: 0; }
   .check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--green); cursor: pointer; }
-  .check label { cursor: pointer; }
-  .check input:checked + label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+  .check label { cursor: pointer; display: block; }
+  .check input:checked + .body > label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
   .check .why { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
   .check .bad { display: block; color: var(--red); font-size: 13.5px; margin-top: 2px; }
-  .tomorrow .check li { font-size: 15.5px; padding: 7px 0; }
 
   .verdict { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 22px 24px; box-shadow: var(--shadow); }
   .verdict h2 { border: 0; margin: 0 0 10px; padding: 0; font-size: 22px; }
-  .verdict p:last-child { margin-bottom: 0; }
-  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 18px 0 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 18px 0 0; }
   .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; }
   .kpi .v { font-family: "Vollkorn", Georgia, serif; font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
   .kpi .l { color: var(--muted); font-size: 13px; margin-top: 4px; }
@@ -78,6 +87,7 @@
   th { font-weight: 600; font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--surface) 92%, var(--ink) 8%); }
   tr:last-child td { border-bottom: 0; }
   td.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500; }
+  td details.ann > div { max-width: 60ch; }
   .status { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
   .st-ok { background: var(--green-soft); color: var(--green); }
   .st-old { background: var(--accent-soft); color: var(--accent); }
@@ -87,536 +97,580 @@
   .flag h3 { margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
   .flag h3 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
   .flag.red h3 .dot { background: var(--red); } .flag.green h3 .dot { background: var(--green); }
-  .flag ul { margin: 0; padding-left: 18px; } .flag li { margin: 0 0 8px; font-size: 15px; }
+  .flag ul { margin: 0; padding-left: 18px; } .flag li { margin: 0 0 10px; font-size: 15px; }
   .views { display: grid; gap: 14px; }
   .view { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; }
   .view h3 { margin: 0 0 6px; } .view p { margin: 0; font-size: 15px; }
   .progress { font-size: 13px; color: var(--muted); margin: 4px 0 14px; font-variant-numeric: tabular-nums; }
   .phrase { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 4px; margin: 10px 0; font-size: 15px; }
   .phrase small { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; font-style: normal; }
-  ol.steps { padding-left: 22px; } ol.steps li { margin: 0 0 8px; }
-  ol.sources { padding-left: 22px; font-size: 14px; color: var(--muted); } ol.sources li { margin: 0 0 6px; overflow-wrap: anywhere; }
-  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-  @media (max-width: 560px) { nav.toc ol { columns: 1; } .page { padding: 22px 14px 60px; } .tomorrow { padding: 18px 16px; } }
-  @media print { .tomorrow .tools, nav.toc { display: none; } body { background: #fff; } .page { padding: 0; } }
+  ol.steps { padding-left: 22px; } ol.steps li { margin: 0 0 10px; }
+  ul.plain { padding-left: 20px; } ul.plain li { margin: 0 0 10px; }
   .qa { list-style: none; padding: 0; margin: 0 0 10px; }
   .qa li { padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
   .qa li:last-child { border-bottom: 0; }
   .qa .uk { display: block; }
   .qa .why { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; font-style: normal; }
-  h2.part { border-top: 3px solid var(--accent); margin-top: 56px; padding-top: 22px; }
-  .tomorrow .cols { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  ol.sources { padding-left: 22px; font-size: 14px; color: var(--muted); } ol.sources li { margin: 0 0 6px; overflow-wrap: anywhere; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  @media (max-width: 560px) { nav.toc ol { columns: 1; } .page { padding: 22px 14px 60px; } .tomorrow { padding: 18px 16px; } }
+  @media print { .tomorrow .tools, nav.toc, .toolbar { display: none; } body { background: #fff; } .page { padding: 0; } details.ann { display: block; } details.ann > div { display: block; } }
 </style>
 </head>
 <body>
 <div class="page">
   <header>
-    <div class="eyebrow">Ивано-Франковск · оффер получен 2 сентября 2026, 18:28 · письмо-подтверждение обещано до пятницы 4 сентября</div>
-    <h1>Оффер Mycelia Tech для Вики</h1>
-    <p class="meta">Что это за компания, чего стоит предложение и что спросить на производстве. Собрано 2 сентября 2026 по справке, восьми скриншотам переписки с Мартой Кондрин и проверке открытых источников за 2025–2026. Ссылки в квадратных скобках ведут к <a href="#sources">источникам</a>, S1–S8 — скриншоты переписки.</p>
+    <div class="eyebrow">Івано-Франківськ · пропозицію отримано 2 вересня 2026, 18:28 · лист-підтвердження обіцяно до п'ятниці 4 вересня</div>
+    <h1>Пропозиція Mycelia Tech для Віки</h1>
+    <p class="meta">Що це за компанія, чого варта пропозиція і що запитати на виробництві. Зібрано 2–3 вересня 2026 за довідкою, вісьмома скріншотами листування з Мартою Кондрин і перевіркою відкритих джерел за 2025–2026. Біля кожного пункту є розкривне «Пояснення» простими словами. Посилання у квадратних дужках ведуть до <a href="#sources">джерел</a>, S1–S8 — скріншоти листування.</p>
+    <div class="toolbar">
+      <button type="button" class="btn" id="open-all">Розкрити всі пояснення</button>
+      <button type="button" class="btn" id="close-all">Згорнути всі</button>
+      <span>Відмітки в чеклистах зберігаються у цьому браузері.</span>
+    </div>
 
     <section class="tomorrow" aria-labelledby="tomorrow-h">
       <div class="head">
-        <h2 id="tomorrow-h">Завтра на производстве, 3 сентября, 14:00</h2>
+        <h2 id="tomorrow-h">Візит на виробництво: 3 вересня, 14:00</h2>
         <span class="when" id="progress-top"></span>
       </div>
-      <p class="sub">Марта предупредила: <q class="uk">У нас ще все в процесі встановлення… там дуже робоча обстановка</q>. Это нормально, но именно поэтому смотреть нужно внимательно. Три списка: условия работы, вектор бизнеса, что смотреть глазами. Полный чеклист из 20 пунктов — <a href="#visit">ниже</a>, разбор ниши, экономики и стратегии — во <a href="#part2">второй части</a>.</p>
+      <p class="sub">Марта попередила: <q class="uk">У нас ще все в процесі встановлення… там дуже робоча обстановка</q>. Це нормально, але саме тому дивитися треба уважно. Три списки: умови роботи, вектор бізнесу, на що дивитися очима. Повний чеклист із 20 пунктів — <a href="#visit">нижче</a>, розбір ніші, економіки і стратегії — у <a href="#part2">другій частині</a>, аудит їхнього сайту — у <a href="#part3">третій</a>.</p>
+      <details class="ann"><summary>Пояснення: як користуватися</summary><div><p>Відмічай галочкою те, що вже запитала або побачила. Біля кожного пункту є «Пояснення» — там простими словами написано, навіщо це питання і яка відповідь погана. Не обов'язково задати все: обери 6–8 головних із першої і другої колонки, решту просто дивись очима.</p></div></details>
       <div class="cols">
         <div>
-          <h3>Обязательно спросить</h3>
+          <h3>Обов'язково запитати</h3>
           <ul class="check" data-group="top">
-            <li><input type="checkbox" id="t1"><label for="t1">Из каких средств финансируется направление упаковки и на сколько месяцев их хватит? Это грант EIC, грант L'Oréal или отдельные деньги?<span class="bad">Плохой ответ: «пока из своих, дальше посмотрим».</span></label></li>
-            <li><input type="checkbox" id="t2"><label for="t2">Есть ли уже хотя бы одна готовая партия упаковки или заказчик под неё?<span class="bad">Плохой ответ: образца нет, заказчика нет.</span></label></li>
-            <li><input type="checkbox" id="t3"><label for="t3">Ставка «від 25 тис» — это до налогов или на руки? Что нужно сделать, чтобы было 30?<span class="why">25 000 до налогов = около 19 250 на руки.</span></label></li>
-            <li><input type="checkbox" id="t4"><label for="t4">Какая зарплата после испытательного при хорошем результате и когда пересмотр? Попросить вписать цифру и дату в письмо-подтверждение.<span class="bad">Плохой ответ: повторение «все буде залежати».</span></label></li>
-            <li><input type="checkbox" id="t5"><label for="t5">Кто ставит технологию упаковки: главный биотехнолог Алиса Атаманчук или Вика должна разработать её сама?<span class="why">Второе — это уже роль разработчика, а не оператора, и оплачивается иначе.</span></label></li>
-            <li><input type="checkbox" id="t6"><label for="t6">Кому Вика подчиняется на практике и кто ещё работает на производстве? Уходил ли кто-то за последний год?</label></li>
-            <li><input type="checkbox" id="t7"><label for="t7">Как называется должность в приказе и трудовой? Просить «біотехнолог» или «технолог виробництва», а не «проєктний менеджер».</label></li>
-            <li><input type="checkbox" id="t8"><label for="t8">Бывают ли выходы в выходные и вечером из-за циклов инкубации? Кто следит за камерами в субботу и воскресенье?</label></li>
-            <li><input type="checkbox" id="t9"><label for="t9">Как оформляют: трудовой договор с ФОП, приказ, уведомление ДПС до первого дня? Какая дата выхода?</label></li>
+            <li><input type="checkbox" id="t1"><div class="body"><label for="t1">З яких коштів фінансується напрям пакування і на скільки місяців їх вистачить? Це грант EIC, грант L'Oréal чи окремі гроші?<span class="bad">Погана відповідь: «поки зі своїх, далі подивимось».</span></label><details class="ann"><summary>Пояснення</summary><div><p>Стартап живе на грантах, а не на продажах. Якщо гроші на пакування закінчаться, першою скоротять саме нову людину на цьому напрямі. Тому важливо почути, звідки гроші і до якого місяця їх вистачає.</p></div></details></div></li>
+            <li><input type="checkbox" id="t2"><div class="body"><label for="t2">Чи є вже хоча б одна готова партія пакування або замовник під неї?<span class="bad">Погана відповідь: зразка немає, замовника немає.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Якщо ніхто ще не зробив жодного виробу і ніхто його не купує, то «відпрацьований техпроцес» — це поки план. Робота буде схожа на експеримент, а не на виробництво.</p></div></details></div></li>
+            <li><input type="checkbox" id="t3"><div class="body"><label for="t3">Ставка «від 25 тис» — це до податків чи на руки? Що треба зробити, щоб було 30?<span class="why">25 000 до податків = близько 19 250 на руки.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Із зарплати знімають 18% податку на доходи і 5% військового збору, разом 23%. Тому «25 тисяч» у договорі означає приблизно 19 250 на картку. Роботодавці часто називають суму «до податків», не уточнюючи.</p></div></details></div></li>
+            <li><input type="checkbox" id="t4"><div class="body"><label for="t4">Яка зарплата після випробувального при хорошому результаті і коли перегляд? Попросити вписати цифру й дату в лист-підтвердження.<span class="bad">Погана відповідь: повторення «все буде залежати».</span></label><details class="ann"><summary>Пояснення</summary><div><p>Усно обіцяне не має сили. Якщо в листі стоїть лише «від 25 тис», ця сума може лишитися назавжди. Цифра і дата перегляду в письмовому вигляді захищають від цього.</p></div></details></div></li>
+            <li><input type="checkbox" id="t5"><div class="body"><label for="t5">Хто ставить технологію пакування: головна біотехнологиня Аліса Атаманчук чи Віка має розробити її сама?<span class="why">Друге — це роль розробника, а не оператора, і оплачується інакше.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Є різниця між «працювати за готовою інструкцією» і «придумати інструкцію». Друге складніше, довше і дорожче. Якщо очікують другого, це аргумент за вищу ставку.</p></div></details></div></li>
+            <li><input type="checkbox" id="t6"><div class="body"><label for="t6">Кому Віка підпорядковується на практиці і хто ще працює на виробництві? Чи хтось пішов за останній рік?</label><details class="ann"><summary>Пояснення</summary><div><p>Команда маленька, 5 людей. Важливо знати, хто дає завдання і чи люди тут затримуються. Якщо за рік пішли двоє з п'яти, це сигнал.</p></div></details></div></li>
+            <li><input type="checkbox" id="t7"><div class="body"><label for="t7">Як називається посада в наказі й трудовій? Просити «біотехнолог» або «технолог виробництва», а не «проєктний менеджер».</label><details class="ann"><summary>Пояснення</summary><div><p>Назва посади піде в трудову книжку і резюме. «Проєктний менеджер» без досвіду керування проєктами наступний роботодавець сприйме з підозрою. «Біотехнолог» чесно описує роботу і цінується.</p></div></details></div></li>
+            <li><input type="checkbox" id="t8"><div class="body"><label for="t8">Чи бувають виходи у вихідні й вечорами через цикли інкубації? Хто стежить за камерами в суботу і неділю?</label><details class="ann"><summary>Пояснення</summary><div><p>Гриби ростуть без вихідних. Якщо камери треба перевіряти щодня, хтось має приходити в суботу. Краще дізнатися це до підписання.</p></div></details></div></li>
+            <li><input type="checkbox" id="t9"><div class="body"><label for="t9">Як оформлюють: трудовий договір із ФОП, наказ, повідомлення ДПС до першого дня? Яка дата виходу?</label><details class="ann"><summary>Пояснення</summary><div><p>Офіційне оформлення означає три речі: письмовий договір, наказ про прийняття і повідомлення податкової (ДПС) до початку роботи. Без них лікарняні, відпустка і стаж не рахуються.</p></div></details></div></li>
           </ul>
         </div>
         <div>
-          <h3>Понять вектор бизнеса</h3>
+          <h3>Зрозуміти вектор бізнесу</h3>
           <ul class="check" data-group="top">
-            <li><input type="checkbox" id="v1"><label for="v1"><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без названного клиента направления нет. Хороший ответ: бренд и товар.</span></label></li>
-            <li><input type="checkbox" id="v2"><label for="v2"><span class="uk">Це для України чи на експорт? Є сертифікат OK compost HOME або план?</span><span class="why">В Украине закона об упаковке нет, спрос только добровольный. В ЕС регламент PPWR действует с 12 августа 2026.</span></label></li>
-            <li><input type="checkbox" id="v3"><label for="v3"><span class="uk">Яка цільова собівартість і ціна однієї одиниці?</span><span class="why">Ориентиры: S.Lab продаёт по 1–1,5 €, мир 2,5–4 $, пенопласт 1,2–2 $. Нет цифры — экономику не считали.</span></label></li>
-            <li><input type="checkbox" id="v4"><label for="v4"><span class="uk">Грант EIC на UPGRAIN підписаний? Коли транш, які milestones, звідки 30% співфінансування?</span><span class="why">300–500 тыс. € идут по этапам; 90–150 тыс. € своих обязательны.</span></label></li>
-            <li><input type="checkbox" id="v5"><label for="v5"><span class="uk">Пакування фінансується з L'Oréal, з EIC чи з окремих коштів? На скільки місяців?</span><span class="why">Грант L'Oréal 500 тыс. грн — это около 20 зарплат по 25 тыс. Проект EIC назван про микокожу.</span></label></li>
-            <li><input type="checkbox" id="v6"><label for="v6"><span class="uk">Який відсоток браку від контамінації? Чи є письмові SOP і хто їх веде?</span><span class="why">13% брака типично, 5% хорошо. Если не измеряют, процесс не отработан.</span></label></li>
-            <li><input type="checkbox" id="v7"><label for="v7"><span class="uk">Що вже автоматизовано, а що руками? Коли виходить інженер?</span><span class="why">На ручном труде себестоимость единицы 50–90 грн, конкуренты продают по 45–65 грн.</span></label></li>
-            <li><input type="checkbox" id="v8"><label for="v8"><span class="uk">Куди компанія йде через два роки: продавати матеріал, упаковку чи технологію?</span><span class="why">Три разных бизнеса. Ecovative и S.Lab ушли в продажу технологии.</span></label></li>
+            <li><input type="checkbox" id="v1"><div class="body"><label for="v1"><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без названого клієнта напряму немає. Хороша відповідь: бренд і товар.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Пакування роблять під конкретний товар: під банку крему чи пляшку. Якщо немає замовника, немає і форми, розміру, ціни. Компанія, яка називає клієнта, знає, що робить.</p></div></details></div></li>
+            <li><input type="checkbox" id="v2"><div class="body"><label for="v2"><span class="uk">Це для України чи на експорт? Є сертифікат OK compost HOME або план його отримати?</span><span class="why">В Україні закону про пакування немає, попит лише добровільний. У ЄС регламент PPWR діє з 12 серпня 2026.</span></label><details class="ann"><summary>Пояснення</summary><div><p>У Європі з серпня 2026 бізнес зобов'язаний переходити на екологічне пакування, тому там є попит. В Україні такого закону немає. Сертифікат OK compost HOME — це «паспорт», без якого європейці не купують.</p></div></details></div></li>
+            <li><input type="checkbox" id="v3"><div class="body"><label for="v3"><span class="uk">Яка цільова собівартість і ціна однієї одиниці?</span><span class="why">Орієнтири: S.Lab продає по 1–1,5 €, світ 2,5–4 $, пінопласт 1,2–2 $.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Собівартість — скільки коштує зробити одну штуку, ціна — за скільки продають. Якщо керівниця не може назвати обидві цифри, бізнес-план ще не порахований.</p></div></details></div></li>
+            <li><input type="checkbox" id="v4"><div class="body"><label for="v4"><span class="uk">Грант EIC на UPGRAIN підписаний? Коли транш, які milestones, звідки 30% співфінансування?</span><span class="why">300–500 тис. € ідуть етапами; 90–150 тис. € своїх обов'язкові.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Європейський грант не дають одразу: гроші приходять частинами після виконання кожного етапу (milestone). Плюс компанія має додати 30% своїх грошей. Якщо цього немає, грант може «зависнути».</p></div></details></div></li>
+            <li><input type="checkbox" id="v5"><div class="body"><label for="v5"><span class="uk">Пакування фінансується з L'Oréal, з EIC чи з окремих коштів? На скільки місяців?</span><span class="why">Грант L'Oréal 500 тис. грн — це приблизно 20 зарплат по 25 тис. Проєкт EIC названо про мікошкіру.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Головне питання дня. 500 тисяч гривень вистачить приблизно на 20 місячних зарплат, і все. Європейський грант офіційно виданий на шкіру, не на пакування.</p></div></details></div></li>
+            <li><input type="checkbox" id="v6"><div class="body"><label for="v6"><span class="uk">Який відсоток браку від контамінації? Чи є письмові SOP і хто їх веде?</span><span class="why">13% браку типово, 5% добре. Якщо не вимірюють, процес не відпрацьований.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Контамінація — це коли замість потрібного гриба виростає пліснява і партію викидають. SOP — письмова покрокова інструкція. Якщо брак не рахують і інструкцій немає, кожна партія — лотерея.</p></div></details></div></li>
+            <li><input type="checkbox" id="v7"><div class="body"><label for="v7"><span class="uk">Що вже автоматизовано, а що робиться руками? Коли виходить інженер?</span><span class="why">На ручній праці собівартість одиниці 50–90 грн, конкуренти продають по 45–65 грн.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Поки все робиться руками, кожна штука коштує дорожче, ніж її продають конкуренти. Тому компанія шукає інженера в Київ. Якщо його ще немає, найближчі місяці роботи будуть ручними.</p></div></details></div></li>
+            <li><input type="checkbox" id="v8"><div class="body"><label for="v8"><span class="uk">Куди компанія йде через два роки: продавати матеріал, упаковку чи технологію?</span><span class="why">Три різних бізнеси. Ecovative і S.Lab пішли в продаж технології.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Можна продавати сам матеріал, можна готове пакування, а можна навчати інших його робити. Це три різні шляхи з різними грошима. Якщо відповідь «і те, і те, і те», стратегії ще немає.</p></div></details></div></li>
           </ul>
         </div>
         <div>
-          <h3>На что смотреть глазами</h3>
+          <h3>На що дивитися очима</h3>
           <ul class="check" data-group="top">
-            <li><input type="checkbox" id="w1"><label for="w1">Где рабочее место: отдельное помещение под упаковку или угол в цеху микокожи? Что реально стоит: инкубационные камеры, сушильный шкаф, формы, ламинарный бокс, автоклав.</label></li>
-            <li><input type="checkbox" id="w2"><label for="w2">Вентиляция и вытяжка в зоне инкубации и сушки. Есть ли HEPA-фильтры. Запах сырости или плесени в помещении.<span class="bad">Плохой знак: закрытая влажная комната без вытяжки.</span></label></li>
-            <li><input type="checkbox" id="w3"><label for="w3">Средства защиты на месте: респираторы (класс FFP2/FFP3 или обычные маски), перчатки, халаты. Выдают ли их или сотрудники покупают сами.</label></li>
-            <li><input type="checkbox" id="w4"><label for="w4">Стерильная зона: как устроен вход, есть ли шлюз или переодевание, чем дезинфицируют, где хранят спирт и хлорсодержащие средства.</label></li>
-            <li><input type="checkbox" id="w5"><label for="w5">Образцы: попросить показать готовую микокожу и любой образец упаковки. Пощупать, понюхать, спросить, сколько дней рос.</label></li>
-            <li><input type="checkbox" id="w6"><label for="w6">Люди: сколько человек в помещении, что делают, в каком состоянии, как разговаривают с Мартой.</label></li>
-            <li><input type="checkbox" id="w7"><label for="w7">Стадия стройки: что подключено и работает, а что стоит в коробках. Спросить срок запуска и кто это делает.<span class="bad">Плохой ответ: «как только выйдете, начнём».</span></label></li>
-            <li><input type="checkbox" id="w8"><label for="w8">Бытовое: где раздевалка, туалет, место для обеда, можно ли открыть окно, сколько идти от транспорта.</label></li>
+            <li><input type="checkbox" id="w1"><div class="body"><label for="w1">Де робоче місце: окреме приміщення під пакування чи куток у цеху мікошкіри? Що реально стоїть: інкубаційні камери, сушильна шафа, форми, ламінарний бокс, автоклав.</label><details class="ann"><summary>Пояснення</summary><div><p>Інкубаційна камера — шафа з потрібною температурою і вологістю, де росте гриб. Ламінарний бокс — стіл із чистим потоком повітря для роботи без зараження. Автоклав — «скороварка» для стерилізації. Якщо цього немає, виробництво ще не почалося.</p></div></details></div></li>
+            <li><input type="checkbox" id="w2"><div class="body"><label for="w2">Вентиляція і витяжка в зоні інкубації і сушіння. Чи є HEPA-фільтри. Запах вогкості чи плісняви.<span class="bad">Поганий знак: закрита волога кімната без витяжки.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Гриби виділяють спори, від них у людей буває кашель і алергія. HEPA — фільтр, що ловить дрібні частинки. Вогкий запах означає, що пліснява десь є.</p></div></details></div></li>
+            <li><input type="checkbox" id="w3"><div class="body"><label for="w3">Засоби захисту на місці: респіратори (клас FFP2/FFP3 чи звичайні маски), рукавички, халати. Чи видають їх, чи працівники купують самі.</label><details class="ann"><summary>Пояснення</summary><div><p>FFP2 і FFP3 — респіратори, які реально фільтрують спори; звичайна медична маска їх не тримає. За законом захист оплачує роботодавець.</p></div></details></div></li>
+            <li><input type="checkbox" id="w4"><div class="body"><label for="w4">Стерильна зона: як влаштований вхід, чи є шлюз або переодягання, чим дезінфікують, де зберігають спирт і хлор.</label><details class="ann"><summary>Пояснення</summary><div><p>«100% стерильність» захищає гриб від зараження, а не людину. Але дезінфектанти і спирт — це навантаження на шкіру і дихання, тому важливо, як із ними працюють.</p></div></details></div></li>
+            <li><input type="checkbox" id="w5"><div class="body"><label for="w5">Зразки: попросити показати готову мікошкіру і будь-який зразок пакування. Помацати, понюхати, спитати, скільки днів ріс.</label><details class="ann"><summary>Пояснення</summary><div><p>Найпростіша перевірка. Якщо пакування ніхто не може показати, його ще немає.</p></div></details></div></li>
+            <li><input type="checkbox" id="w6"><div class="body"><label for="w6">Люди: скільки людей у приміщенні, що роблять, у якому стані, як розмовляють із Мартою.</label><details class="ann"><summary>Пояснення</summary><div><p>Атмосфера видна за п'ять хвилин. Напружені або мовчазні працівники — сигнал.</p></div></details></div></li>
+            <li><input type="checkbox" id="w7"><div class="body"><label for="w7">Стадія будівництва: що підключено і працює, а що стоїть у коробках. Спитати термін запуску і хто це робить.<span class="bad">Погана відповідь: «як тільки вийдете, почнемо».</span></label><details class="ann"><summary>Пояснення</summary><div><p>Марта сама написала, що «все в процесі встановлення». Питання: запуск затягнеться на місяць чи на півроку, і чи не Віці доведеться це встановлювати.</p></div></details></div></li>
+            <li><input type="checkbox" id="w8"><div class="body"><label for="w8">Побутове: роздягальня, туалет, місце для обіду, чи можна відкрити вікно, скільки йти від транспорту.</label><details class="ann"><summary>Пояснення</summary><div><p>Дрібниці, які щодня впливають на самопочуття більше, ніж назва посади.</p></div></details></div></li>
           </ul>
         </div>
       </div>
       <div class="tools">
-        <span>Отметки сохраняются в этом браузере.</span>
-        <button type="button" id="reset-top">Сбросить отметки шапки</button>
-        <span>Про второе предложение: не называть, где и сколько. Достаточно: <q class="uk">Маю іншу пропозицію з фіксованою ставкою після випробувального. Щоб обрати вас, мені потрібні письмові умови</q>.</span>
+        <button type="button" class="btn" id="reset-top">Скинути відмітки шапки</button>
+        <span>Про другу пропозицію: не називати, де і скільки. Достатньо: <q class="uk">Маю іншу пропозицію з фіксованою ставкою після випробувального. Щоб обрати вас, мені потрібні письмові умови</q>.</span>
       </div>
     </section>
 
     <section class="verdict" aria-labelledby="verdict-h">
-      <h2 id="verdict-h">Короткий ответ</h2>
-      <p>Это настоящая компания с настоящими деньгами, но предлагаемая роль слабая, а её условия пока не зафиксированы. Справка 2024 года устарела в главном: в 2026 году у Mycelia Tech появились два новых источника финансирования. Проект UPGRAIN Марты Кондрин вошёл в список из 41 компании, отобранных Европейским инновационным советом по программе EIC UATech 2025, где каждой компании положен грант от 300 до 500 тыс. евро [3][4][5]. Кроме того, Марта Кондрин стала одной из пяти победительниц четвёртой волны программы L'Oréal Paris для предпринимательниц с грантом 500 тыс. грн [2]. Это объясняет две августовские вакансии, включая инженера в Киеве на 80 тыс. грн [14].</p>
-      <p>Проблема не в стабильности компании на ближайший год, а в самой позиции. Грант EIC выдан на микокожу, а не на упаковку [3]. Упаковка — новое направление, помещение под него <q class="uk">ще в процесі встановлення</q> [S8]. По обязанностям это оператор и технолог производства, а не менеджер. Ставка 25 тыс. грн до налогов даёт около 19 250 грн на руки, что ниже медианы по вакансиям города и заметно ниже медианы для технолога по Украине [16][18]. Ответ о зарплате после испытательного уклончивый [S7].</p>
-      <p><strong>Рекомендация.</strong> Идти на производство с чеклистом, а согласие давать только после письма-подтверждения, где стоят оклад на испытательном, дата и критерии пересмотра, название должности и дата выхода. Если второе предложение даёт сравнимые деньги и стабильную организацию, оно предпочтительнее, если только Вику не тянет именно в биоматериалы. Если второе предложение слабее, Mycelia Tech при письменных условиях — приемлемый вариант на год с понятным риском.</p>
+      <h2 id="verdict-h">Коротка відповідь</h2>
+      <p>Це справжня компанія зі справжніми грошима, але запропонована роль слабка, а її умови ще не зафіксовані. Довідка 2024 року застаріла в головному: у 2026 році в Mycelia Tech з'явилися два нових джерела фінансування. Проєкт UPGRAIN Марти Кондрин увійшов до списку з 41 компанії, відібраних Європейською інноваційною радою за програмою EIC UATech 2025, де кожній компанії належить грант від 300 до 500 тис. євро [3][4][5]. Крім того, Марта Кондрин стала однією з п'яти переможниць четвертої хвилі програми L'Oréal Paris для підприємиць із грантом 500 тис. грн [2]. Це пояснює дві серпневі вакансії, зокрема інженера в Києві на 80 тис. грн [14].</p>
+      <p>Проблема не в стабільності компанії на найближчий рік, а в самій позиції. Грант EIC виданий на мікошкіру, а не на пакування [3]. Пакування — новий напрям, приміщення під нього <q class="uk">ще в процесі встановлення</q> [S8]. За обов'язками це оператор і технолог виробництва, а не менеджер. Ставка 25 тис. грн до податків дає близько 19 250 грн на руки, що нижче медіани вакансій міста і значно нижче медіани для технолога по Україні [16][18]. Відповідь про зарплату після випробувального ухильна [S7].</p>
+      <p><strong>Рекомендація.</strong> Іти на виробництво з чеклистом, а згоду давати лише після листа-підтвердження, де стоять оклад на випробувальному, дата і критерії перегляду, назва посади і дата виходу. Якщо друга пропозиція дає порівнянні гроші і стабільну організацію, вона краща, хіба що Віку тягне саме в біоматеріали. Якщо друга пропозиція слабша, Mycelia Tech за письмових умов — прийнятний варіант на рік із зрозумілим ризиком.</p>
+      <details class="ann"><summary>Пояснення простими словами</summary><div><p>Компанія не шахраї і не банкроти: у 2026 році вони виграли два гранти, один із них великий європейський. Гроші на рік-два є. Але посада, яку пропонують Віці, — це робота руками на новому напрямі, який ще не запущений і не має клієнтів. Платять мало для міста і не кажуть, скільки буде потім. Тому головне — отримати все письмово і порівняти з другою пропозицією.</p></div></details>
     </section>
 
-    <div class="kpis" aria-label="Ключевые цифры">
-      <div class="kpi"><div class="v">≈ 19 250 грн</div><div class="l">на руки при ставке 25 000</div><div class="s">ПДФО 18% + военный сбор 5% [21]</div></div>
-      <div class="kpi"><div class="v">28 500 грн</div><div class="l">медиана вакансий Ивано-Франковска</div><div class="s">work.ua, сентябрь 2026, 4 072 вакансии [16]</div></div>
-      <div class="kpi"><div class="v">300–500 тыс. €</div><div class="l">грант EIC UATech на компанию</div><div class="s">проект UPGRAIN, микокожа [3][4]</div></div>
-      <div class="kpi"><div class="v">500 000 грн</div><div class="l">грант L'Oréal Paris, 2026</div><div class="s">≈ 20 месячных зарплат по 25 тыс. [2]</div></div>
+    <div class="kpis" aria-label="Ключові цифри">
+      <div class="kpi"><div class="v">≈ 19 250 грн</div><div class="l">на руки при ставці 25 000</div><div class="s">ПДФО 18% + військовий збір 5% [21]</div><details class="ann"><summary>Пояснення</summary><div><p>ПДФО — податок на доходи фізичних осіб. Разом із військовим збором із зарплати знімають 23%.</p></div></details></div>
+      <div class="kpi"><div class="v">28 500 грн</div><div class="l">медіана вакансій Івано-Франківська</div><div class="s">work.ua, вересень 2026, 4 072 вакансії [16]</div><details class="ann"><summary>Пояснення</summary><div><p>Медіана — «середина»: половина вакансій у місті пропонує більше, половина менше. 25 тисяч нижче цієї середини.</p></div></details></div>
+      <div class="kpi"><div class="v">300–500 тис. €</div><div class="l">грант EIC UATech на компанію</div><div class="s">проєкт UPGRAIN, мікошкіра [3][4]</div><details class="ann"><summary>Пояснення</summary><div><p>EIC — Європейська інноваційна рада, фонд ЄС для технологічних стартапів. Це в гривнях 13–22 мільйони, у 5–8 разів більше за все, що компанія зібрала до 2024 року.</p></div></details></div>
+      <div class="kpi"><div class="v">500 000 грн</div><div class="l">грант L'Oréal Paris, 2026</div><div class="s">≈ 20 місячних зарплат по 25 тис. [2]</div><details class="ann"><summary>Пояснення</summary><div><p>Програма L'Oréal підтримує жінок-підприємиць. Півмільйона гривень — це приблизно річний фонд однієї-двох зарплат, а не бюджет заводу.</p></div></details></div>
     </div>
 
-    <nav class="toc" aria-label="Содержание">
-      <div class="eyebrow">Содержание</div>
+    <nav class="toc" aria-label="Зміст">
+      <div class="eyebrow">Зміст</div>
       <ol>
-        <li><a href="#facts">Что подтверждено о компании</a></li>
-        <li><a href="#flags">Красные и зелёные флаги</a></li>
-        <li><a href="#money">Деньги в цифрах</a></li>
-        <li><a href="#views">Три взгляда</a></li>
-        <li><a href="#compare">Как сравнивать с другим предложением</a></li>
-        <li><a href="#timeline">Хронология переписки</a></li>
-        <li><a href="#visit">Полный чеклист визита</a></li>
-        <li><a href="#letter">Письмо-подтверждение и зарплата</a></li>
-        <li><a href="#plan">План на 48 часов</a></li>
-        <li><a href="#sources">Источники</a></li>
-        <li><a href="#part2">Часть II. Бизнес-разбор</a></li>
-        <li><a href="#niche">Ниша в цифрах</a></li>
-        <li><a href="#regulation">Регуляторика: ЕС и Украина</a></li>
-        <li><a href="#peers">Опыт других компаний</a></li>
-        <li><a href="#economics">Экономика Mycelia Tech</a></li>
-        <li><a href="#strategy">Стратегии выживания</a></li>
-        <li><a href="#markers">Маркеры вектора</a></li>
-        <li><a href="#vector">Вопросы про вектор</a></li>
-        <li><a href="#meaning">Что это значит для решения</a></li>
+        <li><a href="#facts">Що підтверджено про компанію</a></li>
+        <li><a href="#flags">Червоні та зелені прапорці</a></li>
+        <li><a href="#money">Гроші в цифрах</a></li>
+        <li><a href="#views">Три погляди</a></li>
+        <li><a href="#compare">Як порівнювати з іншою пропозицією</a></li>
+        <li><a href="#timeline">Хронологія листування</a></li>
+        <li><a href="#visit">Повний чеклист візиту</a></li>
+        <li><a href="#letter">Лист-підтвердження і зарплата</a></li>
+        <li><a href="#plan">План на 48 годин</a></li>
+        <li><a href="#part2">Частина II. Бізнес-розбір</a></li>
+        <li><a href="#niche">Ніша в цифрах</a></li>
+        <li><a href="#regulation">Регулювання: ЄС і Україна</a></li>
+        <li><a href="#peers">Досвід інших компаній</a></li>
+        <li><a href="#economics">Економіка Mycelia Tech</a></li>
+        <li><a href="#strategy">Стратегії виживання</a></li>
+        <li><a href="#markers">Маркери вектора</a></li>
+        <li><a href="#vector">Питання про вектор</a></li>
+        <li><a href="#meaning">Що це означає для рішення</a></li>
+        <li><a href="#part3">Частина III. Аудит їхнього сайту</a></li>
+        <li><a href="#sources">Джерела</a></li>
       </ol>
     </nav>
   </header>
-
-  <h2 id="facts">Что подтверждено о компании и что нет</h2>
+  <h2 id="facts">Що підтверджено про компанію, а що ні</h2>
+  <details class="ann"><summary>Пояснення: як читати таблицю</summary><div><p>Зелена позначка «підтверджено» означає, що ми самі відкрили джерело і побачили це. Жовта — дані старі (2023–2024) або непрямі. Червона — знайти не вдалося, це питання на зустріч.</p></div></details>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Факт</th><th>Статус</th><th>Источник</th></tr></thead>
+      <thead><tr><th>Факт</th><th>Статус</th><th>Джерело</th></tr></thead>
       <tbody>
-        <tr><td>Команда 5 человек: Марта Кондрин (основательница, CEO), Алиса Атаманчук (главный биотехнолог, PhD), Светлана Гураль (менеджер производства), Мария Бойко (ассистент производства), Adam Zain (маркетинг). Адрес: Промприлад.Реновація, вул. Української Перемоги 23</td><td><span class="status st-ok">подтверждено</span></td><td>[1]</td></tr>
-        <tr><td>На сайте компании нет ни слова об упаковке; продукт — только заменитель кожи</td><td><span class="status st-ok">подтверждено</span></td><td>[1]</td></tr>
-        <tr><td>Победительница 4-й волны программы L'Oréal Paris и БФ «Твоя опора», грант 500 000 грн после налогов, программа 1 февраля – 30 июня 2026</td><td><span class="status st-ok">подтверждено</span></td><td>[2]</td></tr>
-        <tr><td>В списке отобранных компаний EIC UATech 2025 (документ от 30 марта 2026): <span class="uk">Marta Kondryn — Mycelia Tech — UPGRAIN: Upcycling Ukrainian Biomass into High-Performance Mycelium Leather</span></td><td><span class="status st-ok">подтверждено</span></td><td>[3]</td></tr>
-        <tr><td>Грант EIC UATech: 300–500 тыс. евро на компанию, 41 компания, бюджет 20 млн евро, доступ к EIC Accelerator. Подписание соглашения и сроки выплат именно Mycelia Tech не проверены</td><td><span class="status st-old">частично</span></td><td>[4][5]</td></tr>
-        <tr><td>В колонке «Company Name» списка EIC стоит имя «Marta Kondryn», а не ООО: косвенно подтверждает, что бизнес оформлен как ФОП</td><td><span class="status st-old">косвенно</span></td><td>[3]</td></tr>
-        <tr><td>Профиль на work.ua: «Перевірено», отрасль «Хімічна промисловість, фармацевтика», «менше 10 співробітників»</td><td><span class="status st-ok">подтверждено</span></td><td>[13]</td></tr>
-        <tr><td>Вакансия Вики снята: страница перенаправляет с пометкой job_removed</td><td><span class="status st-ok">подтверждено 2 сент.</span></td><td>[15]</td></tr>
-        <tr><td>Вторая вакансия «Інженер з підготовки виробництва», 80 000 грн, Киев, от 13 августа 2026, контакт Marta Kondryn. Описание: <q class="uk">стартап, який створює екологічні матеріали з міцелію (грибів) як альтернативу пластику. Зараз ми працюємо над новою версією нашого матеріалу на подобі шкіри</q></td><td><span class="status st-ok">подтверждено</span></td><td>[14]</td></tr>
-        <tr><td>2023: грант $5 000 KSE Foundation «Talents for Ukraine»; сооснователь тогда — биотехнолог Олег Лущак (доцент ПНУ); первый образец в феврале 2023</td><td><span class="status st-old">данные 2023</span></td><td>[7][8][9]</td></tr>
-        <tr><td>2023: инновационный ваучер до 60 000 грн от проекта «Нова економіка Івано-Франківська» (ЕС)</td><td><span class="status st-old">данные 2023</span></td><td>[9]</td></tr>
-        <tr><td>Осень 2024: привлечено ~$60 тыс. (60% гранты), продажи ниже себестоимости, нужно ещё $200–300 тыс.</td><td><span class="status st-old">данные 2024</span></td><td>[11]</td></tr>
-        <tr><td>Январь 2025: <q class="uk">За 45 днів можна отримати до 50 кв. м інноваційного матеріалу</q>, <q class="uk">Собівартість матеріалу наразі становить 32 євро за кв. м</q></td><td><span class="status st-old">январь 2025</span></td><td>[10]</td></tr>
-        <tr><td>Источник финансирования направления упаковки, заказчик или пилот по упаковке</td><td><span class="status st-no">не найдено</span></td><td>—</td></tr>
-        <tr><td>Юрлицо с кодом ЄДРПОУ, налоговая история, суды</td><td><span class="status st-no">не проверено</span></td><td>—</td></tr>
+        <tr><td>Команда 5 людей: Марта Кондрин (засновниця, CEO), Аліса Атаманчук (головна біотехнологиня, PhD), Світлана Гураль (менеджерка виробництва), Марія Бойко (асистентка виробництва), Adam Zain (маркетинг). Адреса: Промприлад.Реновація, вул. Української Перемоги 23<details class="ann"><summary>Пояснення</summary><div><p>Це вся компанія. Віка буде шостою або сьомою. Головна біотехнологиня з науковим ступенем — добрий знак: є в кого вчитися.</p></div></details></td><td><span class="status st-ok">підтверджено</span></td><td>[1]</td></tr>
+        <tr><td>На сайті компанії немає ні слова про пакування; продукт — лише замінник шкіри<details class="ann"><summary>Пояснення</summary><div><p>Напрям, на який наймають Віку, ще не показаний світу. Це або дуже ранній етап, або побічний експеримент.</p></div></details></td><td><span class="status st-ok">підтверджено</span></td><td>[1]</td></tr>
+        <tr><td>Переможниця 4-ї хвилі програми L'Oréal Paris і БФ «Твоя опора», грант 500 000 грн після податків, програма 1 лютого – 30 червня 2026<details class="ann"><summary>Пояснення</summary><div><p>Свіжі гроші літа 2026. Скоріш за все, саме з них платять за нові вакансії.</p></div></details></td><td><span class="status st-ok">підтверджено</span></td><td>[2]</td></tr>
+        <tr><td>У списку відібраних компаній EIC UATech 2025 (документ від 30 березня 2026): <span class="uk">Marta Kondryn — Mycelia Tech — UPGRAIN: Upcycling Ukrainian Biomass into High-Performance Mycelium Leather</span><details class="ann"><summary>Пояснення</summary><div><p>UPGRAIN — назва їхнього проєкту для ЄС: робити мікошкіру з української сільськогосподарської біомаси (лушпиння, солома). Про пакування в назві нічого.</p></div></details></td><td><span class="status st-ok">підтверджено</span></td><td>[3]</td></tr>
+        <tr><td>Грант EIC UATech: 300–500 тис. євро на компанію, 41 компанія, бюджет 20 млн євро, доступ до EIC Accelerator. Підписання угоди і строки виплат саме Mycelia Tech не перевірені<details class="ann"><summary>Пояснення</summary><div><p>Компанію відібрали, але чи вже підписана угода і чи прийшли гроші — невідомо. Це треба спитати прямо.</p></div></details></td><td><span class="status st-old">частково</span></td><td>[4][5]</td></tr>
+        <tr><td>У колонці «Company Name» списку EIC стоїть ім'я «Marta Kondryn», а не ТОВ: непряме підтвердження, що бізнес оформлений як ФОП<details class="ann"><summary>Пояснення</summary><div><p>ФОП — фізична особа-підприємець, а не фірма. Це законно, але означає, що вся відповідальність на одній людині, а публічної фінансової звітності немає.</p></div></details></td><td><span class="status st-old">непрямо</span></td><td>[3]</td></tr>
+        <tr><td>Профіль на work.ua: «Перевірено», галузь «Хімічна промисловість, фармацевтика», «менше 10 співробітників»</td><td><span class="status st-ok">підтверджено</span></td><td>[13]</td></tr>
+        <tr><td>Вакансію Віки знято: сторінка перенаправляє з позначкою job_removed<details class="ann"><summary>Пояснення</summary><div><p>Логічно після пропозиції: інших кандидатів більше не шукають.</p></div></details></td><td><span class="status st-ok">підтверджено 2 вер.</span></td><td>[15]</td></tr>
+        <tr><td>Друга вакансія «Інженер з підготовки виробництва», 80 000 грн, Київ, від 13 серпня 2026, контакт Marta Kondryn. Опис: <q class="uk">стартап, який створює екологічні матеріали з міцелію (грибів) як альтернативу пластику. Зараз ми працюємо над новою версією нашого матеріалу на подобі шкіри</q><details class="ann"><summary>Пояснення</summary><div><p>Інженер потрібен, щоб зробити автоматичні інкубатори. Його зарплата втричі більша за Вікину: компанія платить за техніку, а роботу на виробництві вважає недорогою.</p></div></details></td><td><span class="status st-ok">підтверджено</span></td><td>[14]</td></tr>
+        <tr><td>2023: грант $5 000 KSE Foundation «Talents for Ukraine»; співзасновник тоді — біотехнолог Олег Лущак (доцент ПНУ); перший зразок у лютому 2023</td><td><span class="status st-old">дані 2023</span></td><td>[7][8][9]</td></tr>
+        <tr><td>2023: інноваційний ваучер до 60 000 грн від проєкту «Нова економіка Івано-Франківська» (ЄС)</td><td><span class="status st-old">дані 2023</span></td><td>[9]</td></tr>
+        <tr><td>Осінь 2024: залучено ~$60 тис. (60% гранти), продажі нижче собівартості, потрібно ще $200–300 тис.<details class="ann"><summary>Пояснення</summary><div><p>Два роки тому компанія жила від гранту до гранту і продавала дешевше, ніж коштує зробити. У 2026 грошей стало значно більше, але чи змінилася економіка — невідомо.</p></div></details></td><td><span class="status st-old">дані 2024</span></td><td>[11]</td></tr>
+        <tr><td>Січень 2025: <q class="uk">За 45 днів можна отримати до 50 кв. м інноваційного матеріалу</q>, <q class="uk">Собівартість матеріалу наразі становить 32 євро за кв. м</q><details class="ann"><summary>Пояснення</summary><div><p>50 квадратних метрів за півтора місяця — це дуже маленьке виробництво, приблизно 400 м² на рік.</p></div></details></td><td><span class="status st-old">січень 2025</span></td><td>[10]</td></tr>
+        <tr><td>Джерело фінансування саме напряму пакування, замовник або пілот з пакування</td><td><span class="status st-no">не знайдено</span></td><td>—</td></tr>
+        <tr><td>Юрособа з кодом ЄДРПОУ, податкова історія, суди</td><td><span class="status st-no">не перевірено</span></td><td>—</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="note">Вывод по деньгам: если грант EIC подписан, у компании есть порядка 13–22 млн грн на проект микокожи на 1–2 года, а грант L'Oréal покрывает примерно 20 месячных зарплат по 25 тыс. Вероятно, это и есть бюджет направления упаковки, поэтому вопрос «из каких денег и на сколько месяцев» остаётся главным.</p>
+  <p class="note">Висновок про гроші: якщо грант EIC підписаний, у компанії є близько 13–22 млн грн на проєкт мікошкіри на 1–2 роки, а грант L'Oréal покриває приблизно 20 місячних зарплат по 25 тис. Імовірно, це і є бюджет напряму пакування, тому питання «з яких грошей і на скільки місяців» залишається головним.</p>
 
-  <h2 id="flags">Красные и зелёные флаги</h2>
+  <h2 id="flags">Червоні та зелені прапорці</h2>
   <div class="flags">
     <div class="flag red">
-      <h3><span class="dot"></span>Красные</h3>
+      <h3><span class="dot"></span>Червоні</h3>
       <ul>
-        <li>Должность названа «Проєктний менеджер», а по обязанностям это оператор производства: формы, инкубация, сушка, контроль температуры и влажности. В приглашении на собеседование снова «проєктний менеджер», хотя Вика писала про «операційний менеджер» [S3].</li>
-        <li>17 августа техпроцесс <q class="uk">відпрацьований</q>, 2 сентября: <q class="uk">У нас ще все в процесі встановлення… дуже робоча обстановка</q> [S1][S8]. Для упаковки процесс отработан быть не может, его только строят.</li>
-        <li>Зарплата после испытательного не названа: <q class="uk">не можу сказати, все буде залежати як людина покаже себе</q> [S7]. Ставка «від 25 тис» может остаться навсегда.</li>
-        <li>Упаковка не покрыта грантом EIC и не упомянута ни на сайте, ни в прессе. Единственный след — слова «альтернативу пластику» в киевской вакансии [1][3][14].</li>
-        <li>В Украине уже есть игрок в упаковке из мицелия на несколько шагов впереди: S.Lab с сертификатом OK Home Compost, поддержкой ЕС и участием в UK-Ukraine TechBridge 2026 [30].</li>
-        <li>Отрасль тяжёлая: MycoWorks закрыла фабрику в октябре 2025 [28]; Bolt Threads остановила Mylo, а в январе 2026 ушла с Nasdaq [29]. Микокожу не смогли масштабировать даже компании с сотнями миллионов долларов.</li>
-        <li>Вероятно ФОП, а не ООО: публичной отчётности нет, вся ответственность на одном человеке [3].</li>
+        <li>Посаду названо «Проєктний менеджер», а за обов'язками це оператор виробництва: форми, інкубація, сушіння, контроль температури і вологості. У запрошенні на співбесіду знову «проєктний менеджер», хоча Віка писала про «операційний менеджер» [S3].<details class="ann"><summary>Пояснення</summary><div><p>Гучна назва при простій роботі — типовий прийом, щоб вакансія виглядала привабливіше. Небезпека в тому, що в трудовій буде написано одне, а досвід буде інший.</p></div></details></li>
+        <li>17 серпня техпроцес <q class="uk">відпрацьований</q>, 2 вересня: <q class="uk">У нас ще все в процесі встановлення… дуже робоча обстановка</q> [S1][S8]. Для пакування процес відпрацьованим бути не може, його лише будують.<details class="ann"><summary>Пояснення</summary><div><p>Дві відповіді суперечать одна одній. Відпрацьований процес — це коли є інструкція і стабільний результат. Тут, схоже, є процес для шкіри, а для пакування його ще треба створити.</p></div></details></li>
+        <li>Зарплату після випробувального не названо: <q class="uk">не можу сказати, все буде залежати як людина покаже себе</q> [S7]. Ставка «від 25 тис» може лишитися назавжди.<details class="ann"><summary>Пояснення</summary><div><p>Закон не зобов'язує підвищувати зарплату після випробувального. Якщо цифри немає на папері, її немає.</p></div></details></li>
+        <li>Пакування не покрите грантом EIC і не згадане ні на сайті, ні в пресі. Єдиний слід — слова «альтернативу пластику» в київській вакансії [1][3][14].<details class="ann"><summary>Пояснення</summary><div><p>Напрям, на який наймають, існує поки що тільки в розмовах і в одній фразі вакансії.</p></div></details></li>
+        <li>В Україні вже є гравець у пакуванні з міцелію на кілька кроків попереду: S.Lab із сертифікатом OK Home Compost, підтримкою ЄС і участю в UK-Ukraine TechBridge 2026 [30].<details class="ann"><summary>Пояснення</summary><div><p>S.Lab робить те саме з 2021 року, має клієнтів L'Oréal і Nespresso і вже переїхала виробництвом до Іспанії. Наздогнати їх з нуля буде важко.</p></div></details></li>
+        <li>Галузь важка: MycoWorks закрила фабрику в жовтні 2025 [28]; Bolt Threads зупинила Mylo, а в січні 2026 пішла з Nasdaq [29]. Мікошкіру не змогли масштабувати навіть компанії з сотнями мільйонів доларів.<details class="ann"><summary>Пояснення</summary><div><p>Якщо американські компанії з величезними грошима не змогли продати мікошкіру, маленькій компанії в Івано-Франківську буде ще важче. Це не вина Марти, це властивість ринку.</p></div></details></li>
+        <li>Імовірно ФОП, а не ТОВ: публічної звітності немає, вся відповідальність на одній людині [3].</li>
       </ul>
     </div>
     <div class="flag green">
-      <h3><span class="dot"></span>Зелёные</h3>
+      <h3><span class="dot"></span>Зелені</h3>
       <ul>
-        <li>Два свежих гранта 2026 года, один из них европейский на сотни тысяч евро [2][3][4].</li>
-        <li>Публичная история с 2022 года, главный биотехнолог с PhD, резидентство в Промприладе, верифицированный профиль работодателя [1][9][13].</li>
-        <li>Процесс найма серьёзный для такой ставки: собеседование, проверка трёх рекомендаций, ответ в обещанный день [S5][S6][S8].</li>
-        <li>Оформление официальное с первого дня, испытательный оплачивается, подтверждено дважды [S1][S7].</li>
-        <li>Работодатель сразу согласился показать производство и предложил время [S8].</li>
-        <li>Вика не работает: переход не требует увольнения, а год в биоматериалах даст новую строку в резюме.</li>
+        <li>Два свіжих гранти 2026 року, один із них європейський на сотні тисяч євро [2][3][4].<details class="ann"><summary>Пояснення</summary><div><p>Гроші на зарплати на найближчий рік-два є. Компанія не закриється завтра.</p></div></details></li>
+        <li>Публічна історія з 2022 року, головна біотехнологиня з PhD, резидентство в Промприладі, верифікований профіль роботодавця [1][9][13].</li>
+        <li>Процес найму серйозний для такої ставки: співбесіда, перевірка трьох рекомендацій, відповідь у обіцяний день [S5][S6][S8].<details class="ann"><summary>Пояснення</summary><div><p>Так наймають, коли людину справді хочуть і бережуть репутацію. Це ознака порядності, хоч і не гарантія грошей.</p></div></details></li>
+        <li>Оформлення офіційне з першого дня, випробувальний оплачується, підтверджено двічі [S1][S7].</li>
+        <li>Роботодавець одразу погодився показати виробництво і запропонував час [S8].</li>
+        <li>Віка не працює: перехід не вимагає звільнення, а рік у біоматеріалах дасть новий рядок у резюме.</li>
       </ul>
     </div>
   </div>
 
-  <h2 id="money">Деньги в цифрах</h2>
+  <h2 id="money">Гроші в цифрах</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Показатель</th><th>Значение</th><th>Источник</th></tr></thead>
+      <thead><tr><th>Показник</th><th>Значення</th><th>Джерело</th></tr></thead>
       <tbody>
-        <tr><td>Ставка на испытательном, до налогов</td><td class="num">«від 25 тис»</td><td>[S7]</td></tr>
-        <tr><td>На руки при 25 000 грн (ПДФО 18% + военный сбор 5%)</td><td class="num">≈ 19 250 грн</td><td>расчёт по [21]</td></tr>
-        <tr><td>На руки при 30 000 грн</td><td class="num">≈ 23 100 грн</td><td>расчёт по [21]</td></tr>
-        <tr><td>Минимальная зарплата 2026</td><td class="num">8 647 грн (на руки 6 658)</td><td>[21]</td></tr>
-        <tr><td>Медиана по 4 072 вакансиям Ивано-Франковска, сентябрь 2026</td><td class="num">28 500 грн, +17% за год</td><td>[16]</td></tr>
-        <tr><td>Средняя зарплата штатных работников области, май 2026</td><td class="num">24 200 грн</td><td>[20]</td></tr>
-        <tr><td>Средняя зарплата штатных работников области, февраль 2026</td><td class="num">22 000 грн</td><td>[19]</td></tr>
-        <tr><td>Лаборант, медиана по Украине, сентябрь 2026</td><td class="num">23 500 грн (Киев 30 000)</td><td>[17]</td></tr>
-        <tr><td>Технолог, медиана по Украине, сентябрь 2026</td><td class="num">40 000 грн (Львов 40 500)</td><td>[18]</td></tr>
-        <tr><td>Инженер по подготовке производства в той же компании, Киев</td><td class="num">80 000 грн</td><td>[14]</td></tr>
+        <tr><td>Ставка на випробувальному, до податків</td><td class="num">«від 25 тис»</td><td>[S7]</td></tr>
+        <tr><td>На руки при 25 000 грн (ПДФО 18% + військовий збір 5%)<details class="ann"><summary>Пояснення</summary><div><p>25 000 мінус 23% податків. Саме ця сума прийде на картку.</p></div></details></td><td class="num">≈ 19 250 грн</td><td>розрахунок за [21]</td></tr>
+        <tr><td>На руки при 30 000 грн</td><td class="num">≈ 23 100 грн</td><td>розрахунок за [21]</td></tr>
+        <tr><td>Мінімальна зарплата 2026</td><td class="num">8 647 грн (на руки 6 658)</td><td>[21]</td></tr>
+        <tr><td>Медіана за 4 072 вакансіями Івано-Франківська, вересень 2026<details class="ann"><summary>Пояснення</summary><div><p>Половина вакансій у місті пропонує більше за 28 500. Пропозиція Mycelia Tech нижча за середину ринку.</p></div></details></td><td class="num">28 500 грн, +17% за рік</td><td>[16]</td></tr>
+        <tr><td>Середня зарплата штатних працівників області, травень 2026</td><td class="num">24 200 грн</td><td>[20]</td></tr>
+        <tr><td>Середня зарплата штатних працівників області, лютий 2026</td><td class="num">22 000 грн</td><td>[19]</td></tr>
+        <tr><td>Лаборант, медіана по Україні, вересень 2026<details class="ann"><summary>Пояснення</summary><div><p>Ставка Mycelia Tech відповідає рівню лаборанта, хоча робота ближча до технолога.</p></div></details></td><td class="num">23 500 грн (Київ 30 000)</td><td>[17]</td></tr>
+        <tr><td>Технолог, медіана по Україні, вересень 2026</td><td class="num">40 000 грн (Львів 40 500)</td><td>[18]</td></tr>
+        <tr><td>Інженер з підготовки виробництва в тій самій компанії, Київ</td><td class="num">80 000 грн</td><td>[14]</td></tr>
       </tbody>
     </table>
   </div>
-  <p>Как читать: 25 тыс. — уровень лаборанта, а не технолога и тем более не проектного менеджера. Разрыв с киевской вакансией в 3,2 раза показывает, что компания платит за инженерные компетенции, а роль на производстве считает недорогой. Просить 30 тыс. с первого дня и фиксированный пересмотр после испытательного — уместно.</p>
+  <p>Як читати: 25 тис. — рівень лаборанта, а не технолога і тим більше не проєктного менеджера. Розрив із київською вакансією в 3,2 раза показує, що компанія платить за інженерні компетенції, а роботу на виробництві вважає недорогою. Просити 30 тис. з першого дня і письмовий перегляд після випробувального — доречно.</p>
 
-  <h2 id="views">Три взгляда</h2>
+  <h2 id="views">Три погляди</h2>
   <div class="views">
-    <div class="view"><h3>Риск</h3><p>Компания не исчезнет в ближайшие месяцы: у неё есть грантовые деньги на 2026–2027. Но упаковка — побочный эксперимент, и если он не даст продукта к концу гранта L'Oréal, первой сократят именно эту позицию. На испытательном увольняют с предупреждением за три дня и без выходного пособия (ст. 28 КЗпП) [22][23]. Защита — письменные условия и понимание, из чего платят зарплату. Плохой сценарий через 3 месяца: «не прошла испытательный» без объяснений. Через 6–12 месяцев: направление закрыто, роль сокращена или переведена на микокожу.</p></div>
-    <div class="view"><h3>Карьера</h3><p>Для биолога 40 лет после перерыва это вход в живую нишу биоматериалов с реальным производством и грамотным главным биотехнологом. Год такой работы хорошо выглядит в резюме и открывает лаборатории, пищепром и биотех-стартапы. Минус — название должности не соответствует содержанию: в договоре стоит просить «біотехнолог» или «технолог виробництва», иначе следующий работодатель будет ждать опыта управления проектами.</p></div>
-    <div class="view"><h3>Практика и здоровье</h3><p>График 09:00–18:00 на месте, перчатки, стерильная зона, влажные помещения. Профессиональные риски грибных производств известны: гиперчувствительный пневмонит («лёгкое грибника»), астма, дерматит; источники — споры, плесени Aspergillus fumigatus, Trichoderma, Penicillium; самые опасные стадии — инокуляция, инкубация, сбор и сушка [26][27]. Норма защиты — вентиляция и HEPA-фильтры, респираторы FFP2/FFP3 при работе с сухим материалом, медосмотры. Требование «100% стерильність» защищает культуру от заражения, а не работника от спор. При 19 тыс. на руки это зарплата на жизнь без накоплений.</p></div>
+    <div class="view"><h3>Ризик</h3><p>Компанія не зникне найближчими місяцями: у неї є грантові гроші на 2026–2027. Але пакування — побічний експеримент, і якщо він не дасть продукту до кінця гранту L'Oréal, першою скоротять саме цю позицію. На випробувальному звільняють із попередженням за три дні і без вихідної допомоги (ст. 28 КЗпП) [22][23]. Захист — письмові умови і розуміння, з чого платять зарплату. Поганий сценарій через 3 місяці: «не пройшла випробувальний» без пояснень. Через 6–12 місяців: напрям закрито, роль скорочено або переведено на мікошкіру.</p><details class="ann"><summary>Пояснення</summary><div><p>Простими словами: звільнити на випробувальному дуже легко і дешево для роботодавця. Єдина страховка — щоб на папері було чітко написано, за що і скільки платять, і щоб було зрозуміло, з яких грошей.</p></div></details></div>
+    <div class="view"><h3>Кар'єра</h3><p>Для біологині 40 років після перерви це вхід у живу нішу біоматеріалів із реальним виробництвом і сильною головною біотехнологинею. Рік такої роботи добре виглядає в резюме і відкриває лабораторії, харчову промисловість і біотех-стартапи. Мінус — назва посади не відповідає змісту: у договорі варто просити «біотехнолог» або «технолог виробництва», інакше наступний роботодавець чекатиме досвіду керування проєктами.</p><details class="ann"><summary>Пояснення</summary><div><p>Навіть якщо компанія не виживе, досвід роботи з міцелієм і стерильним виробництвом залишиться. Головне, щоб у трудовій було чесне слово про те, що Віка робила.</p></div></details></div>
+    <div class="view"><h3>Практика і здоров'я</h3><p>Графік 09:00–18:00 на місці, рукавички, стерильна зона, вологі приміщення. Професійні ризики грибних виробництв відомі: гіперчутливий пневмоніт («легеня грибника»), астма, дерматит; джерела — спори, плісняві гриби Aspergillus fumigatus, Trichoderma, Penicillium; найнебезпечніші стадії — інокуляція, інкубація, збір і сушіння [26][27]. Норма захисту — вентиляція і HEPA-фільтри, респіратори FFP2/FFP3 при роботі з сухим матеріалом, медогляди. Вимога «100% стерильність» захищає культуру від зараження, а не працівника від спор. При 19 тис. на руки це зарплата на життя без заощаджень.</p><details class="ann"><summary>Пояснення</summary><div><p>«Легеня грибника» — алергічне запалення легенів від вдихання спор: кашель, задишка, температура після роботи. Виникає у людей, які роками дихають спорами без захисту. Рукавички від цього не рятують, рятують витяжка і респіратор.</p></div></details></div>
   </div>
 
-  <h2 id="compare">Как сравнивать с другим предложением</h2>
-  <p>Сравнивать по шести пунктам, а не по ощущению.</p>
+  <h2 id="compare">Як порівнювати з іншою пропозицією</h2>
+  <p>Порівнювати за шістьма пунктами, а не за відчуттям.</p>
   <ol class="steps">
-    <li>Деньги на руки через 3 месяца и через 12 месяцев, письменно.</li>
-    <li>Кто платит: организация с выручкой или грантовый бюджет с датой окончания.</li>
-    <li>Здоровье и режим: споры и дезинфектанты против обычного офиса или лаборатории.</li>
-    <li>Что будет в трудовой книжке и в резюме через год.</li>
-    <li>Вероятность, что позиция существует через 12 месяцев.</li>
-    <li>Что теряется при отказе: Mycelia Tech ищет людей повторно, туда можно вернуться позже.</li>
+    <li>Гроші на руки через 3 місяці і через 12 місяців, письмово.</li>
+    <li>Хто платить: організація з виручкою чи грантовий бюджет із датою закінчення.<details class="ann"><summary>Пояснення</summary><div><p>Фірма, яка заробляє на продажах, платить зарплату з власних грошей і може платити довго. Грант — це чужі гроші на певний строк; коли він закінчується, зарплату платити нічим.</p></div></details></li>
+    <li>Здоров'я і режим: спори і дезінфектанти проти звичайного офісу чи лабораторії.</li>
+    <li>Що буде у трудовій книжці і резюме через рік.</li>
+    <li>Імовірність, що позиція існує через 12 місяців.</li>
+    <li>Що втрачається при відмові: Mycelia Tech шукає людей повторно, туди можна повернутися пізніше.</li>
   </ol>
-  <p>Если второе предложение выигрывает по пунктам 1, 2 и 5 — выбирать его. Mycelia Tech выигрывает по пункту 4 и только при интересе к самой нише.</p>
+  <p>Якщо друга пропозиція виграє за пунктами 1, 2 і 5 — обирати її. Mycelia Tech виграє за пунктом 4 і лише за інтересу до самої ніші.</p>
 
-  <h2 id="timeline">Хронология переписки</h2>
+  <h2 id="timeline">Хронологія листування</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Дата</th><th>Что произошло</th><th>Файл</th></tr></thead>
+      <thead><tr><th>Дата</th><th>Що сталося</th><th>Файл</th></tr></thead>
       <tbody>
-        <tr><td class="num">17 авг, 10:02–10:17</td><td>Вика задала 6 вопросов про вакансию «операційний менеджер». Ответы: <q class="uk">так, офіційна, з 09:00-18;00</q>, <q class="uk">ставка</q>, <q class="uk">так, 3 міс, оплачується</q>, <q class="uk">відпрацьований, обговорюється при співбесіді</q>, <q class="uk">ні</q>, <q class="uk">контакт є, в рукавичках потрібно працювати та підтримувати 100% стерильність в роботі</q></td><td>S1</td></tr>
-        <tr><td class="num">17 авг, 10:35–11:22</td><td>Запрос свежего резюме, вопрос <q class="uk">зараз Ви ніде не працюєте?</q>, приглашение на собеседование с формулировкой «проєктний менеджер», 18 августа 15:00–15:45, Google Meet</td><td>S2, S3</td></tr>
-        <tr><td class="num">24 авг</td><td><q class="uk">наступним кроком у відборі на посаду є перевірка референтів від Ваших попередніх керівників</q>. Вика передала три контакта</td><td>S4, S5</td></tr>
-        <tr><td class="num">27 авг, 21:03</td><td><q class="uk">перевірку референсів провели… зможу до Вас повернутись з результатом в середу 2го вересня</q></td><td>S6</td></tr>
-        <tr><td class="num">31 авг, 15:00–15:11</td><td><q class="uk">Офіційна зарплата буде від початку випробувального терміну. На термін випробувального часу - від 25 тис ставки. Після завершення випробувального терміну - не можу сказати, все буде залежати як людина покаже себе</q>. Оформление с первого дня: <q class="uk">Так</q>. <q class="uk">але ми ще не прийняли рішення щодо Вас, співбесіди тривають</q></td><td>S6, S7</td></tr>
-        <tr><td class="num">2 сент, 18:28–18:42</td><td><q class="uk">ми б хотіли співпрацювати з Вами та запропонувати Вам нашу вакансію… до п'ятниці цього тижня я надішлю лист-підтвердження</q>. Вика просит посмотреть производство: <q class="uk">Зараз маю ще одну пропозицію</q>. Ответ: <q class="uk">У нас ще все в процесі встановлення… дуже робоча обстановка</q>, визит <q class="uk">завтра - на 14:00</q></td><td>S8</td></tr>
+        <tr><td class="num">17 серп, 10:02–10:17</td><td>Віка поставила 6 питань про вакансію «операційний менеджер». Відповіді: <q class="uk">так, офіційна, з 09:00-18;00</q>, <q class="uk">ставка</q>, <q class="uk">так, 3 міс, оплачується</q>, <q class="uk">відпрацьований, обговорюється при співбесіді</q>, <q class="uk">ні</q>, <q class="uk">контакт є, в рукавичках потрібно працювати та підтримувати 100% стерильність в роботі</q><details class="ann"><summary>Пояснення</summary><div><p>Відповіді короткі, але по суті. Насторожує лише «відпрацьований» техпроцес, який потім виявився «в процесі встановлення».</p></div></details></td><td>S1</td></tr>
+        <tr><td class="num">17 серп, 10:35–11:22</td><td>Запит свіжого резюме, питання <q class="uk">зараз Ви ніде не працюєте?</q>, запрошення на співбесіду з формулюванням «проєктний менеджер», 18 серпня 15:00–15:45, Google Meet</td><td>S2, S3</td></tr>
+        <tr><td class="num">24 серп</td><td><q class="uk">наступним кроком у відборі на посаду є перевірка референтів від Ваших попередніх керівників</q>. Віка передала три контакти<details class="ann"><summary>Пояснення</summary><div><p>Перевірка рекомендацій для посади на 25 тисяч — рідкість. Це говорить про серйозне ставлення до найму.</p></div></details></td><td>S4, S5</td></tr>
+        <tr><td class="num">27 серп, 21:03</td><td><q class="uk">перевірку референсів провели… зможу до Вас повернутись з результатом в середу 2го вересня</q></td><td>S6</td></tr>
+        <tr><td class="num">31 серп, 15:00–15:11</td><td><q class="uk">Офіційна зарплата буде від початку випробувального терміну. На термін випробувального часу - від 25 тис ставки. Після завершення випробувального терміну - не можу сказати, все буде залежати як людина покаже себе</q>. Оформлення з першого дня: <q class="uk">Так</q>. <q class="uk">але ми ще не прийняли рішення щодо Вас, співбесіди тривають</q><details class="ann"><summary>Пояснення</summary><div><p>Ключова відповідь. «Від 25 тис» — нижня межа без верхньої. «Не можу сказати» про потім — означає, що обіцянок немає.</p></div></details></td><td>S6, S7</td></tr>
+        <tr><td class="num">2 вер, 18:28–18:42</td><td><q class="uk">ми б хотіли співпрацювати з Вами та запропонувати Вам нашу вакансію… до п'ятниці цього тижня я надішлю лист-підтвердження</q>. Віка просить подивитися виробництво: <q class="uk">Зараз маю ще одну пропозицію</q>. Відповідь: <q class="uk">У нас ще все в процесі встановлення… дуже робоча обстановка</q>, візит <q class="uk">завтра - на 14:00</q><details class="ann"><summary>Пояснення</summary><div><p>Обіцяли відповідь у середу і дали в середу — слово тримають. Згода показати виробництво одразу — добрий знак. «В процесі встановлення» — чесне попередження, що виробництва пакування ще немає.</p></div></details></td><td>S8</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="note">Сроки выдержаны, тон вежливый, ответы короткие и по делу. Слабые места — размытость по зарплате после испытательного и дрейф названия должности.</p>
+  <p class="note">Строки витримані, тон ввічливий, відповіді короткі і по суті. Слабкі місця — розмитість щодо зарплати після випробувального і дрейф назви посади.</p>
 
-  <h2 id="visit">Полный чеклист визита</h2>
-  <p class="sub">Расширенная версия шапки: по группам, с пояснением, зачем каждый пункт. Отметки сохраняются в этом браузере.</p>
+  <h2 id="visit">Повний чеклист візиту</h2>
+  <p class="sub">Розширена версія шапки: за групами, з поясненням, навіщо кожен пункт. Відмітки зберігаються у цьому браузері.</p>
   <div class="progress" id="progress"></div>
 
-  <h3>Помещение и оборудование</h3>
+  <h3>Приміщення і обладнання</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c1"><label for="c1">Где именно производство упаковки: отдельное помещение или угол в цеху микокожи? Что уже стоит: инкубационные камеры, сушильный шкаф, формы, ламинарный бокс, автоклав?</label></li>
-    <li><input type="checkbox" id="c2"><label for="c2">Что означает «в процесі встановлення»: сколько недель до запуска и кто это делает?<span class="why">Тревожно, если ответ «как только найдём человека».</span></label></li>
-    <li><input type="checkbox" id="c3"><label for="c3">Вентиляция и фильтрация в зоне инкубации и сушки. Есть ли HEPA-фильтры и вытяжка? Влажность и запах в помещении.</label></li>
+    <li><input type="checkbox" id="c1"><div class="body"><label for="c1">Де саме виробництво пакування: окреме приміщення чи куток у цеху мікошкіри? Що вже стоїть: інкубаційні камери, сушильна шафа, форми, ламінарний бокс, автоклав?</label><details class="ann"><summary>Пояснення</summary><div><p>Якщо пакування робитимуть у тому ж приміщенні, що й шкіру, буде конкуренція за камери і час. Окреме приміщення означає серйозніші наміри.</p></div></details></div></li>
+    <li><input type="checkbox" id="c2"><div class="body"><label for="c2">Що означає «в процесі встановлення»: скільки тижнів до запуску і хто це робить?<span class="why">Тривожно, якщо відповідь «як тільки знайдемо людину».</span></label><details class="ann"><summary>Пояснення</summary><div><p>Є ризик, що Віку наймають саме для того, щоб вона все встановила і налаштувала. Це важча робота, ніж написано у вакансії.</p></div></details></div></li>
+    <li><input type="checkbox" id="c3"><div class="body"><label for="c3">Вентиляція і фільтрація в зоні інкубації і сушіння. Чи є HEPA-фільтри і витяжка? Вологість і запах у приміщенні.</label><details class="ann"><summary>Пояснення</summary><div><p>Це про здоров'я. У приміщенні, де ростуть гриби, без витяжки спори накопичуються в повітрі.</p></div></details></div></li>
   </ul>
-  <h3>Техпроцесс и стадия готовности</h3>
+  <h3>Техпроцес і стадія готовності</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c4"><label for="c4">Сделана ли хоть одна партия упаковки? Попросить показать образец.<span class="why">Если образца нет, процесс не «відпрацьований».</span></label></li>
-    <li><input type="checkbox" id="c5"><label for="c5">Какой гриб и субстрат для упаковки, сколько дней цикл, как деактивируют мицелий (сушка, температура).</label></li>
-    <li><input type="checkbox" id="c6"><label for="c6">Кто ставит технологию: главный биотехнолог Алиса Атаманчук или Вика должна разработать её сама?<span class="why">Второе — роль R&amp;D, она оплачивается иначе.</span></label></li>
+    <li><input type="checkbox" id="c4"><div class="body"><label for="c4">Чи зроблена хоч одна партія пакування? Попросити показати зразок.<span class="why">Якщо зразка немає, процес не «відпрацьований».</span></label></div></li>
+    <li><input type="checkbox" id="c5"><div class="body"><label for="c5">Який гриб і субстрат для пакування, скільки днів цикл, як деактивують міцелій (сушіння, температура).</label><details class="ann"><summary>Пояснення</summary><div><p>Субстрат — те, на чому росте гриб: тирса, солома, лушпиння. Деактивація — нагрівання, після якого гриб перестає рости і виріб стає стабільним. У світі цикл 5–7 днів плюс сушіння.</p></div></details></div></li>
+    <li><input type="checkbox" id="c6"><div class="body"><label for="c6">Хто ставить технологію: головна біотехнологиня Аліса Атаманчук чи Віка має розробити її сама?<span class="why">Друге — роль R&amp;D, вона оплачується інакше.</span></label><details class="ann"><summary>Пояснення</summary><div><p>R&amp;D — дослідження і розробка. Це коли ти шукаєш, як зробити, а не робиш за інструкцією. Така робота цінніша і має коштувати дорожче.</p></div></details></div></li>
   </ul>
-  <h3>Безопасность и здоровье</h3>
+  <h3>Безпека і здоров'я</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c7"><label for="c7">Какие СИЗ выдают: перчатки, респираторы какого класса, халаты. Кто за них платит.</label></li>
-    <li><input type="checkbox" id="c8"><label for="c8">Были ли у сотрудников аллергические реакции или кашель. Есть ли медосмотры.</label></li>
-    <li><input type="checkbox" id="c9"><label for="c9">Какие дезинфектанты используются и как часто. Есть ли отдельная зона для спирта и хлорсодержащих средств.</label></li>
+    <li><input type="checkbox" id="c7"><div class="body"><label for="c7">Які засоби захисту видають: рукавички, респіратори якого класу, халати. Хто за них платить.</label></div></li>
+    <li><input type="checkbox" id="c8"><div class="body"><label for="c8">Чи були у працівників алергічні реакції або кашель. Чи є медогляди.</label><details class="ann"><summary>Пояснення</summary><div><p>Якщо хтось із команди вже кашляє після роботи, це найчесніша відповідь про вентиляцію.</p></div></details></div></li>
+    <li><input type="checkbox" id="c9"><div class="body"><label for="c9">Які дезінфектанти використовують і як часто. Чи є окрема зона для роботи зі спиртом і хлоровмісними засобами.</label></div></li>
   </ul>
-  <h3>Команда и руководство</h3>
+  <h3>Команда і керівництво</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c10"><label for="c10">Кому Вика будет подчиняться на практике: Марте или менеджеру производства Светлане Гураль.</label></li>
-    <li><input type="checkbox" id="c11"><label for="c11">Сколько людей сейчас на производстве и как давно они работают. Уходил ли кто-то за последний год и почему.</label></li>
-    <li><input type="checkbox" id="c12"><label for="c12">Почему для этой роли выбрали формулировку «проєктний менеджер».</label></li>
+    <li><input type="checkbox" id="c10"><div class="body"><label for="c10">Кому Віка підпорядковуватиметься на практиці: Марті чи менеджерці виробництва Світлані Гураль.</label></div></li>
+    <li><input type="checkbox" id="c11"><div class="body"><label for="c11">Скільки людей зараз на виробництві і як давно вони працюють. Чи хтось пішов за останній рік і чому.</label></div></li>
+    <li><input type="checkbox" id="c12"><div class="body"><label for="c12">Чому для цієї ролі обрали формулювання «проєктний менеджер».</label></div></li>
   </ul>
-  <h3>Финансы и горизонт</h3>
+  <h3>Фінанси і горизонт</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c13"><label for="c13">Из каких средств финансируется направление упаковки и на сколько месяцев их хватит.<span class="why">Уместно спросить прямо: «Це фінансується з гранту EIC чи з окремих коштів?»</span></label></li>
-    <li><input type="checkbox" id="c14"><label for="c14">Есть ли заказчик или пилот по упаковке. Кто покупатель: местные производители, экспорт?</label></li>
-    <li><input type="checkbox" id="c15"><label for="c15">Подписано ли грантовое соглашение EIC UATech и когда стартует проект UPGRAIN.<span class="why">Ответ покажет, есть ли деньги на 2027 год.</span></label></li>
+    <li><input type="checkbox" id="c13"><div class="body"><label for="c13">З яких коштів фінансується напрям пакування і на скільки місяців їх вистачить.<span class="why">Доречно спитати прямо: «Це фінансується з гранту EIC чи з окремих коштів?»</span></label></div></li>
+    <li><input type="checkbox" id="c14"><div class="body"><label for="c14">Чи є замовник або пілот з пакування. Хто покупець: місцеві виробники, експорт?</label><details class="ann"><summary>Пояснення</summary><div><p>Пілот — пробне замовлення, коли клієнт тестує пакування на невеликій партії перед великим контрактом. Це вже серйозно.</p></div></details></div></li>
+    <li><input type="checkbox" id="c15"><div class="body"><label for="c15">Чи підписана грантова угода EIC UATech і коли стартує проєкт UPGRAIN.<span class="why">Відповідь покаже, чи є гроші на 2027 рік.</span></label></div></li>
   </ul>
-  <h3>Условия труда и оформление</h3>
+  <h3>Умови праці і оформлення</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c16"><label for="c16">Ставка «від 25 тис» — до налогов или на руки? Какие условия дают 30 тыс.?</label></li>
-    <li><input type="checkbox" id="c17"><label for="c17">Что конкретно оценивается на испытательном и кто решает. Какая цифра после него при хорошем результате.</label></li>
-    <li><input type="checkbox" id="c18"><label for="c18">Реальный график: бывают ли выходы в субботу и вечером из-за циклов инкубации. Кто следит за камерами в выходные.</label></li>
-    <li><input type="checkbox" id="c19"><label for="c19">Форма оформления: трудовой договор с ФОП, приказ, уведомление ДПС до первого дня. Дата выхода.</label></li>
+    <li><input type="checkbox" id="c16"><div class="body"><label for="c16">Ставка «від 25 тис» — до податків чи на руки? Які умови дають 30 тис.?</label></div></li>
+    <li><input type="checkbox" id="c17"><div class="body"><label for="c17">Що саме оцінюється на випробувальному і хто вирішує. Яка цифра після нього при хорошому результаті.</label><details class="ann"><summary>Пояснення</summary><div><p>Якщо критерії не названі, «не пройшла випробувальний» можна сказати будь-кому. Попроси назвати 2–3 конкретні речі, за якими оцінюють.</p></div></details></div></li>
+    <li><input type="checkbox" id="c18"><div class="body"><label for="c18">Реальний графік: чи бувають виходи в суботу і вечорами через цикли інкубації. Хто стежить за камерами у вихідні.</label></div></li>
+    <li><input type="checkbox" id="c19"><div class="body"><label for="c19">Форма оформлення: трудовий договір із ФОП, наказ, повідомлення ДПС до першого дня. Дата виходу.</label></div></li>
   </ul>
-  <h3>Про второе предложение</h3>
+  <h3>Про другу пропозицію</h3>
   <ul class="check" data-group="visit">
-    <li><input type="checkbox" id="c20"><label for="c20">Не раскрывать, где и сколько. Достаточно: <q class="uk">Маю іншу пропозицію з фіксованою ставкою після випробувального. Щоб обрати вас, мені потрібні письмові умови</q>.<span class="why">Это не ультиматум, а нормальный запрос.</span></label></li>
+    <li><input type="checkbox" id="c20"><div class="body"><label for="c20">Не розкривати, де і скільки. Достатньо: <q class="uk">Маю іншу пропозицію з фіксованою ставкою після випробувального. Щоб обрати вас, мені потрібні письмові умови</q>.<span class="why">Це не ультиматум, а нормальний запит.</span></label><details class="ann"><summary>Пояснення</summary><div><p>Друга пропозиція — твій головний аргумент у розмові про гроші. Не треба ні брехати, ні розкривати деталі: достатньо сказати, що вона є і що там умови письмові.</p></div></details></div></li>
   </ul>
 
-  <h2 id="letter">Письмо-подтверждение и разговор о зарплате</h2>
-  <h3>Что должно быть в письме до пятницы 4 сентября</h3>
+  <h2 id="letter">Лист-підтвердження і розмова про зарплату</h2>
+  <details class="ann"><summary>Пояснення: що таке лист-підтвердження</summary><div><p>Це лист від роботодавця з умовами роботи до підписання договору (job offer). Юридично він слабший за трудовий договір, але це перший документ, де умови стоять письмово. Усе, що в нього не потрапило, потім важко довести.</p></div></details>
+  <h3>Що має бути в листі до п'ятниці 4 вересня</h3>
   <ul class="check" data-group="letter">
-    <li><input type="checkbox" id="l1"><label for="l1">Название должности для приказа и трудовой: просить «біотехнолог» или «технолог виробництва», а не «проєктний менеджер».</label></li>
-    <li><input type="checkbox" id="l2"><label for="l2">Оклад на испытательном в цифрах до налогов.</label></li>
-    <li><input type="checkbox" id="l3"><label for="l3">Длительность испытательного и критерии его прохождения.</label></li>
-    <li><input type="checkbox" id="l4"><label for="l4">Оклад или диапазон после испытательного и дата пересмотра.</label></li>
-    <li><input type="checkbox" id="l5"><label for="l5">График, место работы, дата выхода, кому подчиняется.</label></li>
-    <li><input type="checkbox" id="l6"><label for="l6">Форма оформления: трудовой договор, приказ, уведомление в ДПС до начала работы.</label></li>
+    <li><input type="checkbox" id="l1"><div class="body"><label for="l1">Назва посади для наказу і трудової: просити «біотехнолог» або «технолог виробництва», а не «проєктний менеджер».</label></div></li>
+    <li><input type="checkbox" id="l2"><div class="body"><label for="l2">Оклад на випробувальному в цифрах до податків.</label><details class="ann"><summary>Пояснення</summary><div><p>Оклад — фіксована сума в місяць, записана в наказі. Саме її не можна знизити без твоєї згоди.</p></div></details></div></li>
+    <li><input type="checkbox" id="l3"><div class="body"><label for="l3">Тривалість випробувального і критерії його проходження.</label></div></li>
+    <li><input type="checkbox" id="l4"><div class="body"><label for="l4">Оклад або діапазон після випробувального і дата перегляду.</label></div></li>
+    <li><input type="checkbox" id="l5"><div class="body"><label for="l5">Графік, місце роботи, дата виходу, кому підпорядковується.</label></div></li>
+    <li><input type="checkbox" id="l6"><div class="body"><label for="l6">Форма оформлення: трудовий договір, наказ, повідомлення в ДПС до початку роботи.</label></div></li>
   </ul>
 
-  <h3>Формулировки, которые можно попросить вписать</h3>
+  <h3>Формулювання, які можна попросити вписати</h3>
   <div class="phrase"><span class="uk">Посадовий оклад на період випробувального терміну — 25 000 грн (до вирахування податків).</span></div>
-  <div class="phrase"><span class="uk">Після успішного завершення випробувального терміну посадовий оклад переглядається не пізніше [дата] і становить не менше 30 000 грн.</span><small>Если компания не готова к цифре, минимум: «переглядається за результатами випробування, критерії: …».</small></div>
+  <div class="phrase"><span class="uk">Після успішного завершення випробувального терміну посадовий оклад переглядається не пізніше [дата] і становить не менше 30 000 грн.</span><small>Якщо компанія не готова до цифри, мінімум: «переглядається за результатами випробування, критерії: …».</small></div>
   <div class="phrase"><span class="uk">Випробувальний термін — 3 місяці, критерії проходження: …</span></div>
   <div class="phrase"><span class="uk">Оформлення трудових відносин з першого робочого дня згідно з КЗпП України.</span></div>
 
-  <h3>Как поднять вопрос зарплаты, не испортив отношения</h3>
-  <p>Сослаться на письмо-подтверждение, которое Марта сама обещала.</p>
+  <h3>Як підняти питання зарплати, не зіпсувавши стосунки</h3>
+  <p>Послатися на лист-підтвердження, який Марта сама обіцяла.</p>
   <div class="phrase"><span class="uk">Марто, дякую за пропозицію. Щоб дати остаточну відповідь, прошу в листі-підтвердженні зафіксувати оклад на випробувальному, дату перегляду після нього та назву посади. Для мене це важливо через іншу пропозицію.</span></div>
 
-  <h3>Правовая база</h3>
-  <ul>
-    <li>Испытательный срок для специалистов — до 3 месяцев (ст. 27 КЗпП). Оплата не может быть ниже оклада по штатному расписанию и минимальной зарплаты. Дни болезни и отпуска в срок не засчитываются [22][23].</li>
-    <li>Увольнение по результатам испытания — письменное предупреждение за 3 дня, без выходного пособия, с обоснованием (ст. 28 КЗпП) [22].</li>
-    <li>Испытательный срок фиксируется письменно в договоре или приказе; устная договорённость силы не имеет [22].</li>
-    <li>При найме у ФОП трудовой договор заключается письменно. В первые дни проверить приказ о приёме и уведомление ДПС; запись в электронной трудовой видна в кабинете Пенсионного фонда или в Дії через несколько дней.</li>
-    <li>В военное положение по закону 2136-IX работодатель может устанавливать испытание любой категории, менять существенные условия труда без предупреждения за два месяца, приостанавливать договор, увольнять во время больничного, а рабочая неделя может быть до 60 часов [24][25]. Карточка закона отмечает, что часть положений признана неконституционной решением от 19 мая 2026; какие именно — не проверено [25].</li>
-    <li>После испытательного работодатель не обязан повышать зарплату, но и понизить оклад в одностороннем порядке не может. Отсюда важность цифры «после» в письме.</li>
+  <h3>Правова база</h3>
+  <ul class="plain">
+    <li>Випробувальний термін для спеціалістів — до 3 місяців (ст. 27 КЗпП). Оплата не може бути нижчою за оклад по штатному розпису і мінімальну зарплату. Дні хвороби і відпустки в строк не зараховуються [22][23].<details class="ann"><summary>Пояснення</summary><div><p>КЗпП — Кодекс законів про працю. Три місяці — максимум для такої посади. Якщо захворієш на тиждень, випробувальний подовжиться на тиждень.</p></div></details></li>
+    <li>Звільнення за результатами випробування — письмове попередження за 3 дні, без вихідної допомоги, з обґрунтуванням (ст. 28 КЗпП) [22].<details class="ann"><summary>Пояснення</summary><div><p>Вихідна допомога — гроші при звільненні. На випробувальному її не платять. Але звільнити можуть лише письмово і з поясненням причини.</p></div></details></li>
+    <li>Випробувальний термін фіксується письмово в договорі або наказі; усна домовленість сили не має [22].</li>
+    <li>При наймі у ФОП трудовий договір укладається письмово. У перші дні перевірити наказ про прийняття і повідомлення ДПС; запис в електронній трудовій видно в кабінеті Пенсійного фонду або в Дії через кілька днів.<details class="ann"><summary>Пояснення</summary><div><p>Через 3–5 днів після виходу зайди в Дію або на портал Пенсійного фонду і перевір, що запис про роботу з'явився. Якщо його немає, оформлення не відбулося.</p></div></details></li>
+    <li>У воєнний стан за законом 2136-IX роботодавець може встановлювати випробування будь-якій категорії, змінювати істотні умови праці без попередження за два місяці, призупиняти договір, звільняти під час лікарняного, а робочий тиждень може бути до 60 годин [24][25]. Картка закону зазначає, що частину положень визнано неконституційними рішенням від 19 травня 2026; які саме — не перевірено [25].<details class="ann"><summary>Пояснення</summary><div><p>Під час війни права працівників урізані: роботодавцю простіше змінити умови або звільнити. Тим важливіше мати умови на папері.</p></div></details></li>
+    <li>Після випробувального роботодавець не зобов'язаний підвищувати зарплату, але і знизити оклад в односторонньому порядку не може. Звідси важливість цифри «після» в листі.</li>
   </ul>
 
-  <h2 id="plan">План на 48 часов</h2>
+  <h2 id="plan">План на 48 годин</h2>
   <ol class="steps">
-    <li>Вечером 2 сентября: перечитать шапку, выбрать главные вопросы.</li>
-    <li>3 сентября, 14:00: визит. Попросить показать образец упаковки и инкубационную зону. Спросить о финансировании направления прямо.</li>
-    <li>После визита: написать Марте благодарность и запрос на письмо-подтверждение с перечнем пунктов выше.</li>
-    <li>До 4 сентября: сопоставить письмо с условиями второго предложения по шести пунктам.</li>
-    <li>Решение принимать по письму, а не по разговору. Без письменного оклада и даты пересмотра не соглашаться.</li>
+    <li>Перед візитом: перечитати шапку, обрати головні питання.</li>
+    <li>3 вересня, 14:00: візит. Попросити показати зразок пакування і інкубаційну зону. Запитати про фінансування напряму прямо.</li>
+    <li>Після візиту: написати Марті подяку і запит на лист-підтвердження з переліком пунктів вище.</li>
+    <li>До 4 вересня: зіставити лист з умовами другої пропозиції за шістьма пунктами.</li>
+    <li>Рішення приймати за листом, а не за розмовою. Без письмового окладу і дати перегляду не погоджуватися.</li>
   </ol>
+  <h2 id="part2" class="part">Частина II. Бізнес-розбір: ніша, економіка, стратегія, маркери</h2>
+  <p>Мета цієї частини — зрозуміти, куди компанія рухається, на яких грошах, з якою економікою і за якими ознаками за годину на виробництві можна оцінити, чи доживе напрям пакування до 2028 року. Номери джерел продовжують першу частину, з [31].</p>
+  <details class="ann"><summary>Пояснення: навіщо це Віці</summary><div><p>Щоб не просто слухати, а розуміти, що тобі кажуть. Коли знаєш, скільки коштує одиниця пакування у конкурентів і скільки грошей у компанії, легко відрізнити план від мрії.</p></div></details>
 
-  <h2 id="part2" class="part">Часть II. Бизнес-разбор: ниша, экономика, стратегия, маркеры</h2>
-  <p>Цель этой части — понять, куда компания движется, на каких деньгах, с какой экономикой и по каким признакам за час на производстве можно оценить, доживёт ли направление упаковки до 2028 года. Номера источников продолжают первую часть, с [31].</p>
-
-  <h2 id="niche">Ниша упаковки из мицелия в цифрах</h2>
-  <p>Рынок маленький, и никто не знает, как быстро он растёт. Три отчёта дают три картины: 48 млн долларов в 2025 с ростом до 1,9 млрд к 2034 [31]; 93 млн в 2025 и 209 млн к 2034 [32]; 106 млн в 2025 и 170 млн к 2034 [33]. Рынок пенопластовой защитной упаковки, которую мицелий замещает, оценивают в 25–30 млрд долларов [34]. Практический вывод: рынок делают не отчёты, а конкретные заказчики. Компания без названного клиента не имеет рынка.</p>
+  <h2 id="niche">Ніша пакування з міцелію в цифрах</h2>
+  <p>Ринок маленький, і ніхто не знає, як швидко він росте. Три звіти дають три картини: 48 млн доларів у 2025 зі зростанням до 1,9 млрд до 2034 [31]; 93 млн у 2025 і 209 млн до 2034 [32]; 106 млн у 2025 і 170 млн до 2034 [33]. Ринок пінопластового захисного пакування, яке міцелій заміщує, оцінюють у 25–30 млрд доларів [34]. Практичний висновок: ринок роблять не звіти, а конкретні замовники. Компанія без названого клієнта не має ринку.</p>
+  <details class="ann"><summary>Пояснення</summary><div><p>Уявімо: весь світовий ринок такого пакування — це приблизно як одна середня українська мережа магазинів за рік. Він може вирости в 20 разів, а може майже не вирости. Тому єдине, що має значення для маленької компанії, — чи є в неї хоча б один платний покупець.</p></div></details>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Показатель</th><th>Значение</th><th>Источник</th></tr></thead>
+      <thead><tr><th>Показник</th><th>Значення</th><th>Джерело</th></tr></thead>
       <tbody>
-        <tr><td>Цена единицы упаковки из мицелия, мир, 2026</td><td class="num">2,5–4,0 $</td><td>[35]</td></tr>
-        <tr><td>Цена единицы из пенопласта EPS</td><td class="num">1,2–2,0 $</td><td>[35]</td></tr>
-        <tr><td>Цена S.Lab (Украина/Испания)</td><td class="num">1–1,5 €, «почти на уровне пенопласта»</td><td>[36]</td></tr>
-        <tr><td>Себестоимость материала, мелкая серия</td><td class="num">5,7 $/кг</td><td>[34]</td></tr>
-        <tr><td>Себестоимость с местным субстратом и SOP; при децентрализованном производстве</td><td class="num">4,0 $/кг; 3,35 $/кг</td><td>[34]</td></tr>
-        <tr><td>Брак от контаминации</td><td class="num">13% типично, 5% при отлаженном процессе</td><td>[34]</td></tr>
-        <tr><td>Цикл роста</td><td class="num">5–7 дней плюс сушка (было 10)</td><td>[34][35][37]</td></tr>
-        <tr><td>Порог, выше которого EPS снова дешевле</td><td class="num">≈ 80 000 одинаковых единиц на артикул в год</td><td>[35]</td></tr>
-        <tr><td>Прочность на сжатие против EPS</td><td class="num">≈ 3×</td><td>[35][37]</td></tr>
-        <tr><td>Вода на производство</td><td class="num">0,1 л/кг против 12 л/кг у EPS</td><td>[35][37]</td></tr>
-        <tr><td>Компостирование дома</td><td class="num">30–45 дней</td><td>[35][37]</td></tr>
-        <tr><td>Ожидаемый паритет цены с EPS</td><td class="num">к 2030</td><td>[35]</td></tr>
+        <tr><td>Ціна одиниці пакування з міцелію, світ, 2026</td><td class="num">2,5–4,0 $</td><td>[35]</td></tr>
+        <tr><td>Ціна одиниці з пінопласту EPS<details class="ann"><summary>Пояснення</summary><div><p>EPS — звичайний білий пінопласт, у якому продають техніку. Дуже дешевий, тому конкурувати з ним важко.</p></div></details></td><td class="num">1,2–2,0 $</td><td>[35]</td></tr>
+        <tr><td>Ціна S.Lab (Україна/Іспанія)</td><td class="num">1–1,5 €, «майже на рівні пінопласту»</td><td>[36]</td></tr>
+        <tr><td>Собівартість матеріалу, мала серія</td><td class="num">5,7 $/кг</td><td>[34]</td></tr>
+        <tr><td>Собівартість із місцевим субстратом і SOP; при децентралізованому виробництві<details class="ann"><summary>Пояснення</summary><div><p>Децентралізоване виробництво — багато маленьких цехів поруч із клієнтами замість одного великого заводу. Так дешевше возити і сировину, і готове пакування.</p></div></details></td><td class="num">4,0 $/кг; 3,35 $/кг</td><td>[34]</td></tr>
+        <tr><td>Брак від контамінації</td><td class="num">13% типово, 5% при відлагодженому процесі</td><td>[34]</td></tr>
+        <tr><td>Цикл росту</td><td class="num">5–7 днів плюс сушіння (було 10)</td><td>[34][35][37]</td></tr>
+        <tr><td>Поріг, вище якого EPS знову дешевший<details class="ann"><summary>Пояснення</summary><div><p>Якщо клієнту потрібно більше за 80 тисяч однакових штук на рік, пінопласт виграє за ціною. Тому міцелій — для невеликих і середніх партій дорогих товарів.</p></div></details></td><td class="num">≈ 80 000 однакових одиниць на артикул на рік</td><td>[35]</td></tr>
+        <tr><td>Міцність на стиск проти EPS</td><td class="num">≈ 3×</td><td>[35][37]</td></tr>
+        <tr><td>Вода на виробництво</td><td class="num">0,1 л/кг проти 12 л/кг у EPS</td><td>[35][37]</td></tr>
+        <tr><td>Компостування вдома</td><td class="num">30–45 днів</td><td>[35][37]</td></tr>
+        <tr><td>Очікуваний паритет ціни з EPS</td><td class="num">до 2030</td><td>[35]</td></tr>
       </tbody>
     </table>
   </div>
-  <p>Мицелий выигрывает в средних тиражах для дорогих и хрупких товаров. Клиенты у выживших одни и те же: косметика, крафтовый алкоголь, электроника, дизайнерская мебель, медтехника. У Magical Mushroom Company это Tom Dixon, Renais Gin, Raymarine, Flextronics, Lush [38]; у S.Lab это L'Oréal, JTI, Nespresso [36][39]. Массовый пенопласт для бытовой техники мицелий не заменит. Слабые места материала: длительная влага, вес, шероховатая поверхность, минимальные партии и срок изготовления от недели [35][37]. Билет в Европу — сертификат TÜV Austria OK compost HOME по EN 13432 [37][40]; его стоимость публично не раскрывается.</p>
+  <p>Міцелій виграє в середніх тиражах для дорогих і крихких товарів. Клієнти у тих, хто вижив, одні й ті самі: косметика, крафтовий алкоголь, електроніка, дизайнерські меблі, медтехніка. У Magical Mushroom Company це Tom Dixon, Renais Gin, Raymarine, Flextronics, Lush [38]; у S.Lab це L'Oréal, JTI, Nespresso [36][39]. Масовий пінопласт для побутової техніки міцелій не замінить. Слабкі місця матеріалу: тривала волога, вага, шорстка поверхня, мінімальні партії і строк виготовлення від тижня [35][37]. Квиток у Європу — сертифікат TÜV Austria OK compost HOME за EN 13432 [37][40]; його вартість публічно не розкривається.</p>
 
-  <h2 id="regulation">Регуляторный драйвер: ЕС давит, Украина нет</h2>
-  <p><strong>Европа.</strong> Регламент об упаковке PPWR (EU 2025/40) применяется с 12 августа 2026: обязательная маркировка, декларация соответствия, регистрация производителя в системе расширенной ответственности [41][42]. С 1 января 2030 вся упаковка на рынке ЕС должна быть пригодна к переработке, вводятся минимумы вторсырья, потолок пустого места 50%, цель 40% многоразовой упаковки; сокращение отходов упаковки на 5% к 2030, 10% к 2035 и 15% к 2040 [41][42]. Ограничения именно по EPS отложены на 2030–2035 [42]. Для украинского производителя это спрос на экспорт и на поставки европейским брендам в Украине.</p>
-  <p><strong>Украина.</strong> Специального закона об упаковке нет. Законопроект 10066 внесён Кабмином 18 сентября 2023, после смены правительства отозван, альтернативные 10066-1 и 10066-2 не приняты [43][44]. Расширенная ответственность производителя не работает, техрегламент на упаковку утратил силу 8 апреля 2025, актов имплементации PPWR по состоянию на июль 2026 нет [43]. Внутри Украины у бизнеса нет обязанности переходить на биоупаковку, спрос только добровольный или экспортный. Направление упаковки Mycelia Tech либо смотрит на экспорт и филиалы международных компаний, либо у него нет рыночного драйвера.</p>
+  <h2 id="regulation">Регуляторний драйвер: ЄС тисне, Україна ні</h2>
+  <p><strong>Європа.</strong> Регламент про пакування PPWR (EU 2025/40) застосовується з 12 серпня 2026: обов'язкове маркування, декларація відповідності, реєстрація виробника в системі розширеної відповідальності [41][42]. З 1 січня 2030 усе пакування на ринку ЄС має бути придатним до переробки, вводяться мінімуми вторсировини, стеля порожнього місця 50%, ціль 40% багаторазового пакування; скорочення відходів пакування на 5% до 2030, 10% до 2035 і 15% до 2040 [41][42]. Обмеження саме щодо EPS відкладені на 2030–2035 [42]. Для українського виробника це попит на експорт і на постачання європейським брендам в Україні.</p>
+  <details class="ann"><summary>Пояснення</summary><div><p>PPWR — новий європейський закон про пакування. Він примушує компанії в ЄС шукати екологічні матеріали, тому там за таке пакування готові платити. Розширена відповідальність виробника означає: хто випустив пакування, той платить за його збір і переробку.</p></div></details>
+  <p><strong>Україна.</strong> Спеціального закону про пакування немає. Законопроєкт 10066 внесено Кабміном 18 вересня 2023, після зміни уряду відкликано, альтернативні 10066-1 і 10066-2 не ухвалені [43][44]. Розширена відповідальність виробника не працює, техрегламент на пакування втратив чинність 8 квітня 2025, актів імплементації PPWR станом на липень 2026 немає [43]. Усередині України бізнес не зобов'язаний переходити на біопакування, попит лише добровільний або експортний. Напрям пакування Mycelia Tech або дивиться на експорт і філії міжнародних компаній, або не має ринкового драйвера.</p>
+  <details class="ann"><summary>Пояснення</summary><div><p>В Україні ніхто не змушує бізнес відмовлятися від пінопласту. Тому український клієнт купить екопакування лише з власного бажання, а таких мало. Реальні гроші — в Європі або у міжнародних брендів, що працюють тут.</p></div></details>
 
-  <h2 id="peers">Что говорит опыт других компаний</h2>
+  <h2 id="peers">Що говорить досвід інших компаній</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Компания</th><th>Что произошло</th><th>Урок</th><th>Ист.</th></tr></thead>
+      <thead><tr><th>Компанія</th><th>Що сталося</th><th>Урок</th><th>Дж.</th></tr></thead>
       <tbody>
-        <tr><td>Ecovative, США, изобретатель технологии, 184 млн $ привлечено</td><td>Ещё в январе 2020 передала производство упаковки лицензиатам, сама ушла в R&amp;D, еду (MyBacon) и микокожу</td><td>Изобретатель вышел из упаковки как из низкомаржинального производственного бизнеса</td><td>[45][46]</td></tr>
-        <tr><td>Magical Mushroom Company, Великобритания, лицензиат</td><td>Seed 3 млн £, лид Ecovative; «миллионы единиц с 2020», план около 10 млн штук в 2026, заявляет паритет с EPS по цене и прочности</td><td>Паритет достигается на миллионах штук и заводе индустриального масштаба</td><td>[38][46]</td></tr>
-        <tr><td>Grown.bio, Нидерланды, первый лицензиат в Европе</td><td>Наборы: 1 кг материала на 3,3 л за 39–45 €</td><td>Ориентир розничной цены сырья</td><td>[47]</td></tr>
-        <tr><td>S.Lab, Украина, производство в Малаге</td><td>Основана 2021; выручка 10 тыс. € (2022) и 30 тыс. € (2023); вложено более 1,3 млн €; Google 100 тыс. $ (октябрь 2024), Morgan Stanley 250 тыс. £ (сентябрь 2025); поднимает 2 млн €; линия до 15 000 единиц в месяц; переход к контейнерным мини-заводам у клиента по подписке, первая выручка от них в 2027; OK compost HOME</td><td>Пять лет, больше 1,3 млн € и три программы поддержки дали выручку в десятки тысяч евро. Выживание в нише: гранты, акселераторы, пилоты с корпорациями, продажа технологии вместо продукта</td><td>[36][39][48]</td></tr>
-        <tr><td>Новый завод в Центральной Европе, ноябрь 2025</td><td>«Тысячи единиц в день», модульный дизайн, автоматизированная инокуляция и формовка, драйвер PPWR</td><td>Отрасль укрупняется под европейский регламент, конкуренция за клиентов ЕС растёт</td><td>[49]</td></tr>
-        <tr><td>MycoWorks, США, микокожа</td><td>Series B 45 млн $ (2020); завод 136 000 кв. футов открыт в октябре 2023 при загрузке 22%, закрыт в октябре 2025; неплатёжеспособность с конца октября 2025, ликвидация через ABC; IP выкуплен Stage Fund в 2026</td><td>Микокожа для люкса не нашла спроса даже у компании с сотнями миллионов</td><td>[50][28]</td></tr>
-        <tr><td>Bolt Threads, США, Mylo</td><td>Производство остановлено в 2023, сомнение в продолжении деятельности в отчёте за 2024, делистинг с Nasdaq в январе 2026</td><td>То же</td><td>[29]</td></tr>
-        <tr><td>Цена микокожи на рынке</td><td>Reishi от MycoWorks около 25 $ за кв. фут (≈ 270 $/м²); себестоимость мелкосерийно 50–80 $ за кв. фут</td><td>Себестоимость Mycelia Tech 32 €/м² (январь 2025) в 15–25 раз ниже мировой. Либо другой класс материала, либо в цифре нет полных затрат. Спросить</td><td>[51][10]</td></tr>
+        <tr><td>Ecovative, США, винахідник технології, 184 млн $ залучено<details class="ann"><summary>Пояснення</summary><div><p>Це компанія, яка придумала пакування з грибів у 2007 році. Якщо навіть вона віддала виробництво іншим, значить, заробляти на самому виробництві важко.</p></div></details></td><td>Ще в січні 2020 передала виробництво пакування ліцензіатам, сама пішла в R&amp;D, їжу (MyBacon) і мікошкіру</td><td>Винахідник вийшов із пакування як із низькомаржинального виробничого бізнесу</td><td>[45][46]</td></tr>
+        <tr><td>Magical Mushroom Company, Велика Британія, ліцензіат</td><td>Seed 3 млн £, лід Ecovative; «мільйони одиниць з 2020», план близько 10 млн штук у 2026, заявляє паритет з EPS за ціною і міцністю</td><td>Паритет досягається на мільйонах штук і заводі індустріального масштабу</td><td>[38][46]</td></tr>
+        <tr><td>Grown.bio, Нідерланди, перший ліцензіат у Європі</td><td>Набори: 1 кг матеріалу на 3,3 л за 39–45 €</td><td>Орієнтир роздрібної ціни сировини</td><td>[47]</td></tr>
+        <tr><td>S.Lab, Україна, виробництво в Малазі<details class="ann"><summary>Пояснення</summary><div><p>Найближчий приклад для Mycelia Tech: українська компанія, та сама ідея, старт у 2021. За п'ять років вони зібрали більше мільйона євро і мають гучних клієнтів, але виручка все ще крихітна. Це показує, скільки часу і грошей треба у цій ніші.</p></div></details></td><td>Заснована 2021; виручка 10 тис. € (2022) і 30 тис. € (2023); вкладено понад 1,3 млн €; Google 100 тис. $ (жовтень 2024), Morgan Stanley 250 тис. £ (вересень 2025); залучає 2 млн €; лінія до 15 000 одиниць на місяць; перехід до контейнерних міні-заводів у клієнта за підпискою, перша виручка від них у 2027; OK compost HOME</td><td>П'ять років, понад 1,3 млн € і три програми підтримки дали виручку в десятки тисяч євро. Виживання в ніші: гранти, акселератори, пілоти з корпораціями, продаж технології замість продукту</td><td>[36][39][48]</td></tr>
+        <tr><td>Новий завод у Центральній Європі, листопад 2025</td><td>«Тисячі одиниць на день», модульний дизайн, автоматизована інокуляція і формування, драйвер PPWR</td><td>Галузь укрупнюється під європейський регламент, конкуренція за клієнтів ЄС росте</td><td>[49]</td></tr>
+        <tr><td>MycoWorks, США, мікошкіра<details class="ann"><summary>Пояснення</summary><div><p>Найгучніший провал у мікошкірі. Побудували величезний завод, а покупців на матеріал не знайшли: завод працював на 22% і закрився за два роки.</p></div></details></td><td>Series B 45 млн $ (2020); завод 136 000 кв. футів відкрито в жовтні 2023 при завантаженні 22%, закрито в жовтні 2025; неплатоспроможність з кінця жовтня 2025, ліквідація через ABC; IP викуплено Stage Fund у 2026</td><td>Мікошкіра для люксу не знайшла попиту навіть у компанії з сотнями мільйонів</td><td>[50][28]</td></tr>
+        <tr><td>Bolt Threads, США, Mylo</td><td>Виробництво зупинено в 2023, сумнів у продовженні діяльності у звіті за 2024, делістинг з Nasdaq у січні 2026</td><td>Те саме</td><td>[29]</td></tr>
+        <tr><td>Ціна мікошкіри на ринку<details class="ann"><summary>Пояснення</summary><div><p>Якщо у світі метр мікошкіри коштує 500–860 євро, а Mycelia Tech каже про 32 євро, то або їхній матеріал простіший, або в 32 євро не враховані зарплати й оренда. Це варто спитати: відповідь покаже, як у компанії рахують гроші.</p></div></details></td><td>Reishi від MycoWorks близько 25 $ за кв. фут (≈ 270 $/м²); собівартість малосерійно 50–80 $ за кв. фут</td><td>Собівартість Mycelia Tech 32 €/м² (січень 2025) у 15–25 разів нижча за світову. Або інший клас матеріалу, або в цифрі немає повних витрат. Спитати</td><td>[51][10]</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h2 id="economics">Экономика Mycelia Tech: прикидка на известных цифрах</h2>
-  <p><strong>Микокожа.</strong> Мощность 50 м² за 45 дней даёт около 400 м² в год при непрерывной загрузке [10]. При себестоимости 32 €/м² годовой выпуск стоит около 13 тыс. €. Если продавать по 60–100 €/м² (предположение между их себестоимостью и ценой Reishi), потолок выручки одной установки 24–40 тыс. € в год. Это не покрывает даже одну зарплату инженера в Киеве.</p>
-  <p><strong>Фонд оплаты труда.</strong> Пять человек на сайте плюс инженер на 80 тыс. плюс оператор на 25 тыс. При средней ставке 30–40 тыс. и ЕСВ 22% фонд оплаты труда оценочно 300–400 тыс. грн в месяц, то есть 80–105 тыс. € в год. Аренда, субстрат, электроэнергия, сертификация сверху. Продукт не покрывает зарплаты, компания живёт на грантах. Для стартапа на уровне TRL 4–6 это нормально, но у грантовых денег есть срок годности.</p>
-  <p><strong>Гранты 2026 как коробка на 24 месяца.</strong> EIC UATech: 300–500 тыс. € единовременной суммой, до 24 месяцев, 3–5 измеримых этапов, деньги по достижении этапов, обязательное софинансирование 30% (компания должна показать 90–150 тыс. € своих или других денег), вход с TRL 4, выход на TRL 6–7, подписание соглашений июнь–июль 2026 [52]. Грант L'Oréal 500 тыс. грн [2]. При расходе 350 тыс. грн в месяц 24 месяца зарплат стоят 8,4 млн грн; грант EIC в гривне это 13–22 млн грн. Денег хватает на 24 месяца при дисциплине. Но проект UPGRAIN про микокожу из украинской биомассы [3], упаковка в нём не названа. Значит, упаковка либо финансируется из L'Oréal (500 тыс. грн равны примерно 20 зарплатам по 25 тыс.), либо вписана в UPGRAIN как побочный продукт переработки биомассы, либо делается на остатки. Это главный вопрос на завтра, и на него есть проверяемый ответ.</p>
-  <h3>Себестоимость единицы упаковки в Ивано-Франковске: иллюстративный расчёт</h3>
-  <p class="sub">Допущения указаны явно, каждое можно проверить на месте.</p>
+  <h2 id="economics">Економіка Mycelia Tech: прикидка на відомих цифрах</h2>
+  <p><strong>Мікошкіра.</strong> Потужність 50 м² за 45 днів дає близько 400 м² на рік при безперервному завантаженні [10]. При собівартості 32 €/м² річний випуск коштує близько 13 тис. €. Якщо продавати по 60–100 €/м² (припущення між їхньою собівартістю і ціною Reishi), стеля виручки однієї установки 24–40 тис. € на рік. Це не покриває навіть одну зарплату інженера в Києві.</p>
+  <p><strong>Фонд оплати праці.</strong> П'ять людей на сайті плюс інженер на 80 тис. плюс операторка на 25 тис. При середній ставці 30–40 тис. і ЄСВ 22% фонд оплати праці оціночно 300–400 тис. грн на місяць, тобто 80–105 тис. € на рік. Оренда, субстрат, електроенергія, сертифікація зверху. Продукт не покриває зарплати, компанія живе на грантах. Для стартапу на рівні TRL 4–6 це нормально, але у грантових грошей є строк придатності.</p>
+  <details class="ann"><summary>Пояснення</summary><div><p>ЄСВ — єдиний соціальний внесок, 22% зверху на зарплату, його платить роботодавець. TRL — шкала готовності технології від 1 (ідея) до 9 (працює в промисловості); 4–6 означає «є працюючий зразок, але не виробництво». Головна думка: компанія витрачає на зарплати в кілька разів більше, ніж заробляє, і різницю покривають гранти.</p></div></details>
+  <p><strong>Гранти 2026 як коробка на 24 місяці.</strong> EIC UATech: 300–500 тис. € одноразовою сумою, до 24 місяців, 3–5 вимірюваних етапів, гроші після досягнення етапів, обов'язкове співфінансування 30% (компанія має показати 90–150 тис. € своїх або інших грошей), вхід із TRL 4, вихід на TRL 6–7, підписання угод червень–липень 2026 [52]. Грант L'Oréal 500 тис. грн [2]. При витраті 350 тис. грн на місяць 24 місяці зарплат коштують 8,4 млн грн; грант EIC у гривні це 13–22 млн грн. Грошей вистачає на 24 місяці за дисципліни. Але проєкт UPGRAIN про мікошкіру з української біомаси [3], пакування в ньому не назване. Отже, пакування або фінансується з L'Oréal (500 тис. грн дорівнюють приблизно 20 зарплатам по 25 тис.), або вписане в UPGRAIN як побічний продукт переробки біомаси, або робиться на залишки. Це головне питання на зустріч, і на нього є перевірювана відповідь.</p>
+  <details class="ann"><summary>Пояснення</summary><div><p>Lump sum — «одноразова сума»: ЄС не перевіряє кожен чек, а платить за виконані етапи. Але якщо етап не виконано, гроші не приходять. Плюс 30% своїх грошей компанія має додати сама. Тому питання «звідки співфінансування» — це питання, чи взагалі запуститься грант.</p></div></details>
+  <h3>Собівартість одиниці пакування в Івано-Франківську: ілюстративний розрахунок</h3>
+  <p class="sub">Припущення вказані явно, кожне можна перевірити на місці.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Статья</th><th>Допущение</th><th>Грн на единицу</th></tr></thead>
+      <thead><tr><th>Стаття</th><th>Припущення</th><th>Грн на одиницю</th></tr></thead>
       <tbody>
-        <tr><td>Субстрат</td><td>Вкладыш 200×200×50 мм, 150–250 г сухого веса; лушпиння соняшника 2 900–3 400 грн/т [53] или костра 670 грн за 20 кг в розницу [54]</td><td class="num">1–8</td></tr>
-        <tr><td>Посевной материал и стерилизация</td><td>Автоклав, спирт, расходники</td><td class="num">3–6</td></tr>
-        <tr><td>Сушка</td><td>Удалить 0,3–0,5 кг воды при 1,5–2,5 кВт·ч на кг; электроэнергия для малого бизнеса ≈ 11,8 грн/кВт·ч с НДС [55]</td><td class="num">5–15</td></tr>
-        <tr><td>Труд</td><td>Ставка 25 тыс. плюс ЕСВ ≈ 30,5 тыс.; выпуск 1 000 единиц в месяц на человека вручную</td><td class="num">30</td></tr>
-        <tr><td>Брак</td><td>5–13% по опыту отрасли [34]</td><td class="num">3–10</td></tr>
-        <tr><td>Формы, аренда, амортизация камер</td><td>Мелкая серия</td><td class="num">10–20</td></tr>
-        <tr><td><strong>Итого</strong></td><td></td><td class="num"><strong>50–90 грн ≈ 1,1–2,0 €</strong></td></tr>
+        <tr><td>Субстрат<details class="ann"><summary>Пояснення</summary><div><p>Сировина в Україні майже безкоштовна: лушпиння соняшника коштує 3 гривні за кілограм. Це справжня перевага перед Європою.</p></div></details></td><td>Вкладиш 200×200×50 мм, 150–250 г сухої ваги; лушпиння соняшника 2 900–3 400 грн/т [53] або костриця 670 грн за 20 кг у роздріб [54]</td><td class="num">1–8</td></tr>
+        <tr><td>Посівний матеріал і стерилізація</td><td>Автоклав, спирт, витратні матеріали</td><td class="num">3–6</td></tr>
+        <tr><td>Сушіння<details class="ann"><summary>Пояснення</summary><div><p>Готовий виріб треба висушити, щоб гриб перестав рости. На це йде електроенергія, яка для бізнесу коштує близько 12 грн за кіловат-годину.</p></div></details></td><td>Прибрати 0,3–0,5 кг води при 1,5–2,5 кВт·год на кг; електроенергія для малого бізнесу ≈ 11,8 грн/кВт·год з ПДВ [55]</td><td class="num">5–15</td></tr>
+        <tr><td>Праця<details class="ann"><summary>Пояснення</summary><div><p>Найбільша стаття. Якщо одна людина робить руками 1 000 штук на місяць, то в кожній штуці сидить 30 гривень її зарплати. Саме тому потрібна автоматизація.</p></div></details></td><td>Ставка 25 тис. плюс ЄСВ ≈ 30,5 тис.; випуск 1 000 одиниць на місяць на людину вручну</td><td class="num">30</td></tr>
+        <tr><td>Брак</td><td>5–13% за досвідом галузі [34]</td><td class="num">3–10</td></tr>
+        <tr><td>Форми, оренда, амортизація камер</td><td>Мала серія</td><td class="num">10–20</td></tr>
+        <tr><td><strong>Разом</strong></td><td></td><td class="num"><strong>50–90 грн ≈ 1,1–2,0 €</strong></td></tr>
       </tbody>
     </table>
   </div>
-  <p>S.Lab продаёт по 1–1,5 € [36], мировой уровень 2,5–4 $ [35]. На ручном производстве в Ивано-Франковске без автоматизации выйти в цену S.Lab нельзя: себестоимость упирается в труд. Отсюда два пути, и оба видны в вакансиях компании: автоматизация инкубаторов (инженер на 80 тыс. в Киеве [14]) и премиальные клиенты, готовые платить 2–4 € за единицу. Преимущество Украины реально: субстрат почти бесплатный (3 грн за кг лушпиння против 39–45 € за кг материала в европейской розничной упаковке [47][53]), труд в 3–4 раза дешевле испанского. Минус: логистика в ЕС добавляет около 30% к стоимости упаковки [30], а объёмный лёгкий товар везти дорого.</p>
+  <p>S.Lab продає по 1–1,5 € [36], світовий рівень 2,5–4 $ [35]. На ручному виробництві в Івано-Франківську без автоматизації вийти в ціну S.Lab не можна: собівартість упирається в працю. Звідси два шляхи, і обидва видно у вакансіях компанії: автоматизація інкубаторів (інженер на 80 тис. у Києві [14]) і преміальні клієнти, готові платити 2–4 € за одиницю. Перевага України реальна: субстрат майже безкоштовний (3 грн за кг лушпиння проти 39–45 € за кг матеріалу в європейському роздрібному наборі [47][53]), праця в 3–4 рази дешевша за іспанську. Мінус: логістика в ЄС додає близько 30% до вартості пакування [30], а об'ємний легкий товар возити дорого.</p>
 
-  <h2 id="strategy">Стратегии, при которых направление живёт</h2>
+  <h2 id="strategy">Стратегії, за яких напрям живе</h2>
   <ol class="steps">
-    <li><strong>Экспорт под PPWR.</strong> Сертификат OK compost HOME, 3–5 европейских клиентов среднего тиража, производство в Украине на дешёвом субстрате. Риск: логистика и конкуренция с заводами в ЕС [49].</li>
-    <li><strong>Продажа технологии, а не упаковки.</strong> Мини-заводы и лицензии, как у Ecovative и S.Lab [45][36]. Требует отлаженного процесса, SOP и автоматизации, то есть сначала два-три года работы.</li>
-    <li><strong>Локальные премиальные клиенты в Украине.</strong> Косметика (бренд Re[Sens] перешёл на биоразлагаемые банки в 2024 [56]), крафтовый алкоголь, керамика, мебель, подарочная упаковка. Спрос добровольный и небольшой, но ближе всего.</li>
-    <li><strong>Симбиоз с микокожей.</strong> Общий субстрат, инкубаторы и команда: упаковка как побочный продукт переработки биомассы в UPGRAIN снижает капекс и позволяет учиться на дешёвом продукте перед дорогим.</li>
-    <li><strong>Грантовая лестница.</strong> EIC UATech 2026–2028 [52]; далее EIC Accelerator: грант до 2,5 млн € плюс инвестиции 1–10 млн €, TRL 6–8, Украина ассоциирована с Horizon Europe [57][58]; государственный грант на переробне підприємство до 8 млн грн при 50% софинансирования и создании от 5 до 25 рабочих мест по условиям волны [59]; программы для женщин-основательниц [58].</li>
+    <li><strong>Експорт під PPWR.</strong> Сертифікат OK compost HOME, 3–5 європейських клієнтів середнього тиражу, виробництво в Україні на дешевому субстраті. Ризик: логістика і конкуренція з заводами в ЄС [49].<details class="ann"><summary>Пояснення</summary><div><p>Робити тут, продавати в Європу, де закон змушує купувати екопакування. Дешева сировина і праця — плюс, дорога доставка легкого об'ємного товару — мінус.</p></div></details></li>
+    <li><strong>Продаж технології, а не пакування.</strong> Міні-заводи і ліцензії, як у Ecovative і S.Lab [45][36]. Вимагає відлагодженого процесу, SOP і автоматизації, тобто спершу два-три роки роботи.<details class="ann"><summary>Пояснення</summary><div><p>Замість того щоб робити пакування самим, навчити клієнта робити його у себе і брати гроші за технологію. Так роблять найуспішніші у ніші, але для цього технологія має працювати як годинник.</p></div></details></li>
+    <li><strong>Локальні преміальні клієнти в Україні.</strong> Косметика (бренд Re[Sens] перейшов на біорозкладні банки у 2024 [56]), крафтовий алкоголь, кераміка, меблі, подарункове пакування. Попит добровільний і невеликий, але найближчий.</li>
+    <li><strong>Симбіоз із мікошкірою.</strong> Спільний субстрат, інкубатори і команда: пакування як побічний продукт переробки біомаси в UPGRAIN знижує капекс і дозволяє вчитися на дешевому продукті перед дорогим.<details class="ann"><summary>Пояснення</summary><div><p>Капекс — витрати на обладнання. Якщо ті самі камери і та сама сировина працюють і на шкіру, і на пакування, обладнання окупається швидше. Це найреалістичніший сценарій для маленької команди.</p></div></details></li>
+    <li><strong>Грантова драбина.</strong> EIC UATech 2026–2028 [52]; далі EIC Accelerator: грант до 2,5 млн € плюс інвестиції 1–10 млн €, TRL 6–8, Україна асоційована з Horizon Europe [57][58]; державний грант на переробне підприємство до 8 млн грн при 50% співфінансування і створенні від 5 до 25 робочих місць за умовами хвилі [59]; програми для жінок-засновниць [58].<details class="ann"><summary>Пояснення</summary><div><p>Після цього гранту є наступні, більші. Компанія, яка планує подаватися далі, має план на роки. Якщо про наступні гранти не думають, горизонт — кінець поточного.</p></div></details></li>
   </ol>
-  <p>Признак осмысленной стратегии: Марта может сказать, какая из пяти их, и назвать первого клиента, целевую цену и дату сертификации. Признак дрейфа: «попробуем упаковку, посмотрим, как пойдёт».</p>
+  <p>Ознака осмисленої стратегії: Марта може сказати, яка з п'яти їхня, і назвати першого клієнта, цільову ціну і дату сертифікації. Ознака дрейфу: «спробуємо пакування, подивимось, як піде».</p>
 
-  <h2 id="markers">Маркеры вектора: что можно понять за час на производстве</h2>
+  <h2 id="markers">Маркери вектора: що можна зрозуміти за годину на виробництві</h2>
+  <details class="ann"><summary>Пояснення: як користуватися таблицею</summary><div><p>Це шпаргалка. Після кожної відповіді Марти подумки став галочку в колонці «добрий знак» або «поганий знак». Якщо поганих більше половини, це відповідь на питання про ризик.</p></div></details>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Маркер</th><th>Хороший знак</th><th>Плохой знак</th></tr></thead>
+      <thead><tr><th>Маркер</th><th>Добрий знак</th><th>Поганий знак</th></tr></thead>
       <tbody>
-        <tr><td>Первый клиент упаковки</td><td>Названы бренд, пилот или письмо о намерениях</td><td>«Будем искать, когда будет продукт»</td></tr>
-        <tr><td>Целевая цена и себестоимость единицы</td><td>Цифры: например, 50 грн себестоимость, 2 € продажа</td><td>Цифр нет</td></tr>
-        <tr><td>План объёма</td><td>Штук в месяц и число артикулов, например 5–15 тыс./мес и 3–5 SKU</td><td>«Посмотрим по спросу»</td></tr>
-        <tr><td>Сертификация OK compost HOME</td><td>Есть дата и бюджет</td><td>«Потом»</td></tr>
-        <tr><td>Контаминация</td><td>Знают процент брака по партиям</td><td>Не измеряют</td></tr>
-        <tr><td>Софинансирование EIC 30%</td><td>Понятно, откуда 90–150 тыс. €</td><td>Молчание или «грант покроет всё»</td></tr>
-        <tr><td>Этапы EIC</td><td>Называют 3–5 milestones и сроки</td><td>Не помнят, что в заявке</td></tr>
-        <tr><td>Автоматизация</td><td>Инженер нанят или есть техзадание на инкубаторы</td><td>Только идея</td></tr>
-        <tr><td>Субстрат</td><td>Договор с маслозаводом или фермой, известна цена за тонну</td><td>Покупка мешками на рынке</td></tr>
-        <tr><td>Роль Вики</td><td>Честно: оператор, контроль качества, записи по SOP, участие в отработке процесса</td><td>«Проєктний менеджер» без объяснений</td></tr>
-        <tr><td>Горизонт денег</td><td>«Денег до такого-то месяца 2028»</td><td>Уклончивость</td></tr>
-        <tr><td>Микокожа как основной продукт</td><td>Есть покупатели материала, известна цена за м² и загрузка</td><td>Продажи только сумок и картхолдеров ниже себестоимости, как в 2024</td></tr>
+        <tr><td>Перший клієнт пакування</td><td>Названі бренд, пілот або лист про наміри</td><td>«Будемо шукати, коли буде продукт»</td></tr>
+        <tr><td>Цільова ціна і собівартість одиниці</td><td>Цифри: наприклад, 50 грн собівартість, 2 € продаж</td><td>Цифр немає</td></tr>
+        <tr><td>План обсягу</td><td>Штук на місяць і кількість артикулів, наприклад 5–15 тис./міс і 3–5 SKU</td><td>«Подивимось за попитом»</td></tr>
+        <tr><td>Сертифікація OK compost HOME</td><td>Є дата і бюджет</td><td>«Потім»</td></tr>
+        <tr><td>Контамінація</td><td>Знають відсоток браку по партіях</td><td>Не вимірюють</td></tr>
+        <tr><td>Співфінансування EIC 30%</td><td>Зрозуміло, звідки 90–150 тис. €</td><td>Мовчання або «грант покриє все»</td></tr>
+        <tr><td>Етапи EIC</td><td>Називають 3–5 milestones і строки</td><td>Не пам'ятають, що в заявці</td></tr>
+        <tr><td>Автоматизація</td><td>Інженер найнятий або є техзавдання на інкубатори</td><td>Лише ідея</td></tr>
+        <tr><td>Субстрат</td><td>Договір з олійним заводом або фермою, відома ціна за тонну</td><td>Купівля мішками на ринку</td></tr>
+        <tr><td>Роль Віки</td><td>Чесно: операторка, контроль якості, записи за SOP, участь у відпрацюванні процесу</td><td>«Проєктний менеджер» без пояснень</td></tr>
+        <tr><td>Горизонт грошей</td><td>«Грошей до такого-то місяця 2028»</td><td>Ухильність</td></tr>
+        <tr><td>Мікошкіра як основний продукт</td><td>Є покупці матеріалу, відома ціна за м² і завантаження</td><td>Продажі лише сумок і картхолдерів нижче собівартості, як у 2024</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h2 id="vector">Вопросы про вектор по граням</h2>
-  <p class="sub">Формулировка на украинском, чтобы задать как есть, и пояснение, что означает ответ.</p>
-  <h3>Продукт и клиенты</h3>
+  <h2 id="vector">Питання про вектор за гранями</h2>
+  <p class="sub">Формулювання готове, щоб запитати як є, і пояснення, що означає відповідь.</p>
+  <h3>Продукт і клієнти</h3>
   <ul class="qa">
-    <li><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без клиента нет направления. Хороший ответ называет бренд и товар.</span></li>
-    <li><span class="uk">Це для України чи на експорт? Якщо експорт, в які країни і чи є сертифікат OK compost HOME або план його отримати?</span><span class="why">В Украине нет регуляторного спроса, в ЕС он появляется с 12 августа 2026.</span></li>
-    <li><span class="uk">Який тираж на артикул ви бачите: сотні, тисячі, десятки тисяч на місяць?</span><span class="why">Выше 80 тыс. штук в год на артикул пенопласт снова дешевле.</span></li>
+    <li><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без клієнта немає напряму. Хороша відповідь називає бренд і товар.</span></li>
+    <li><span class="uk">Це для України чи на експорт? Якщо експорт, в які країни і чи є сертифікат OK compost HOME або план його отримати?</span><span class="why">В Україні немає регуляторного попиту, у ЄС він з'являється з 12 серпня 2026.</span></li>
+    <li><span class="uk">Який тираж на артикул ви бачите: сотні, тисячі, десятки тисяч на місяць?</span><span class="why">Вище 80 тис. штук на рік на артикул пінопласт знову дешевший.</span></li>
   </ul>
-  <h3>Экономика</h3>
+  <h3>Економіка</h3>
   <ul class="qa">
-    <li><span class="uk">Яка цільова собівартість одиниці і за скільки плануєте продавати?</span><span class="why">S.Lab продаёт по 1–1,5 €, мир 2,5–4 $. Если цифры нет, экономика не считалась.</span></li>
-    <li><span class="uk">Який субстрат і за скільки ви його купуєте? Хто постачальник?</span><span class="why">Лушпиння 3 грн за кг; договор с поставщиком признак серьёзности.</span></li>
-    <li><span class="uk">Скільки коштує сушіння однієї партії і на якому обладнанні?</span><span class="why">Электроэнергия 11,8 грн/кВт·ч, сушка одна из главных статей затрат.</span></li>
-    <li><span class="uk">Яка собівартість мікошкіри зараз і за скільки ви її продаєте за квадратний метр?</span><span class="why">32 €/м² против мировых 500–860; расхождение нужно понять.</span></li>
+    <li><span class="uk">Яка цільова собівартість одиниці і за скільки плануєте продавати?</span><span class="why">S.Lab продає по 1–1,5 €, світ 2,5–4 $. Якщо цифри немає, економіку не рахували.</span></li>
+    <li><span class="uk">Який субстрат і за скільки ви його купуєте? Хто постачальник?</span><span class="why">Лушпиння 3 грн за кг; договір із постачальником — ознака серйозності.</span></li>
+    <li><span class="uk">Скільки коштує сушіння однієї партії і на якому обладнанні?</span><span class="why">Електроенергія 11,8 грн/кВт·год, сушіння — одна з головних статей витрат.</span></li>
+    <li><span class="uk">Яка собівартість мікошкіри зараз і за скільки ви її продаєте за квадратний метр?</span><span class="why">32 €/м² проти світових 500–860; розходження треба зрозуміти.</span></li>
   </ul>
-  <h3>Деньги и сроки</h3>
+  <h3>Гроші і строки</h3>
   <ul class="qa">
-    <li><span class="uk">Грант EIC на UPGRAIN уже підписаний? Коли перший транш і які три-п'ять milestones?</span><span class="why">Подписание планировалось на июнь–июль 2026; деньги идут по этапам.</span></li>
-    <li><span class="uk">Звідки 30% співфінансування проєкту EIC?</span><span class="why">90–150 тыс. € собственных денег обязательны.</span></li>
-    <li><span class="uk">Пакування фінансується з гранту L'Oréal, з EIC чи з окремих коштів? На скільки місяців цих коштів вистачає?</span><span class="why">Главный вопрос о сроке жизни позиции.</span></li>
-    <li><span class="uk">Скільки людей планується в команді через рік і на які ролі?</span><span class="why">План найма показывает, куда идут деньги.</span></li>
+    <li><span class="uk">Грант EIC на UPGRAIN уже підписаний? Коли перший транш і які три-п'ять milestones?</span><span class="why">Підписання планувалося на червень–липень 2026; гроші йдуть етапами.</span></li>
+    <li><span class="uk">Звідки 30% співфінансування проєкту EIC?</span><span class="why">90–150 тис. € власних грошей обов'язкові.</span></li>
+    <li><span class="uk">Пакування фінансується з гранту L'Oréal, з EIC чи з окремих коштів? На скільки місяців цих коштів вистачає?</span><span class="why">Головне питання про строк життя позиції.</span></li>
+    <li><span class="uk">Скільки людей планується в команді через рік і на які ролі?</span><span class="why">План найму показує, куди йдуть гроші.</span></li>
   </ul>
-  <h3>Технология и качество</h3>
+  <h3>Технологія і якість</h3>
   <ul class="qa">
-    <li><span class="uk">Який гриб і субстрат для упаковки, скільки днів цикл, при якій температурі сушите?</span><span class="why">5–7 дней и сушка норма; ответ показывает, отработан ли процесс.</span></li>
-    <li><span class="uk">Який відсоток браку від контамінації по останніх партіях?</span><span class="why">13% типично, 5% хорошо; если не измеряют, процесс не отработан.</span></li>
-    <li><span class="uk">Хто веде технологію: Аліса Атаманчук? Чи є письмові SOP?</span><span class="why">Наличие SOP и владельца процесса.</span></li>
-    <li><span class="uk">Що вже автоматизовано, а що робиться руками?</span><span class="why">Ручной труд делает единицу дороже конкурентов.</span></li>
+    <li><span class="uk">Який гриб і субстрат для упаковки, скільки днів цикл, при якій температурі сушите?</span><span class="why">5–7 днів і сушіння — норма; відповідь показує, чи відпрацьований процес.</span></li>
+    <li><span class="uk">Який відсоток браку від контамінації по останніх партіях?</span><span class="why">13% типово, 5% добре; якщо не вимірюють, процес не відпрацьований.</span></li>
+    <li><span class="uk">Хто веде технологію: Аліса Атаманчук? Чи є письмові SOP?</span><span class="why">Наявність інструкцій і власника процесу.</span></li>
+    <li><span class="uk">Що вже автоматизовано, а що робиться руками?</span><span class="why">Ручна праця робить одиницю дорожчою за конкурентів.</span></li>
   </ul>
-  <h3>Команда и роль</h3>
+  <h3>Команда і роль</h3>
   <ul class="qa">
-    <li><span class="uk">Що саме входить в мої обов'язки в перший місяць і через півроку?</span><span class="why">Отделить оператора от разработчика процесса.</span></li>
-    <li><span class="uk">За якими критеріями оцінюється випробувальний термін?</span><span class="why">Критерии должны быть измеримы.</span></li>
-    <li><span class="uk">Чому посада називається проєктний менеджер?</span><span class="why">Понять, что реально ждут.</span></li>
+    <li><span class="uk">Що саме входить в мої обов'язки в перший місяць і через півроку?</span><span class="why">Відділити операторку від розробниці процесу.</span></li>
+    <li><span class="uk">За якими критеріями оцінюється випробувальний термін?</span><span class="why">Критерії мають бути вимірюваними.</span></li>
+    <li><span class="uk">Чому посада називається проєктний менеджер?</span><span class="why">Зрозуміти, чого реально чекають.</span></li>
   </ul>
-  <h3>Стратегия</h3>
+  <h3>Стратегія</h3>
   <ul class="qa">
-    <li><span class="uk">Куди компанія хоче прийти через два роки: продавати матеріал, продавати упаковку чи продавати технологію?</span><span class="why">Три разных бизнеса с разной экономикой.</span></li>
-    <li><span class="uk">Ви бачите S.Lab як конкурента чи як партнера? Чим ви кращі?</span><span class="why">S.Lab на пять лет впереди в упаковке; ответ покажет, знает ли Марта рынок.</span></li>
-    <li><span class="uk">Плануєте подаватися на EIC Accelerator або державний грант на переробне підприємство?</span><span class="why">Следующая ступень денег после 2028.</span></li>
+    <li><span class="uk">Куди компанія хоче прийти через два роки: продавати матеріал, продавати упаковку чи продавати технологію?</span><span class="why">Три різних бізнеси з різною економікою.</span></li>
+    <li><span class="uk">Ви бачите S.Lab як конкурента чи як партнера? Чим ви кращі?</span><span class="why">S.Lab на п'ять років попереду в пакуванні; відповідь покаже, чи знає Марта ринок.</span></li>
+    <li><span class="uk">Плануєте подаватися на EIC Accelerator або державний грант на переробне підприємство?</span><span class="why">Наступний щабель грошей після 2028.</span></li>
   </ul>
 
-  <h2 id="meaning">Что это значит для решения Вики</h2>
-  <ul>
-    <li><strong>Зелёная зона.</strong> Названы клиент, цена, сертификация, источник денег на упаковку и этапы EIC. Это финансируемая R&amp;D-позиция на 24 месяца в компании, которая знает, что делает. Уместно просить 30 тыс. с первого дня и письменный пересмотр после испытательного.</li>
-    <li><strong>Жёлтая зона.</strong> Упаковка «пробуется на грант L'Oréal» без клиента и цифр. Позиция на 12–20 месяцев с высокой вероятностью закрытия направления. Идти можно ради опыта и при отсутствии лучшей альтернативы, с планом выхода.</li>
-    <li><strong>Красная зона.</strong> Нет клиента, нет цифр себестоимости, нет плана сертификации, нет ответа про софинансирование EIC, процесс «в процесі встановлення» без сроков. Второе предложение лучше почти при любых его условиях.</li>
+  <h2 id="meaning">Що це означає для рішення Віки</h2>
+  <ul class="plain">
+    <li><strong>Зелена зона.</strong> Названі клієнт, ціна, сертифікація, джерело грошей на пакування і етапи EIC. Це фінансована R&amp;D-позиція на 24 місяці в компанії, яка знає, що робить. Доречно просити 30 тис. з першого дня і письмовий перегляд після випробувального.</li>
+    <li><strong>Жовта зона.</strong> Пакування «пробується на грант L'Oréal» без клієнта і цифр. Позиція на 12–20 місяців із високою імовірністю закриття напряму. Іти можна заради досвіду і за відсутності кращої альтернативи, з планом виходу.</li>
+    <li><strong>Червона зона.</strong> Немає клієнта, немає цифр собівартості, немає плану сертифікації, немає відповіді про співфінансування EIC, процес «в процесі встановлення» без строків. Друга пропозиція краща майже за будь-яких її умов.</li>
   </ul>
+  <details class="ann"><summary>Пояснення</summary><div><p>Не треба вирішувати на місці. Після зустрічі просто подивись, у яку зону лягли відповіді, і порівняй із другою пропозицією за шістьма пунктами вище.</p></div></details>
+  <h2 id="part3" class="part">Частина III. Аудит їхнього сайту myceliatech.com</h2>
+  <p>Перевірено 2–3 вересня 2026: заголовки сервера, robots і sitemap, HTML головної, українська версія, блог, магазин, Lighthouse (мобільний), скріншоти десктопа і мобільної версії, соцмережі. Це корисно і Віці: сайт показує, наскільки компанія встигає за власними змінами.</p>
+  <details class="ann"><summary>Пояснення: навіщо дивитися на сайт</summary><div><p>Сайт — це обличчя компанії для клієнтів і інвесторів. Якщо він відстає на два роки і не згадує ні нових грантів, ні пакування, значить, у команди немає рук або уваги на маркетинг. Для Віки це сигнал про пріоритети, а для чоловіка-програміста — можлива робота.</p></div></details>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Область</th><th>Факт</th><th>Оцінка</th></tr></thead>
+      <tbody>
+        <tr><td>Платформа<details class="ann"><summary>Пояснення</summary><div><p>Конструктор — сервіс, де сайт збирають із готових блоків без програміста. Weblium — український такий сервіс. Напис «Made with Weblium» знизу означає дешевий тариф.</p></div></details></td><td>Конструктор Weblium, бейдж «Made with Weblium» у футері</td><td>Сайт зібрано на шаблоні без розробника</td></tr>
+        <tr><td>Українська версія<details class="ann"><summary>Пояснення</summary><div><p>hreflang — підказка для Google, де лежить версія сайту іншою мовою. Тут вона веде на демо-шаблон про вітряки з вигаданими людьми. Український відвідувач бачить чужий сайт.</p></div></details></td><td>/uk віддає демо-шаблон Weblium «Green Energy Website Template Demo»: вітрогенератори, FAQ про вітряки, команда Lucas Zonder, Timothy Asker, Catherine Massel, телефон +1 (234) 567 89 00. При цьому hreflang на головній посилається на /uk як на українську версію</td><td>Критично</td></tr>
+        <tr><td>Блог</td><td>6 записів, остання 11 березня 2024 (патент); до того 2023. Ні слова про EIC, L'Oréal, пакування, нову версію матеріалу</td><td>Новини відстають на два з половиною роки і на два гранти</td></tr>
+        <tr><td>Магазин<details class="ann"><summary>Пояснення</summary><div><p>Магазин є, але його не видно в меню. Один товар — зразок матеріалу 20×30 см за 1 600 грн. Якщо перерахувати на квадратний метр, це 26,7 тис. грн, у 17 разів більше за їхню ж собівартість. Для зразків це нормально, але інших цін на сайті немає взагалі.</p></div></details></td><td>Прихований розділ /shop без посилання в меню: один товар «Зразок шкіри з міцелію Mycelia Tech 20x30 см» за 1 600 грн, кнопка Add to cart; умов оплати і доставки на картці немає</td><td>Продажі через сайт не організовані</td></tr>
+        <tr><td>Сторінка «Laboratory of innovations and new materials»</td><td>Збори пожертв: адаптивний одяг госпіталям, тактичні ремені, гранти науковцям, менторство студентам; цілі 500–7 000 доларів; текст «Since February 24 2023 Ukraine is fighting» з помилкою в році</td><td>Змішання бренду компанії і благодійної ініціативи, помилка в даті</td></tr>
+        <tr><td>Пакування</td><td>Не згадане на жодній сторінці</td><td>Новий напрям не представлений ринку</td></tr>
+        <tr><td>Продукт і B2B<details class="ann"><summary>Пояснення</summary><div><p>B2B — продажі бізнесу, а не приватним людям. Виробникам сумок чи меблів потрібні характеристики матеріалу, ціна за метр і спосіб замовити зразок. Нічого цього на сайті немає.</p></div></details></td><td>Немає каталогу, цін за м², специфікацій, форми запиту зразків для брендів, кейсів</td><td>Сайт не продає матеріал виробникам</td></tr>
+        <tr><td>SEO<details class="ann"><summary>Пояснення</summary><div><p>SEO — те, як сайт знаходить Google. Meta description — короткий опис у результатах пошуку; h1 — головний заголовок сторінки. Без них сайт гірше знаходять.</p></div></details></td><td>Немає meta description і немає h1 на головній, title «Mycelia Technology», HTML головної 427 КБ</td><td>Базові помилки</td></tr>
+        <tr><td>Швидкість (Lighthouse, мобільний)<details class="ann"><summary>Пояснення</summary><div><p>Lighthouse — інструмент Google, що оцінює сайт від 0 до 100. LCP — час, коли з'являється головна картинка. 8 секунд на телефоні — це коли людина вже закрила вкладку. Норма до 2,5 секунди.</p></div></details></td><td>Performance 64, Accessibility 81, Best Practices 96, SEO 92; FCP 3,5 с, LCP 8,3 с, Time to Interactive 10,0 с, вага сторінки 5,7 МБ, 14 запитів без HTTP/2, невикористаний CSS 219 КБ і JS 210 КБ</td><td>Мобільна версія відкривається 8–10 секунд</td></tr>
+        <tr><td>Доступність</td><td>Кнопки і посилання без імен, недостатній контраст, заборонені ARIA-атрибути</td><td>Типово для конструктора</td></tr>
+        <tr><td>Форма контакту<details class="ann"><summary>Пояснення</summary><div><p>reCAPTCHA — перевірка «я не робот». Сервер відповідає помилкою, тож повідомлення з форми можуть не доходити. Це варто перевірити, надіславши тестове.</p></div></details></td><td>При завантаженні запит перевірки reCAPTCHA до weblium-contact-form-app повертає 400</td><td>Форма може не надсилати повідомлення</td></tr>
+        <tr><td>Аналітика</td><td>Є gtag (Google Analytics)</td><td>Мінімум є</td></tr>
+        <tr><td>Соцмережі</td><td>Instagram @myceliatech, Facebook, LinkedIn, YouTube @myceliatechnology; лічильники без входу не читаються</td><td>Активність не оцінена</td></tr>
+        <tr><td>Добре</td><td>HTTPS і HSTS, заголовки безпеки, канонічний URL, sitemap, показані команда і партнери (KSE, EIT Jumpstarter), чистий дизайн</td><td>Основа пристойна</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Висновок</h3>
+  <p>Сайт відображає компанію 2023 року: один продукт, шість новин, шаблонна українська версія, прихований магазин з одним зразком. У 2026 році в компанії з'явилися грант EIC на 300–500 тис. євро, грант L'Oréal, другий напрям і найм, але зовні цього не видно. Потреба в новому сайті і маркетингу реальна і доказова скріншотами. Аргумент для розмови про бюджет: правила EIC UATech прямо включають у допустимі витрати «commercialisation preparation» (ціннісна пропозиція, бізнес-кейс, сертифікація), а програма L'Oréal супроводжується навчанням підприємиць; сайт для B2B-клієнтів і представлення напряму пакування логічно лягають у ці статті.</p>
+  <p>Що мало б сенс запропонувати: двомовний B2B-сайт з каталогом матеріалу і специфікаціями, сторінкою пакування із запитом зразків, розділом для брендів і інвесторів (гранти, патент, партнери), робочою формою і заявкою на зразки, новинами і метриками; швидкість до 2–3 секунд на мобільному; виправлення hreflang і видалення демо-шаблону; налаштування аналітики і цілей; базовий контент-план для Instagram і LinkedIn під європейських клієнтів.</p>
+  <p>Обережність: у компанії є CMO Adam Zain, тож маркетинг формально закритий, і пропозицію варто адресувати як підсилення, а не заміну. Пропозиція послуг чоловіком кандидатки під час переговорів про її найм змішує дві угоди і може послабити позицію Віки щодо зарплати. Розумна послідовність: спершу лист-підтвердження і рішення про роботу, потім окрема розмова про сайт, краще через кілька тижнів після виходу Віки або після відмови, коли обидві сторони вільні.</p>
+  <details class="ann"><summary>Пояснення для Віки</summary><div><p>Якщо на зустрічі Марта сама поскаржиться на сайт або маркетинг, можна сказати: «Мій чоловік програміст, можу потім познайомити». Не більше. Змішувати твою зарплату і його роботу в одній розмові не варто.</p></div></details>
 
-  <h2 id="sources">Источники</h2>
-  <p class="note">S1–S8 — восемь скриншотов Telegram-переписки от 17 августа – 2 сентября 2026 в хронологическом порядке; сами скриншоты на сайт не выкладываются.</p>
+  <h2 id="sources">Джерела</h2>
+  <p class="note">S1–S8 — вісім скріншотів Telegram-листування від 17 серпня – 2 вересня 2026 у хронологічному порядку; самі скріншоти на сайт не викладаються.</p>
   <ol class="sources">
-    <li>Сайт компании: <a href="https://myceliatech.com/">myceliatech.com</a></li>
-    <li>L'Oréal Paris, «Програма підтримки підприємиць України», победительницы 4-й волны 2026: <a href="https://www.loreal-paris.ua/charity">loreal-paris.ua/charity</a></li>
-    <li>EIC, «EIC UATech 2025 — selected companies» (PDF, 30 марта 2026): <a href="https://eic.ec.europa.eu/document/download/5edf3595-66bf-4f4d-97b8-919a21244ab6_en?filename=EIC+UATech+2025+-+selected+comapnies.pdf">eic.ec.europa.eu</a></li>
-    <li>EIC, программа поддержки украинских tech SMEs, 17 июля 2025: <a href="https://eic.ec.europa.eu/news/european-innovation-council-expands-support-ukrainian-tech-smes-and-start-ups-through-new-funding-2025-07-17_en">eic.ec.europa.eu/news</a></li>
-    <li>InVenture, «EU Allocates €20 Million to Support 41 Ukrainian High-Tech Startups», 2 апреля 2026: <a href="https://inventure.com.ua/en/news/ukraine/eu-allocates-euro20-million-to-support-41-ukrainian-high-tech-startups">inventure.com.ua</a></li>
-    <li>AIN, «EIC to provide €20 million to support Ukrainian tech startups», 17 июля 2025: <a href="https://en.ain.ua/2025/07/17/ukrainian-tech-startups-to-receive-eur20-million-from-eic/">ain.ua</a></li>
-    <li>KSE Foundation, «Talents for Ukraine: Marta Kondryn», 5 июля 2023: <a href="https://foundation.kse.ua/en/talents-for-ukraine-marta-kondryn-developer-of-eco-leather-from-mushroom-mycelium/">foundation.kse.ua</a></li>
-    <li>Zemliak, 6 июля 2023: <a href="https://zemliak.com/news/dosvid/5039-zhitelka-ivano-frankivska-pochala-vigotovlyati-shkiru-z-miceliyu">zemliak.com</a></li>
-    <li>Report.if.ua, «Інновації в дії», 28 марта 2023: <a href="https://report.if.ua/statti/innovaciyi-v-diyi-yak-u-frankivsku-z-miceliyu-vyroshchuyut-zaminnyk-tvarynnoyi-shkiry/">report.if.ua</a></li>
-    <li>Економічна правда, «Незвичний український бізнес, який дивує світ», 2 января 2025: <a href="https://epravda.com.ua/biznes/nezvichniy-ukrajinskiy-biznes-yakiy-divuye-svit-801579/">epravda.com.ua</a></li>
-    <li>Економічна правда, 20 сентября 2024: <a href="https://www.epravda.com.ua/publications/2024/09/20/719566/">epravda.com.ua</a></li>
-    <li>24 Канал, «Екошкіра із грибів», 26 сентября 2024: <a href="https://24tv.ua/trends24/ekoshkira-iz-gribiv-yak-yiyi-otrimuyut_n2649518">24tv.ua</a></li>
-    <li>Work.ua, профиль работодателя Mycelia Tech: <a href="https://www.work.ua/jobs/by-company/2476658/">work.ua/jobs/by-company/2476658</a></li>
-    <li>Work.ua, «Інженер з підготовки виробництва», 80 000 грн, Киев, 13 августа 2026: <a href="https://www.work.ua/jobs/8409502/">work.ua/jobs/8409502</a></li>
-    <li>Work.ua, вакансия Вики, снята 2 сентября 2026: <a href="https://www.work.ua/jobs/7830702/">work.ua/jobs/7830702</a></li>
-    <li>Work.ua, средняя зарплата в Ивано-Франковске, сентябрь 2026: <a href="https://www.work.ua/salary-ivano-frankivsk/">work.ua/salary-ivano-frankivsk</a></li>
-    <li>Work.ua, зарплата «Лаборант» по Украине: <a href="https://www.work.ua/salary-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D0%BD%D1%82/">work.ua/salary-лаборант</a></li>
-    <li>Work.ua, зарплата «Технолог» по Украине: <a href="https://www.work.ua/salary-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3/">work.ua/salary-технолог</a></li>
-    <li>Галичина, средняя зарплата области в феврале 2026, 3 апреля 2026: <a href="https://galychyna.if.ua/2026/04/03/statistika-u-lyutomu-2026-roku-serednya-zarplata-na-ivano-frankivshhini-stanovila-22-tisyachi-griven/">galychyna.if.ua</a></li>
-    <li>Ратуша, средняя зарплата области выросла до 24,2 тыс. грн (май 2026): <a href="https://www.ratusha.if.ua/na-ivano-frankivshchyni-serednia-zarplata-zrosla-do-24-2-tysiachi-hryven/">ratusha.if.ua</a></li>
+    <li>Сайт компанії: <a href="https://myceliatech.com/">myceliatech.com</a></li>
+    <li>L'Oréal Paris, «Програма підтримки підприємиць України», переможниці 4-ї хвилі 2026: <a href="https://www.loreal-paris.ua/charity">loreal-paris.ua/charity</a></li>
+    <li>EIC, «EIC UATech 2025 — selected companies» (PDF, 30 березня 2026): <a href="https://eic.ec.europa.eu/document/download/5edf3595-66bf-4f4d-97b8-919a21244ab6_en?filename=EIC+UATech+2025+-+selected+comapnies.pdf">eic.ec.europa.eu</a></li>
+    <li>EIC, програма підтримки українських tech SMEs, 17 липня 2025: <a href="https://eic.ec.europa.eu/news/european-innovation-council-expands-support-ukrainian-tech-smes-and-start-ups-through-new-funding-2025-07-17_en">eic.ec.europa.eu/news</a></li>
+    <li>InVenture, «EU Allocates €20 Million to Support 41 Ukrainian High-Tech Startups», 2 квітня 2026: <a href="https://inventure.com.ua/en/news/ukraine/eu-allocates-euro20-million-to-support-41-ukrainian-high-tech-startups">inventure.com.ua</a></li>
+    <li>AIN, «EIC to provide €20 million to support Ukrainian tech startups», 17 липня 2025: <a href="https://en.ain.ua/2025/07/17/ukrainian-tech-startups-to-receive-eur20-million-from-eic/">ain.ua</a></li>
+    <li>KSE Foundation, «Talents for Ukraine: Marta Kondryn», 5 липня 2023: <a href="https://foundation.kse.ua/en/talents-for-ukraine-marta-kondryn-developer-of-eco-leather-from-mushroom-mycelium/">foundation.kse.ua</a></li>
+    <li>Zemliak, 6 липня 2023: <a href="https://zemliak.com/news/dosvid/5039-zhitelka-ivano-frankivska-pochala-vigotovlyati-shkiru-z-miceliyu">zemliak.com</a></li>
+    <li>Report.if.ua, «Інновації в дії», 28 березня 2023: <a href="https://report.if.ua/statti/innovaciyi-v-diyi-yak-u-frankivsku-z-miceliyu-vyroshchuyut-zaminnyk-tvarynnoyi-shkiry/">report.if.ua</a></li>
+    <li>Економічна правда, «Незвичний український бізнес, який дивує світ», 2 січня 2025: <a href="https://epravda.com.ua/biznes/nezvichniy-ukrajinskiy-biznes-yakiy-divuye-svit-801579/">epravda.com.ua</a></li>
+    <li>Економічна правда, 20 вересня 2024: <a href="https://www.epravda.com.ua/publications/2024/09/20/719566/">epravda.com.ua</a></li>
+    <li>24 Канал, «Екошкіра із грибів», 26 вересня 2024: <a href="https://24tv.ua/trends24/ekoshkira-iz-gribiv-yak-yiyi-otrimuyut_n2649518">24tv.ua</a></li>
+    <li>Work.ua, профіль роботодавця Mycelia Tech: <a href="https://www.work.ua/jobs/by-company/2476658/">work.ua/jobs/by-company/2476658</a></li>
+    <li>Work.ua, «Інженер з підготовки виробництва», 80 000 грн, Київ, 13 серпня 2026: <a href="https://www.work.ua/jobs/8409502/">work.ua/jobs/8409502</a></li>
+    <li>Work.ua, вакансія Віки, знята 2 вересня 2026: <a href="https://www.work.ua/jobs/7830702/">work.ua/jobs/7830702</a></li>
+    <li>Work.ua, середня зарплата в Івано-Франківську, вересень 2026: <a href="https://www.work.ua/salary-ivano-frankivsk/">work.ua/salary-ivano-frankivsk</a></li>
+    <li>Work.ua, зарплата «Лаборант» по Україні: <a href="https://www.work.ua/salary-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D0%BD%D1%82/">work.ua/salary-лаборант</a></li>
+    <li>Work.ua, зарплата «Технолог» по Україні: <a href="https://www.work.ua/salary-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3/">work.ua/salary-технолог</a></li>
+    <li>Галичина, середня зарплата області в лютому 2026, 3 квітня 2026: <a href="https://galychyna.if.ua/2026/04/03/statistika-u-lyutomu-2026-roku-serednya-zarplata-na-ivano-frankivshhini-stanovila-22-tisyachi-griven/">galychyna.if.ua</a></li>
+    <li>Ратуша, середня зарплата області зросла до 24,2 тис. грн (травень 2026): <a href="https://www.ratusha.if.ua/na-ivano-frankivshchyni-serednia-zarplata-zrosla-do-24-2-tysiachi-hryven/">ratusha.if.ua</a></li>
     <li>24 Канал, «Мінімальна зарплата у вересні 2026»; Бухплатформа, «Мінімальна зарплата 2026 — 8647 грн»: <a href="https://24tv.ua/business/minimalna-zarplata-serpni-2026-podatki-viplata-ruki_n3132896">24tv.ua</a>, <a href="https://buhplatforma.com.ua/article/18422-minimalna-zarplata-2026-skilky-platytymut-iak-zminiatsia-podatky-i-chysti-vyplaty">buhplatforma.com.ua</a></li>
-    <li>SmartFin, «Випробувальний термін при прийнятті на роботу», 22 июля 2025: <a href="https://smartfin.ua/blog/vyprobuvalnyy-termin-pry-pryynyatti-na-robotu">smartfin.ua</a></li>
-    <li>Protocol.ua, КЗпП ст. 26 и 27: <a href="https://protocol.ua/ua/kodeks_zakoniv_pro_pratsyu_ukraini_stattya_26/">ст. 26</a>, <a href="https://protocol.ua/ua/kodeks_zakoniv_pro_pratsyu_ukraini_stattya_27/">ст. 27</a></li>
-    <li>Асоціація міст України, обзор закона 2136-IX, 24 марта 2022: <a href="https://www.auc.org.ua/novyna/opublikovano-zakon-shchodo-novyh-pravyl-trudovyh-vidnosyn-pid-chas-viyny">auc.org.ua</a></li>
+    <li>SmartFin, «Випробувальний термін при прийнятті на роботу», 22 липня 2025: <a href="https://smartfin.ua/blog/vyprobuvalnyy-termin-pry-pryynyatti-na-robotu">smartfin.ua</a></li>
+    <li>Protocol.ua, КЗпП ст. 26 і 27: <a href="https://protocol.ua/ua/kodeks_zakoniv_pro_pratsyu_ukraini_stattya_26/">ст. 26</a>, <a href="https://protocol.ua/ua/kodeks_zakoniv_pro_pratsyu_ukraini_stattya_27/">ст. 27</a></li>
+    <li>Асоціація міст України, огляд закону 2136-IX, 24 березня 2022: <a href="https://www.auc.org.ua/novyna/opublikovano-zakon-shchodo-novyh-pravyl-trudovyh-vidnosyn-pid-chas-viyny">auc.org.ua</a></li>
     <li>Закон 2136-IX: <a href="https://zakon.rada.gov.ua/laws/show/2136-20">zakon.rada.gov.ua/laws/show/2136-20</a></li>
     <li>Ficociello et al., «The onset of occupational diseases in mushroom cultivation and handling operators: a review», Italian Journal of Mycology, 2019: <a href="https://italianmycology.unibo.it/article/view/9409">italianmycology.unibo.it</a></li>
-    <li>Гиперчувствительный пневмонит у работников грибных ферм: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9841544">PMC9841544</a>, <a href="https://scholars.uky.edu/en/publications/outbreak-of-hypersensitivity-pneumonitis-among-mushroom-farm-work/">scholars.uky.edu</a></li>
-    <li>Ecotextile News, «MycoWorks to close factory and focus on sourcing», октябрь 2025: <a href="https://www.ecotextile.com/2025102160455/news/materials-production-news/mycoworks-to-close-factory-and-focus-on-sourcing/">ecotextile.com</a></li>
+    <li>Гіперчутливий пневмоніт у працівників грибних ферм: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9841544">PMC9841544</a>, <a href="https://scholars.uky.edu/en/publications/outbreak-of-hypersensitivity-pneumonitis-among-mushroom-farm-work/">scholars.uky.edu</a></li>
+    <li>Ecotextile News, «MycoWorks to close factory and focus on sourcing», жовтень 2025: <a href="https://www.ecotextile.com/2025102160455/news/materials-production-news/mycoworks-to-close-factory-and-focus-on-sourcing/">ecotextile.com</a></li>
     <li>Business of Fashion, «Bolt Threads Pauses Operations of Leather-Alternative Mylo»: <a href="https://www.businessoffashion.com/news/sustainability/bolt-threads-mylo-alternative-leather-mushroom-pause-operations/">businessoffashion.com</a></li>
-    <li>EU4Ukraine, S.Lab, «Mushroom-based packaging: how a Ukrainian startup is helping drive Europe's green economy», 24 июня 2026: <a href="https://eu4ukraine.eu/en/mushroom-based-packaging-how-a-ukrainian-startup-is-helping-drive-europes-green-economy/">eu4ukraine.eu</a></li>
+    <li>EU4Ukraine, S.Lab, «Mushroom-based packaging: how a Ukrainian startup is helping drive Europe's green economy», 24 червня 2026: <a href="https://eu4ukraine.eu/en/mushroom-based-packaging-how-a-ukrainian-startup-is-helping-drive-europes-green-economy/">eu4ukraine.eu</a></li>
     <li>MarketIntelo, Mycelium Fungal Biocomposite Packaging Market: <a href="https://marketintelo.com/report/mycelium-fungal-biocomposite-packaging-market">marketintelo.com</a></li>
     <li>Prismane Consulting, Mycelium Packaging Market: <a href="https://prismaneconsulting.com/report-details/mycelium-packaging-market">prismaneconsulting.com</a></li>
     <li>Strategic Packaging Insights, Mushroom Packaging Market: <a href="https://www.strategicpackaginginsights.com/report/mushroom-packaging-market">strategicpackaginginsights.com</a></li>
-    <li>Oxford Saïd Business School, Climate Change Challenge 2025, презентация MycoFuture (сентябрь 2025), студенческая работа с оценками себестоимости: <a href="https://www.sbs.ox.ac.uk/sites/default/files/2025-09/climate-change-challenge-2025-mycofuture-presentation.pdf">sbs.ox.ac.uk</a></li>
-    <li>PackageTheWorld, «Mycelium Packaging vs EPS Foam: 2026 Comparison», 21 июля 2026: <a href="https://www.packagetheworld.com/blog/mycelium-packaging-vs-eps-foam-mushroom-protective-comparison">packagetheworld.com</a></li>
-    <li>AIN, «Startup of the day: S.Lab», 8 января 2026 (по поисковой выдаче): <a href="https://en.ain.ua/2026/01/08/startup-of-the-day-slab/">en.ain.ua</a></li>
+    <li>Oxford Saïd Business School, Climate Change Challenge 2025, презентація MycoFuture (вересень 2025), студентська робота з оцінками собівартості: <a href="https://www.sbs.ox.ac.uk/sites/default/files/2025-09/climate-change-challenge-2025-mycofuture-presentation.pdf">sbs.ox.ac.uk</a></li>
+    <li>PackageTheWorld, «Mycelium Packaging vs EPS Foam: 2026 Comparison», 21 липня 2026: <a href="https://www.packagetheworld.com/blog/mycelium-packaging-vs-eps-foam-mushroom-protective-comparison">packagetheworld.com</a></li>
+    <li>AIN, «Startup of the day: S.Lab», 8 січня 2026 (за пошуковою видачею): <a href="https://en.ain.ua/2026/01/08/startup-of-the-day-slab/">ain.ua</a></li>
     <li>S.Lab, «Mycelium Packaging: The Complete Guide (2026)»: <a href="https://s-lab.bio/mycelium-packaging-guide/">s-lab.bio</a></li>
     <li>Magical Mushroom Company, сайт: <a href="https://magicalmushroom.com/">magicalmushroom.com</a></li>
-    <li>InVenture, «Ukrainian Startup S.Lab Secures £250K from Morgan Stanley», 17 сентября 2025: <a href="https://inventure.com.ua/en/news/ukraine/ukrainian-startup-s.lab-secures-pound250k-from-morgan-stanley-to-scale-biodegradable-packaging">inventure.com.ua</a></li>
-    <li>TÜV Austria, OK compost HOME: <a href="https://en.tuv.at/ok-compost-home-en/">en.tuv.at</a></li>
-    <li>Latham & Watkins, обзор PPWR: <a href="https://www.lw.com/en/insights/european-packaging-and-packaging-waste-regulation-summary-of-provisions-and-new-guidance">lw.com</a></li>
+    <li>InVenture, «Ukrainian Startup S.Lab Secures £250K from Morgan Stanley», 17 вересня 2025: <a href="https://inventure.com.ua/en/news/ukraine/ukrainian-startup-s.lab-secures-pound250k-from-morgan-stanley-to-scale-biodegradable-packaging">inventure.com.ua</a></li>
+    <li>TÜV Austria, OK compost HOME: <a href="https://en.tuv.at/ok-compost-home-en/">tuv.at</a></li>
+    <li>Latham &amp; Watkins, огляд PPWR: <a href="https://www.lw.com/en/insights/european-packaging-and-packaging-waste-regulation-summary-of-provisions-and-new-guidance">lw.com</a></li>
     <li>FKuR, PPWR at a Glance: <a href="https://fkur.com/en/knowledgebase/ppwr-eu-packaging-waste-regulation/">fkur.com</a></li>
     <li>Ecolog-ua, «Які вимоги до упаковки… діють в Україні станом на липень 2026 року»: <a href="https://ecolog-ua.com/consultation/yaki-vymogy-do-upakovky-ta-upravlinnya-vidhodamy-upakovky-diyut-v-ukrayini-stanom-na">ecolog-ua.com</a></li>
     <li>Кабінет Міністрів України, законопроєкт «Про упаковку та відходи упаковки»: <a href="https://www.kmu.gov.ua/bills/proekt-zakonu-pro-upakovku-ta-vidkhodi-upakovki">kmu.gov.ua</a></li>
-    <li>Ecovative, «Goodbye, Mushroom Packaging», 20 января 2020: <a href="https://shop.ecovative.com/blogs/blog/goodbye-mushroom-packaging">shop.ecovative.com</a></li>
-    <li>TechCrunch, «UK's Magical Mushroom Company uses mycelium to replace plastic packaging», 27 июня 2022: <a href="https://techcrunch.com/2022/06/27/uks-magical-mushroom-company-uses-mycelium-to-replace-plastic-packaging/">techcrunch.com</a></li>
+    <li>Ecovative, «Goodbye, Mushroom Packaging», 20 січня 2020: <a href="https://shop.ecovative.com/blogs/blog/goodbye-mushroom-packaging">shop.ecovative.com</a></li>
+    <li>TechCrunch, «UK's Magical Mushroom Company uses mycelium to replace plastic packaging», 27 червня 2022: <a href="https://techcrunch.com/2022/06/27/uks-magical-mushroom-company-uses-mycelium-to-replace-plastic-packaging/">techcrunch.com</a></li>
     <li>Grown.bio, GIY Packaging kit: <a href="https://www.grown.bio/product/giy-packaging-kit/">grown.bio</a></li>
-    <li>Tech.eu, «S.Lab secures $100,000 from Google», 1 октября 2024: <a href="https://tech.eu/2024/10/01/slab-secures-google-funding-for-biodegradable-packaging/">tech.eu</a></li>
-    <li>Packnode, «Europe Launches Large-Scale Mycelium Packaging Plant», 18 ноября 2025: <a href="https://www.packnode.org/en/innovation/mycelium-packaging-europe-production-launch">packnode.org</a></li>
+    <li>Tech.eu, «S.Lab secures $100,000 from Google», 1 жовтня 2024: <a href="https://tech.eu/2024/10/01/slab-secures-google-funding-for-biodegradable-packaging/">tech.eu</a></li>
+    <li>Packnode, «Europe Launches Large-Scale Mycelium Packaging Plant», 18 листопада 2025: <a href="https://www.packnode.org/en/innovation/mycelium-packaging-europe-production-launch">packnode.org</a></li>
     <li>Wikipedia, MycoWorks: <a href="https://en.wikipedia.org/wiki/MycoWorks">en.wikipedia.org</a></li>
-    <li>Washington Post, «Mushrooms are now becoming leather, packaging, bacon and more», 2024 (цена Reishi): <a href="https://www.washingtonpost.com/business/interactive/2024/mushroom-mycelium-sustainability-leather-shoes/">washingtonpost.com</a></li>
-    <li>GetGrant.eu, анализ программы HORIZON-EIC-2025-UKRAINIANTECH-01: <a href="https://getgrant.eu/eic-grant-deep-tech-ukraine-programme-analysis/">getgrant.eu</a></li>
+    <li>Washington Post, «Mushrooms are now becoming leather, packaging, bacon and more», 2024: <a href="https://www.washingtonpost.com/business/interactive/2024/mushroom-mycelium-sustainability-leather-shoes/">washingtonpost.com</a></li>
+    <li>GetGrant.eu, аналіз програми HORIZON-EIC-2025-UKRAINIANTECH-01: <a href="https://getgrant.eu/eic-grant-deep-tech-ukraine-programme-analysis/">getgrant.eu</a></li>
     <li>Верхівцевський ОЕЗ, огляд цін на лушпиння соняшнику 2026: <a href="https://voez.com.ua/%F0%9F%8C%BBoglyad-czin-na-lushpynnya-sonyashnyku/">voez.com.ua</a></li>
-    <li>HempBud, костра конопель 670 грн за 20 кг: <a href="https://hempbud.com.ua/mahazyn/kostra-konopel-presovana/">hempbud.com.ua</a></li>
+    <li>HempBud, костриця конопель 670 грн за 20 кг: <a href="https://hempbud.com.ua/mahazyn/kostra-konopel-presovana/">hempbud.com.ua</a></li>
     <li>EcoTech, ціна електрики для підприємств 2026: <a href="https://www.ecotech.ua/yaka-czina-svitla-dlya-pidpryyemstva-z-travnya-2025-roku/">ecotech.ua</a></li>
-    <li>S.Lab, «Mycelium Packaging for Cosmetics» (упоминание Re[Sens]): <a href="https://s-lab.bio/mycelium-packaging-cosmetics/">s-lab.bio</a></li>
-    <li>EIC Accelerator, официальная страница: <a href="https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en">eic.ec.europa.eu</a></li>
+    <li>S.Lab, «Mycelium Packaging for Cosmetics» (згадка Re[Sens]): <a href="https://s-lab.bio/mycelium-packaging-cosmetics/">s-lab.bio</a></li>
+    <li>EIC Accelerator, офіційна сторінка: <a href="https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en">eic.ec.europa.eu</a></li>
     <li>GetGrant.ua, «Грантовий гід 2026»: <a href="https://getgrant.ua/hrantovyy-hid-2026/">getgrant.ua</a></li>
     <li>Дія, грант на створення або розвиток переробних підприємств: <a href="https://guide.diia.gov.ua/view/nadannia-hrantu-na-stvorennia-abo-rozvytok-pererobnykh-pidpryiemstv-1fdef300-d6ba-470d-ad16-ef33bf1728ac">guide.diia.gov.ua</a></li>
+    <li>Аудит сайту: myceliatech.com, /uk, /blog, /shop/myceliatech-material, /laboratory-of-innovations-and-new-materials, sitemap.xml; Lighthouse 12 (мобільний, локальний запуск), 2–3 вересня 2026</li>
   </ol>
 
-  <footer>Страница для личного пользования. Данные проверены 2 сентября 2026; всё, что помечено «данные 2023/2024», взято из прессы тех лет и могло измениться.</footer>
+  <footer>Сторінка для особистого користування. Дані перевірено 2–3 вересня 2026; усе, що позначене «дані 2023/2024», взято з преси тих років і могло змінитися.</footer>
 </div>
 
 <script>
@@ -626,6 +680,8 @@
   var progress = document.getElementById('progress');
   var progressTop = document.getElementById('progress-top');
   var reset = document.getElementById('reset-top');
+  var openAll = document.getElementById('open-all');
+  var closeAll = document.getElementById('close-all');
   function load() { try { var raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : {}; } catch (e) { return {}; } }
   function save(state) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   function count(group) {
@@ -634,8 +690,8 @@
   }
   function render() {
     var v = count('visit'), t = count('top');
-    if (progress) progress.textContent = 'Отмечено: ' + v.done + ' из ' + v.total;
-    if (progressTop) progressTop.textContent = t.done + ' из ' + t.total + ' отмечено';
+    if (progress) progress.textContent = 'Відмічено: ' + v.done + ' з ' + v.total;
+    if (progressTop) progressTop.textContent = t.done + ' з ' + t.total + ' відмічено';
   }
   var state = load();
   boxes.forEach(function (b) {
@@ -646,6 +702,11 @@
     boxes.forEach(function (b) { if (b.closest('.check').getAttribute('data-group') === 'top') { b.checked = false; delete state[b.id]; } });
     save(state); render();
   });
+  function setAll(open) {
+    Array.prototype.forEach.call(document.querySelectorAll('details.ann'), function (d) { d.open = open; });
+  }
+  if (openAll) openAll.addEventListener('click', function () { setAll(true); });
+  if (closeAll) closeAll.addEventListener('click', function () { setAll(false); });
   render();
 })();
 </script>
