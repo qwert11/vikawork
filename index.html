@@ -99,6 +99,13 @@
   footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   @media (max-width: 560px) { nav.toc ol { columns: 1; } .page { padding: 22px 14px 60px; } .tomorrow { padding: 18px 16px; } }
   @media print { .tomorrow .tools, nav.toc { display: none; } body { background: #fff; } .page { padding: 0; } }
+  .qa { list-style: none; padding: 0; margin: 0 0 10px; }
+  .qa li { padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
+  .qa li:last-child { border-bottom: 0; }
+  .qa .uk { display: block; }
+  .qa .why { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; font-style: normal; }
+  h2.part { border-top: 3px solid var(--accent); margin-top: 56px; padding-top: 22px; }
+  .tomorrow .cols { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 </style>
 </head>
 <body>
@@ -113,7 +120,7 @@
         <h2 id="tomorrow-h">Завтра на производстве, 3 сентября, 14:00</h2>
         <span class="when" id="progress-top"></span>
       </div>
-      <p class="sub">Марта предупредила: <q class="uk">У нас ще все в процесі встановлення… там дуже робоча обстановка</q>. Это нормально, но именно поэтому смотреть нужно внимательно. Ниже только обязательное. Полный чеклист из 20 пунктов — <a href="#visit">ниже на странице</a>.</p>
+      <p class="sub">Марта предупредила: <q class="uk">У нас ще все в процесі встановлення… там дуже робоча обстановка</q>. Это нормально, но именно поэтому смотреть нужно внимательно. Три списка: условия работы, вектор бизнеса, что смотреть глазами. Полный чеклист из 20 пунктов — <a href="#visit">ниже</a>, разбор ниши, экономики и стратегии — во <a href="#part2">второй части</a>.</p>
       <div class="cols">
         <div>
           <h3>Обязательно спросить</h3>
@@ -127,6 +134,19 @@
             <li><input type="checkbox" id="t7"><label for="t7">Как называется должность в приказе и трудовой? Просить «біотехнолог» или «технолог виробництва», а не «проєктний менеджер».</label></li>
             <li><input type="checkbox" id="t8"><label for="t8">Бывают ли выходы в выходные и вечером из-за циклов инкубации? Кто следит за камерами в субботу и воскресенье?</label></li>
             <li><input type="checkbox" id="t9"><label for="t9">Как оформляют: трудовой договор с ФОП, приказ, уведомление ДПС до первого дня? Какая дата выхода?</label></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Понять вектор бизнеса</h3>
+          <ul class="check" data-group="top">
+            <li><input type="checkbox" id="v1"><label for="v1"><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без названного клиента направления нет. Хороший ответ: бренд и товар.</span></label></li>
+            <li><input type="checkbox" id="v2"><label for="v2"><span class="uk">Це для України чи на експорт? Є сертифікат OK compost HOME або план?</span><span class="why">В Украине закона об упаковке нет, спрос только добровольный. В ЕС регламент PPWR действует с 12 августа 2026.</span></label></li>
+            <li><input type="checkbox" id="v3"><label for="v3"><span class="uk">Яка цільова собівартість і ціна однієї одиниці?</span><span class="why">Ориентиры: S.Lab продаёт по 1–1,5 €, мир 2,5–4 $, пенопласт 1,2–2 $. Нет цифры — экономику не считали.</span></label></li>
+            <li><input type="checkbox" id="v4"><label for="v4"><span class="uk">Грант EIC на UPGRAIN підписаний? Коли транш, які milestones, звідки 30% співфінансування?</span><span class="why">300–500 тыс. € идут по этапам; 90–150 тыс. € своих обязательны.</span></label></li>
+            <li><input type="checkbox" id="v5"><label for="v5"><span class="uk">Пакування фінансується з L'Oréal, з EIC чи з окремих коштів? На скільки місяців?</span><span class="why">Грант L'Oréal 500 тыс. грн — это около 20 зарплат по 25 тыс. Проект EIC назван про микокожу.</span></label></li>
+            <li><input type="checkbox" id="v6"><label for="v6"><span class="uk">Який відсоток браку від контамінації? Чи є письмові SOP і хто їх веде?</span><span class="why">13% брака типично, 5% хорошо. Если не измеряют, процесс не отработан.</span></label></li>
+            <li><input type="checkbox" id="v7"><label for="v7"><span class="uk">Що вже автоматизовано, а що руками? Коли виходить інженер?</span><span class="why">На ручном труде себестоимость единицы 50–90 грн, конкуренты продают по 45–65 грн.</span></label></li>
+            <li><input type="checkbox" id="v8"><label for="v8"><span class="uk">Куди компанія йде через два роки: продавати матеріал, упаковку чи технологію?</span><span class="why">Три разных бизнеса. Ecovative и S.Lab ушли в продажу технологии.</span></label></li>
           </ul>
         </div>
         <div>
@@ -177,6 +197,15 @@
         <li><a href="#letter">Письмо-подтверждение и зарплата</a></li>
         <li><a href="#plan">План на 48 часов</a></li>
         <li><a href="#sources">Источники</a></li>
+        <li><a href="#part2">Часть II. Бизнес-разбор</a></li>
+        <li><a href="#niche">Ниша в цифрах</a></li>
+        <li><a href="#regulation">Регуляторика: ЕС и Украина</a></li>
+        <li><a href="#peers">Опыт других компаний</a></li>
+        <li><a href="#economics">Экономика Mycelia Tech</a></li>
+        <li><a href="#strategy">Стратегии выживания</a></li>
+        <li><a href="#markers">Маркеры вектора</a></li>
+        <li><a href="#vector">Вопросы про вектор</a></li>
+        <li><a href="#meaning">Что это значит для решения</a></li>
       </ol>
     </nav>
   </header>
@@ -374,6 +403,155 @@
     <li>Решение принимать по письму, а не по разговору. Без письменного оклада и даты пересмотра не соглашаться.</li>
   </ol>
 
+  <h2 id="part2" class="part">Часть II. Бизнес-разбор: ниша, экономика, стратегия, маркеры</h2>
+  <p>Цель этой части — понять, куда компания движется, на каких деньгах, с какой экономикой и по каким признакам за час на производстве можно оценить, доживёт ли направление упаковки до 2028 года. Номера источников продолжают первую часть, с [31].</p>
+
+  <h2 id="niche">Ниша упаковки из мицелия в цифрах</h2>
+  <p>Рынок маленький, и никто не знает, как быстро он растёт. Три отчёта дают три картины: 48 млн долларов в 2025 с ростом до 1,9 млрд к 2034 [31]; 93 млн в 2025 и 209 млн к 2034 [32]; 106 млн в 2025 и 170 млн к 2034 [33]. Рынок пенопластовой защитной упаковки, которую мицелий замещает, оценивают в 25–30 млрд долларов [34]. Практический вывод: рынок делают не отчёты, а конкретные заказчики. Компания без названного клиента не имеет рынка.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Показатель</th><th>Значение</th><th>Источник</th></tr></thead>
+      <tbody>
+        <tr><td>Цена единицы упаковки из мицелия, мир, 2026</td><td class="num">2,5–4,0 $</td><td>[35]</td></tr>
+        <tr><td>Цена единицы из пенопласта EPS</td><td class="num">1,2–2,0 $</td><td>[35]</td></tr>
+        <tr><td>Цена S.Lab (Украина/Испания)</td><td class="num">1–1,5 €, «почти на уровне пенопласта»</td><td>[36]</td></tr>
+        <tr><td>Себестоимость материала, мелкая серия</td><td class="num">5,7 $/кг</td><td>[34]</td></tr>
+        <tr><td>Себестоимость с местным субстратом и SOP; при децентрализованном производстве</td><td class="num">4,0 $/кг; 3,35 $/кг</td><td>[34]</td></tr>
+        <tr><td>Брак от контаминации</td><td class="num">13% типично, 5% при отлаженном процессе</td><td>[34]</td></tr>
+        <tr><td>Цикл роста</td><td class="num">5–7 дней плюс сушка (было 10)</td><td>[34][35][37]</td></tr>
+        <tr><td>Порог, выше которого EPS снова дешевле</td><td class="num">≈ 80 000 одинаковых единиц на артикул в год</td><td>[35]</td></tr>
+        <tr><td>Прочность на сжатие против EPS</td><td class="num">≈ 3×</td><td>[35][37]</td></tr>
+        <tr><td>Вода на производство</td><td class="num">0,1 л/кг против 12 л/кг у EPS</td><td>[35][37]</td></tr>
+        <tr><td>Компостирование дома</td><td class="num">30–45 дней</td><td>[35][37]</td></tr>
+        <tr><td>Ожидаемый паритет цены с EPS</td><td class="num">к 2030</td><td>[35]</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Мицелий выигрывает в средних тиражах для дорогих и хрупких товаров. Клиенты у выживших одни и те же: косметика, крафтовый алкоголь, электроника, дизайнерская мебель, медтехника. У Magical Mushroom Company это Tom Dixon, Renais Gin, Raymarine, Flextronics, Lush [38]; у S.Lab это L'Oréal, JTI, Nespresso [36][39]. Массовый пенопласт для бытовой техники мицелий не заменит. Слабые места материала: длительная влага, вес, шероховатая поверхность, минимальные партии и срок изготовления от недели [35][37]. Билет в Европу — сертификат TÜV Austria OK compost HOME по EN 13432 [37][40]; его стоимость публично не раскрывается.</p>
+
+  <h2 id="regulation">Регуляторный драйвер: ЕС давит, Украина нет</h2>
+  <p><strong>Европа.</strong> Регламент об упаковке PPWR (EU 2025/40) применяется с 12 августа 2026: обязательная маркировка, декларация соответствия, регистрация производителя в системе расширенной ответственности [41][42]. С 1 января 2030 вся упаковка на рынке ЕС должна быть пригодна к переработке, вводятся минимумы вторсырья, потолок пустого места 50%, цель 40% многоразовой упаковки; сокращение отходов упаковки на 5% к 2030, 10% к 2035 и 15% к 2040 [41][42]. Ограничения именно по EPS отложены на 2030–2035 [42]. Для украинского производителя это спрос на экспорт и на поставки европейским брендам в Украине.</p>
+  <p><strong>Украина.</strong> Специального закона об упаковке нет. Законопроект 10066 внесён Кабмином 18 сентября 2023, после смены правительства отозван, альтернативные 10066-1 и 10066-2 не приняты [43][44]. Расширенная ответственность производителя не работает, техрегламент на упаковку утратил силу 8 апреля 2025, актов имплементации PPWR по состоянию на июль 2026 нет [43]. Внутри Украины у бизнеса нет обязанности переходить на биоупаковку, спрос только добровольный или экспортный. Направление упаковки Mycelia Tech либо смотрит на экспорт и филиалы международных компаний, либо у него нет рыночного драйвера.</p>
+
+  <h2 id="peers">Что говорит опыт других компаний</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Компания</th><th>Что произошло</th><th>Урок</th><th>Ист.</th></tr></thead>
+      <tbody>
+        <tr><td>Ecovative, США, изобретатель технологии, 184 млн $ привлечено</td><td>Ещё в январе 2020 передала производство упаковки лицензиатам, сама ушла в R&amp;D, еду (MyBacon) и микокожу</td><td>Изобретатель вышел из упаковки как из низкомаржинального производственного бизнеса</td><td>[45][46]</td></tr>
+        <tr><td>Magical Mushroom Company, Великобритания, лицензиат</td><td>Seed 3 млн £, лид Ecovative; «миллионы единиц с 2020», план около 10 млн штук в 2026, заявляет паритет с EPS по цене и прочности</td><td>Паритет достигается на миллионах штук и заводе индустриального масштаба</td><td>[38][46]</td></tr>
+        <tr><td>Grown.bio, Нидерланды, первый лицензиат в Европе</td><td>Наборы: 1 кг материала на 3,3 л за 39–45 €</td><td>Ориентир розничной цены сырья</td><td>[47]</td></tr>
+        <tr><td>S.Lab, Украина, производство в Малаге</td><td>Основана 2021; выручка 10 тыс. € (2022) и 30 тыс. € (2023); вложено более 1,3 млн €; Google 100 тыс. $ (октябрь 2024), Morgan Stanley 250 тыс. £ (сентябрь 2025); поднимает 2 млн €; линия до 15 000 единиц в месяц; переход к контейнерным мини-заводам у клиента по подписке, первая выручка от них в 2027; OK compost HOME</td><td>Пять лет, больше 1,3 млн € и три программы поддержки дали выручку в десятки тысяч евро. Выживание в нише: гранты, акселераторы, пилоты с корпорациями, продажа технологии вместо продукта</td><td>[36][39][48]</td></tr>
+        <tr><td>Новый завод в Центральной Европе, ноябрь 2025</td><td>«Тысячи единиц в день», модульный дизайн, автоматизированная инокуляция и формовка, драйвер PPWR</td><td>Отрасль укрупняется под европейский регламент, конкуренция за клиентов ЕС растёт</td><td>[49]</td></tr>
+        <tr><td>MycoWorks, США, микокожа</td><td>Series B 45 млн $ (2020); завод 136 000 кв. футов открыт в октябре 2023 при загрузке 22%, закрыт в октябре 2025; неплатёжеспособность с конца октября 2025, ликвидация через ABC; IP выкуплен Stage Fund в 2026</td><td>Микокожа для люкса не нашла спроса даже у компании с сотнями миллионов</td><td>[50][28]</td></tr>
+        <tr><td>Bolt Threads, США, Mylo</td><td>Производство остановлено в 2023, сомнение в продолжении деятельности в отчёте за 2024, делистинг с Nasdaq в январе 2026</td><td>То же</td><td>[29]</td></tr>
+        <tr><td>Цена микокожи на рынке</td><td>Reishi от MycoWorks около 25 $ за кв. фут (≈ 270 $/м²); себестоимость мелкосерийно 50–80 $ за кв. фут</td><td>Себестоимость Mycelia Tech 32 €/м² (январь 2025) в 15–25 раз ниже мировой. Либо другой класс материала, либо в цифре нет полных затрат. Спросить</td><td>[51][10]</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="economics">Экономика Mycelia Tech: прикидка на известных цифрах</h2>
+  <p><strong>Микокожа.</strong> Мощность 50 м² за 45 дней даёт около 400 м² в год при непрерывной загрузке [10]. При себестоимости 32 €/м² годовой выпуск стоит около 13 тыс. €. Если продавать по 60–100 €/м² (предположение между их себестоимостью и ценой Reishi), потолок выручки одной установки 24–40 тыс. € в год. Это не покрывает даже одну зарплату инженера в Киеве.</p>
+  <p><strong>Фонд оплаты труда.</strong> Пять человек на сайте плюс инженер на 80 тыс. плюс оператор на 25 тыс. При средней ставке 30–40 тыс. и ЕСВ 22% фонд оплаты труда оценочно 300–400 тыс. грн в месяц, то есть 80–105 тыс. € в год. Аренда, субстрат, электроэнергия, сертификация сверху. Продукт не покрывает зарплаты, компания живёт на грантах. Для стартапа на уровне TRL 4–6 это нормально, но у грантовых денег есть срок годности.</p>
+  <p><strong>Гранты 2026 как коробка на 24 месяца.</strong> EIC UATech: 300–500 тыс. € единовременной суммой, до 24 месяцев, 3–5 измеримых этапов, деньги по достижении этапов, обязательное софинансирование 30% (компания должна показать 90–150 тыс. € своих или других денег), вход с TRL 4, выход на TRL 6–7, подписание соглашений июнь–июль 2026 [52]. Грант L'Oréal 500 тыс. грн [2]. При расходе 350 тыс. грн в месяц 24 месяца зарплат стоят 8,4 млн грн; грант EIC в гривне это 13–22 млн грн. Денег хватает на 24 месяца при дисциплине. Но проект UPGRAIN про микокожу из украинской биомассы [3], упаковка в нём не названа. Значит, упаковка либо финансируется из L'Oréal (500 тыс. грн равны примерно 20 зарплатам по 25 тыс.), либо вписана в UPGRAIN как побочный продукт переработки биомассы, либо делается на остатки. Это главный вопрос на завтра, и на него есть проверяемый ответ.</p>
+  <h3>Себестоимость единицы упаковки в Ивано-Франковске: иллюстративный расчёт</h3>
+  <p class="sub">Допущения указаны явно, каждое можно проверить на месте.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Статья</th><th>Допущение</th><th>Грн на единицу</th></tr></thead>
+      <tbody>
+        <tr><td>Субстрат</td><td>Вкладыш 200×200×50 мм, 150–250 г сухого веса; лушпиння соняшника 2 900–3 400 грн/т [53] или костра 670 грн за 20 кг в розницу [54]</td><td class="num">1–8</td></tr>
+        <tr><td>Посевной материал и стерилизация</td><td>Автоклав, спирт, расходники</td><td class="num">3–6</td></tr>
+        <tr><td>Сушка</td><td>Удалить 0,3–0,5 кг воды при 1,5–2,5 кВт·ч на кг; электроэнергия для малого бизнеса ≈ 11,8 грн/кВт·ч с НДС [55]</td><td class="num">5–15</td></tr>
+        <tr><td>Труд</td><td>Ставка 25 тыс. плюс ЕСВ ≈ 30,5 тыс.; выпуск 1 000 единиц в месяц на человека вручную</td><td class="num">30</td></tr>
+        <tr><td>Брак</td><td>5–13% по опыту отрасли [34]</td><td class="num">3–10</td></tr>
+        <tr><td>Формы, аренда, амортизация камер</td><td>Мелкая серия</td><td class="num">10–20</td></tr>
+        <tr><td><strong>Итого</strong></td><td></td><td class="num"><strong>50–90 грн ≈ 1,1–2,0 €</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>S.Lab продаёт по 1–1,5 € [36], мировой уровень 2,5–4 $ [35]. На ручном производстве в Ивано-Франковске без автоматизации выйти в цену S.Lab нельзя: себестоимость упирается в труд. Отсюда два пути, и оба видны в вакансиях компании: автоматизация инкубаторов (инженер на 80 тыс. в Киеве [14]) и премиальные клиенты, готовые платить 2–4 € за единицу. Преимущество Украины реально: субстрат почти бесплатный (3 грн за кг лушпиння против 39–45 € за кг материала в европейской розничной упаковке [47][53]), труд в 3–4 раза дешевле испанского. Минус: логистика в ЕС добавляет около 30% к стоимости упаковки [30], а объёмный лёгкий товар везти дорого.</p>
+
+  <h2 id="strategy">Стратегии, при которых направление живёт</h2>
+  <ol class="steps">
+    <li><strong>Экспорт под PPWR.</strong> Сертификат OK compost HOME, 3–5 европейских клиентов среднего тиража, производство в Украине на дешёвом субстрате. Риск: логистика и конкуренция с заводами в ЕС [49].</li>
+    <li><strong>Продажа технологии, а не упаковки.</strong> Мини-заводы и лицензии, как у Ecovative и S.Lab [45][36]. Требует отлаженного процесса, SOP и автоматизации, то есть сначала два-три года работы.</li>
+    <li><strong>Локальные премиальные клиенты в Украине.</strong> Косметика (бренд Re[Sens] перешёл на биоразлагаемые банки в 2024 [56]), крафтовый алкоголь, керамика, мебель, подарочная упаковка. Спрос добровольный и небольшой, но ближе всего.</li>
+    <li><strong>Симбиоз с микокожей.</strong> Общий субстрат, инкубаторы и команда: упаковка как побочный продукт переработки биомассы в UPGRAIN снижает капекс и позволяет учиться на дешёвом продукте перед дорогим.</li>
+    <li><strong>Грантовая лестница.</strong> EIC UATech 2026–2028 [52]; далее EIC Accelerator: грант до 2,5 млн € плюс инвестиции 1–10 млн €, TRL 6–8, Украина ассоциирована с Horizon Europe [57][58]; государственный грант на переробне підприємство до 8 млн грн при 50% софинансирования и создании от 5 до 25 рабочих мест по условиям волны [59]; программы для женщин-основательниц [58].</li>
+  </ol>
+  <p>Признак осмысленной стратегии: Марта может сказать, какая из пяти их, и назвать первого клиента, целевую цену и дату сертификации. Признак дрейфа: «попробуем упаковку, посмотрим, как пойдёт».</p>
+
+  <h2 id="markers">Маркеры вектора: что можно понять за час на производстве</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Маркер</th><th>Хороший знак</th><th>Плохой знак</th></tr></thead>
+      <tbody>
+        <tr><td>Первый клиент упаковки</td><td>Названы бренд, пилот или письмо о намерениях</td><td>«Будем искать, когда будет продукт»</td></tr>
+        <tr><td>Целевая цена и себестоимость единицы</td><td>Цифры: например, 50 грн себестоимость, 2 € продажа</td><td>Цифр нет</td></tr>
+        <tr><td>План объёма</td><td>Штук в месяц и число артикулов, например 5–15 тыс./мес и 3–5 SKU</td><td>«Посмотрим по спросу»</td></tr>
+        <tr><td>Сертификация OK compost HOME</td><td>Есть дата и бюджет</td><td>«Потом»</td></tr>
+        <tr><td>Контаминация</td><td>Знают процент брака по партиям</td><td>Не измеряют</td></tr>
+        <tr><td>Софинансирование EIC 30%</td><td>Понятно, откуда 90–150 тыс. €</td><td>Молчание или «грант покроет всё»</td></tr>
+        <tr><td>Этапы EIC</td><td>Называют 3–5 milestones и сроки</td><td>Не помнят, что в заявке</td></tr>
+        <tr><td>Автоматизация</td><td>Инженер нанят или есть техзадание на инкубаторы</td><td>Только идея</td></tr>
+        <tr><td>Субстрат</td><td>Договор с маслозаводом или фермой, известна цена за тонну</td><td>Покупка мешками на рынке</td></tr>
+        <tr><td>Роль Вики</td><td>Честно: оператор, контроль качества, записи по SOP, участие в отработке процесса</td><td>«Проєктний менеджер» без объяснений</td></tr>
+        <tr><td>Горизонт денег</td><td>«Денег до такого-то месяца 2028»</td><td>Уклончивость</td></tr>
+        <tr><td>Микокожа как основной продукт</td><td>Есть покупатели материала, известна цена за м² и загрузка</td><td>Продажи только сумок и картхолдеров ниже себестоимости, как в 2024</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="vector">Вопросы про вектор по граням</h2>
+  <p class="sub">Формулировка на украинском, чтобы задать как есть, и пояснение, что означает ответ.</p>
+  <h3>Продукт и клиенты</h3>
+  <ul class="qa">
+    <li><span class="uk">Хто перший клієнт упаковки і що саме він пакує?</span><span class="why">Без клиента нет направления. Хороший ответ называет бренд и товар.</span></li>
+    <li><span class="uk">Це для України чи на експорт? Якщо експорт, в які країни і чи є сертифікат OK compost HOME або план його отримати?</span><span class="why">В Украине нет регуляторного спроса, в ЕС он появляется с 12 августа 2026.</span></li>
+    <li><span class="uk">Який тираж на артикул ви бачите: сотні, тисячі, десятки тисяч на місяць?</span><span class="why">Выше 80 тыс. штук в год на артикул пенопласт снова дешевле.</span></li>
+  </ul>
+  <h3>Экономика</h3>
+  <ul class="qa">
+    <li><span class="uk">Яка цільова собівартість одиниці і за скільки плануєте продавати?</span><span class="why">S.Lab продаёт по 1–1,5 €, мир 2,5–4 $. Если цифры нет, экономика не считалась.</span></li>
+    <li><span class="uk">Який субстрат і за скільки ви його купуєте? Хто постачальник?</span><span class="why">Лушпиння 3 грн за кг; договор с поставщиком признак серьёзности.</span></li>
+    <li><span class="uk">Скільки коштує сушіння однієї партії і на якому обладнанні?</span><span class="why">Электроэнергия 11,8 грн/кВт·ч, сушка одна из главных статей затрат.</span></li>
+    <li><span class="uk">Яка собівартість мікошкіри зараз і за скільки ви її продаєте за квадратний метр?</span><span class="why">32 €/м² против мировых 500–860; расхождение нужно понять.</span></li>
+  </ul>
+  <h3>Деньги и сроки</h3>
+  <ul class="qa">
+    <li><span class="uk">Грант EIC на UPGRAIN уже підписаний? Коли перший транш і які три-п'ять milestones?</span><span class="why">Подписание планировалось на июнь–июль 2026; деньги идут по этапам.</span></li>
+    <li><span class="uk">Звідки 30% співфінансування проєкту EIC?</span><span class="why">90–150 тыс. € собственных денег обязательны.</span></li>
+    <li><span class="uk">Пакування фінансується з гранту L'Oréal, з EIC чи з окремих коштів? На скільки місяців цих коштів вистачає?</span><span class="why">Главный вопрос о сроке жизни позиции.</span></li>
+    <li><span class="uk">Скільки людей планується в команді через рік і на які ролі?</span><span class="why">План найма показывает, куда идут деньги.</span></li>
+  </ul>
+  <h3>Технология и качество</h3>
+  <ul class="qa">
+    <li><span class="uk">Який гриб і субстрат для упаковки, скільки днів цикл, при якій температурі сушите?</span><span class="why">5–7 дней и сушка норма; ответ показывает, отработан ли процесс.</span></li>
+    <li><span class="uk">Який відсоток браку від контамінації по останніх партіях?</span><span class="why">13% типично, 5% хорошо; если не измеряют, процесс не отработан.</span></li>
+    <li><span class="uk">Хто веде технологію: Аліса Атаманчук? Чи є письмові SOP?</span><span class="why">Наличие SOP и владельца процесса.</span></li>
+    <li><span class="uk">Що вже автоматизовано, а що робиться руками?</span><span class="why">Ручной труд делает единицу дороже конкурентов.</span></li>
+  </ul>
+  <h3>Команда и роль</h3>
+  <ul class="qa">
+    <li><span class="uk">Що саме входить в мої обов'язки в перший місяць і через півроку?</span><span class="why">Отделить оператора от разработчика процесса.</span></li>
+    <li><span class="uk">За якими критеріями оцінюється випробувальний термін?</span><span class="why">Критерии должны быть измеримы.</span></li>
+    <li><span class="uk">Чому посада називається проєктний менеджер?</span><span class="why">Понять, что реально ждут.</span></li>
+  </ul>
+  <h3>Стратегия</h3>
+  <ul class="qa">
+    <li><span class="uk">Куди компанія хоче прийти через два роки: продавати матеріал, продавати упаковку чи продавати технологію?</span><span class="why">Три разных бизнеса с разной экономикой.</span></li>
+    <li><span class="uk">Ви бачите S.Lab як конкурента чи як партнера? Чим ви кращі?</span><span class="why">S.Lab на пять лет впереди в упаковке; ответ покажет, знает ли Марта рынок.</span></li>
+    <li><span class="uk">Плануєте подаватися на EIC Accelerator або державний грант на переробне підприємство?</span><span class="why">Следующая ступень денег после 2028.</span></li>
+  </ul>
+
+  <h2 id="meaning">Что это значит для решения Вики</h2>
+  <ul>
+    <li><strong>Зелёная зона.</strong> Названы клиент, цена, сертификация, источник денег на упаковку и этапы EIC. Это финансируемая R&amp;D-позиция на 24 месяца в компании, которая знает, что делает. Уместно просить 30 тыс. с первого дня и письменный пересмотр после испытательного.</li>
+    <li><strong>Жёлтая зона.</strong> Упаковка «пробуется на грант L'Oréal» без клиента и цифр. Позиция на 12–20 месяцев с высокой вероятностью закрытия направления. Идти можно ради опыта и при отсутствии лучшей альтернативы, с планом выхода.</li>
+    <li><strong>Красная зона.</strong> Нет клиента, нет цифр себестоимости, нет плана сертификации, нет ответа про софинансирование EIC, процесс «в процесі встановлення» без сроков. Второе предложение лучше почти при любых его условиях.</li>
+  </ul>
+
   <h2 id="sources">Источники</h2>
   <p class="note">S1–S8 — восемь скриншотов Telegram-переписки от 17 августа – 2 сентября 2026 в хронологическом порядке; сами скриншоты на сайт не выкладываются.</p>
   <ol class="sources">
@@ -407,6 +585,35 @@
     <li>Ecotextile News, «MycoWorks to close factory and focus on sourcing», октябрь 2025: <a href="https://www.ecotextile.com/2025102160455/news/materials-production-news/mycoworks-to-close-factory-and-focus-on-sourcing/">ecotextile.com</a></li>
     <li>Business of Fashion, «Bolt Threads Pauses Operations of Leather-Alternative Mylo»: <a href="https://www.businessoffashion.com/news/sustainability/bolt-threads-mylo-alternative-leather-mushroom-pause-operations/">businessoffashion.com</a></li>
     <li>EU4Ukraine, S.Lab, «Mushroom-based packaging: how a Ukrainian startup is helping drive Europe's green economy», 24 июня 2026: <a href="https://eu4ukraine.eu/en/mushroom-based-packaging-how-a-ukrainian-startup-is-helping-drive-europes-green-economy/">eu4ukraine.eu</a></li>
+    <li>MarketIntelo, Mycelium Fungal Biocomposite Packaging Market: <a href="https://marketintelo.com/report/mycelium-fungal-biocomposite-packaging-market">marketintelo.com</a></li>
+    <li>Prismane Consulting, Mycelium Packaging Market: <a href="https://prismaneconsulting.com/report-details/mycelium-packaging-market">prismaneconsulting.com</a></li>
+    <li>Strategic Packaging Insights, Mushroom Packaging Market: <a href="https://www.strategicpackaginginsights.com/report/mushroom-packaging-market">strategicpackaginginsights.com</a></li>
+    <li>Oxford Saïd Business School, Climate Change Challenge 2025, презентация MycoFuture (сентябрь 2025), студенческая работа с оценками себестоимости: <a href="https://www.sbs.ox.ac.uk/sites/default/files/2025-09/climate-change-challenge-2025-mycofuture-presentation.pdf">sbs.ox.ac.uk</a></li>
+    <li>PackageTheWorld, «Mycelium Packaging vs EPS Foam: 2026 Comparison», 21 июля 2026: <a href="https://www.packagetheworld.com/blog/mycelium-packaging-vs-eps-foam-mushroom-protective-comparison">packagetheworld.com</a></li>
+    <li>AIN, «Startup of the day: S.Lab», 8 января 2026 (по поисковой выдаче): <a href="https://en.ain.ua/2026/01/08/startup-of-the-day-slab/">en.ain.ua</a></li>
+    <li>S.Lab, «Mycelium Packaging: The Complete Guide (2026)»: <a href="https://s-lab.bio/mycelium-packaging-guide/">s-lab.bio</a></li>
+    <li>Magical Mushroom Company, сайт: <a href="https://magicalmushroom.com/">magicalmushroom.com</a></li>
+    <li>InVenture, «Ukrainian Startup S.Lab Secures £250K from Morgan Stanley», 17 сентября 2025: <a href="https://inventure.com.ua/en/news/ukraine/ukrainian-startup-s.lab-secures-pound250k-from-morgan-stanley-to-scale-biodegradable-packaging">inventure.com.ua</a></li>
+    <li>TÜV Austria, OK compost HOME: <a href="https://en.tuv.at/ok-compost-home-en/">en.tuv.at</a></li>
+    <li>Latham & Watkins, обзор PPWR: <a href="https://www.lw.com/en/insights/european-packaging-and-packaging-waste-regulation-summary-of-provisions-and-new-guidance">lw.com</a></li>
+    <li>FKuR, PPWR at a Glance: <a href="https://fkur.com/en/knowledgebase/ppwr-eu-packaging-waste-regulation/">fkur.com</a></li>
+    <li>Ecolog-ua, «Які вимоги до упаковки… діють в Україні станом на липень 2026 року»: <a href="https://ecolog-ua.com/consultation/yaki-vymogy-do-upakovky-ta-upravlinnya-vidhodamy-upakovky-diyut-v-ukrayini-stanom-na">ecolog-ua.com</a></li>
+    <li>Кабінет Міністрів України, законопроєкт «Про упаковку та відходи упаковки»: <a href="https://www.kmu.gov.ua/bills/proekt-zakonu-pro-upakovku-ta-vidkhodi-upakovki">kmu.gov.ua</a></li>
+    <li>Ecovative, «Goodbye, Mushroom Packaging», 20 января 2020: <a href="https://shop.ecovative.com/blogs/blog/goodbye-mushroom-packaging">shop.ecovative.com</a></li>
+    <li>TechCrunch, «UK's Magical Mushroom Company uses mycelium to replace plastic packaging», 27 июня 2022: <a href="https://techcrunch.com/2022/06/27/uks-magical-mushroom-company-uses-mycelium-to-replace-plastic-packaging/">techcrunch.com</a></li>
+    <li>Grown.bio, GIY Packaging kit: <a href="https://www.grown.bio/product/giy-packaging-kit/">grown.bio</a></li>
+    <li>Tech.eu, «S.Lab secures $100,000 from Google», 1 октября 2024: <a href="https://tech.eu/2024/10/01/slab-secures-google-funding-for-biodegradable-packaging/">tech.eu</a></li>
+    <li>Packnode, «Europe Launches Large-Scale Mycelium Packaging Plant», 18 ноября 2025: <a href="https://www.packnode.org/en/innovation/mycelium-packaging-europe-production-launch">packnode.org</a></li>
+    <li>Wikipedia, MycoWorks: <a href="https://en.wikipedia.org/wiki/MycoWorks">en.wikipedia.org</a></li>
+    <li>Washington Post, «Mushrooms are now becoming leather, packaging, bacon and more», 2024 (цена Reishi): <a href="https://www.washingtonpost.com/business/interactive/2024/mushroom-mycelium-sustainability-leather-shoes/">washingtonpost.com</a></li>
+    <li>GetGrant.eu, анализ программы HORIZON-EIC-2025-UKRAINIANTECH-01: <a href="https://getgrant.eu/eic-grant-deep-tech-ukraine-programme-analysis/">getgrant.eu</a></li>
+    <li>Верхівцевський ОЕЗ, огляд цін на лушпиння соняшнику 2026: <a href="https://voez.com.ua/%F0%9F%8C%BBoglyad-czin-na-lushpynnya-sonyashnyku/">voez.com.ua</a></li>
+    <li>HempBud, костра конопель 670 грн за 20 кг: <a href="https://hempbud.com.ua/mahazyn/kostra-konopel-presovana/">hempbud.com.ua</a></li>
+    <li>EcoTech, ціна електрики для підприємств 2026: <a href="https://www.ecotech.ua/yaka-czina-svitla-dlya-pidpryyemstva-z-travnya-2025-roku/">ecotech.ua</a></li>
+    <li>S.Lab, «Mycelium Packaging for Cosmetics» (упоминание Re[Sens]): <a href="https://s-lab.bio/mycelium-packaging-cosmetics/">s-lab.bio</a></li>
+    <li>EIC Accelerator, официальная страница: <a href="https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en">eic.ec.europa.eu</a></li>
+    <li>GetGrant.ua, «Грантовий гід 2026»: <a href="https://getgrant.ua/hrantovyy-hid-2026/">getgrant.ua</a></li>
+    <li>Дія, грант на створення або розвиток переробних підприємств: <a href="https://guide.diia.gov.ua/view/nadannia-hrantu-na-stvorennia-abo-rozvytok-pererobnykh-pidpryiemstv-1fdef300-d6ba-470d-ad16-ef33bf1728ac">guide.diia.gov.ua</a></li>
   </ol>
 
   <footer>Страница для личного пользования. Данные проверены 2 сентября 2026; всё, что помечено «данные 2023/2024», взято из прессы тех лет и могло измениться.</footer>
