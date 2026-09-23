@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Чому болить голова на роботі</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%84%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F4F6F1; --surface: #FFFFFF; --ink: #1D2823; --muted: #5D6B63; --line: #D9DFD8;
+    --accent: #8A6A1F; --accent-soft: #F1E8D2; --red: #A8433A; --red-soft: #F6E4E1;
+    --green: #3D7A52; --green-soft: #E2F0E5; --ann-bg: #EEF3EC;
+    --shadow: 0 1px 2px rgba(29,40,35,.06), 0 6px 18px rgba(29,40,35,.05);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151A17; --surface: #1D2420; --ink: #E7ECE6; --muted: #A2ADA5; --line: #2E3833;
+      --accent: #D2A64A; --accent-soft: #2B2618; --red: #E07B70; --red-soft: #3A2321;
+      --green: #7CC38F; --green-soft: #1F3226; --ann-bg: #232B26;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151A17; --surface: #1D2420; --ink: #E7ECE6; --muted: #A2ADA5; --line: #2E3833;
+    --accent: #D2A64A; --accent-soft: #2B2618; --red: #E07B70; --red-soft: #3A2321;
+    --green: #7CC38F; --green-soft: #1F3226; --ann-bg: #232B26;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif; font-size: 16px; line-height: 1.55; margin: 0; }
+  .page { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1, h2, h3 { font-family: "Vollkorn", Georgia, "Times New Roman", serif; text-wrap: balance; margin: 0; line-height: 1.15; }
+  h1 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; margin-top: 10px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 44px 0 14px; padding-top: 18px; border-top: 1px solid var(--line); }
+  h3 { font-size: 17px; font-weight: 600; margin: 22px 0 8px; font-family: "IBM Plex Sans", sans-serif; }
+  p { margin: 0 0 12px; max-width: 72ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .meta, .note, .sub { color: var(--muted); font-size: 14px; }
+  .meta { max-width: 72ch; }
+  q, .uk { font-style: italic; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  .backlink { display: inline-block; font-size: 14px; margin-bottom: 4px; }
+
+  nav.toc { margin: 24px 0 0; font-size: 14px; }
+  nav.toc ol { columns: 2; column-gap: 28px; padding-left: 20px; margin: 6px 0 0; }
+  nav.toc li { break-inside: avoid; margin: 2px 0; }
+
+  /* Головна знахідка */
+  .finding { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--red); border-radius: 8px; box-shadow: var(--shadow); padding: 22px 24px; margin: 20px 0 22px; }
+  .finding .lbl { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+  .finding .big { font-family: "Vollkorn", Georgia, serif; font-size: clamp(22px, 3.6vw, 30px); font-weight: 700; line-height: 1.16; margin: 8px 0 10px; text-wrap: balance; }
+  .finding p { margin: 0; }
+
+  /* До / після */
+  .shift { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0 16px; align-items: stretch; margin: 0 0 20px; }
+  .shift .st { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .shift .st.after { border-color: var(--red); }
+  .shift .st .when { font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .shift .st.after .when { color: var(--red); }
+  .shift .st p { font-size: 15px; margin: 7px 0 0; }
+  .shift .arrow { align-self: center; font-size: 20px; color: var(--line); font-weight: 700; }
+  @media (max-width: 620px) { .shift { grid-template-columns: 1fr; gap: 10px; } .shift .arrow { justify-self: start; transform: rotate(90deg); padding-left: 10px; } }
+
+  /* Версії */
+  .theory { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .theory.alarm { border: 2px solid var(--red); }
+  .theory .tag { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
+  .tag.t-red { background: var(--red-soft); color: var(--red); }
+  .tag.t-acc { background: var(--accent-soft); color: var(--accent); }
+  .tag.t-green { background: var(--green-soft); color: var(--green); }
+  .theory h3 { margin: 0 0 8px; font-size: 20px; font-family: "Vollkorn", Georgia, serif; font-weight: 700; }
+  .theory dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 14px 0 0; font-size: 15px; }
+  .theory dt { font-weight: 600; color: var(--muted); font-size: 12.5px; letter-spacing: .05em; text-transform: uppercase; padding-top: 3px; }
+  .theory dd { margin: 0; }
+  @media (max-width: 560px) { .theory dl { grid-template-columns: 1fr; gap: 2px; } .theory dd { margin-bottom: 10px; } }
+
+  /* Шкала ppm */
+  .scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(134px, 1fr)); gap: 1px; margin: 18px 0 6px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--line); }
+  .seg { background: var(--bg); padding: 11px 12px 12px; border-top: 4px solid var(--c); }
+  .seg b { display: block; font-size: 16px; font-weight: 600; color: var(--c); font-variant-numeric: tabular-nums; }
+  .seg span { display: block; font-size: 13px; line-height: 1.38; color: var(--muted); margin-top: 4px; }
+  .scale-cap { font-size: 13px; color: var(--muted); margin: 0; }
+
+  .callout { border-left: 3px solid var(--red); background: var(--red-soft); padding: 12px 16px; border-radius: 0 4px 4px 0; margin: 16px 0 0; font-size: 15px; }
+  .callout.acc { border-left-color: var(--green); background: var(--ann-bg); }
+  .callout .h { font-family: "Vollkorn", Georgia, serif; font-weight: 700; display: block; margin-bottom: 3px; font-size: 16px; }
+  .callout p { margin: 0; }
+
+  /* Ієрархія заходів */
+  .hier { display: grid; gap: 1px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--line); margin-top: 8px; }
+  .hier .lvl { background: var(--surface); padding: 14px 18px; display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+  .hier .lvl:last-child { background: var(--red-soft); }
+  .hier .rank { font-size: 15px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hier .lvl:last-child .rank { color: var(--red); }
+  .hier b { display: block; font-family: "Vollkorn", Georgia, serif; font-size: 17px; font-weight: 700; }
+  .hier span { display: block; font-size: 14.5px; color: var(--muted); margin-top: 3px; }
+
+  /* Чеклисти */
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
+  .check li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--green); cursor: pointer; }
+  .check label { cursor: pointer; }
+  .check input:checked + label > .t { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+  .check .t { font-weight: 500; }
+  .check .why { display: block; color: var(--muted); font-size: 13.5px; margin-top: 3px; font-weight: 400; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 22px; box-shadow: var(--shadow); }
+
+  /* Таблиці */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); margin: 12px 0 8px; box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 460px; }
+  th, td { text-align: left; padding: 10px 13px; vertical-align: top; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--ann-bg); }
+  tr:last-child td { border-bottom: 0; }
+  td.law { font-size: 13px; color: var(--accent); white-space: nowrap; }
+  td.cost { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500; }
+  td.bad { color: var(--red); }
+  tr.example td { color: var(--muted); font-style: italic; background: var(--ann-bg); }
+
+  /* Фрази */
+  .phrase { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 12px 15px; border-radius: 0 4px 4px 0; margin: 10px 0 14px; font-size: 15.5px; }
+  .phrase .when { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 6px; font-style: normal; }
+  .phrase q { font-style: italic; quotes: "«" "»"; }
+  .phrase small { display: block; color: var(--muted); font-size: 13.5px; margin-top: 7px; font-style: normal; line-height: 1.45; }
+
+  /* Варіанти */
+  .views { display: grid; gap: 12px; }
+  .view { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; }
+  .view .let { font-size: 13px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .view h3 { margin: 3px 0 6px; font-family: "Vollkorn", Georgia, serif; font-weight: 700; font-size: 18px; }
+  .view p { margin: 0; font-size: 15px; color: var(--muted); }
+
+  /* Телефони */
+  .contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 15px 17px; box-shadow: var(--shadow); }
+  .contact .n { font-family: "Vollkorn", Georgia, serif; font-size: 28px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+  .contact .l { font-size: 13.5px; color: var(--muted); margin-top: 7px; line-height: 1.4; }
+
+  /* Підсумок */
+  .sum { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 8px; padding: 22px 24px; box-shadow: var(--shadow); }
+  .sum ol { margin: 0; padding-left: 22px; }
+  .sum li { margin-bottom: 11px; max-width: 72ch; }
+  .sum li:last-child { margin-bottom: 0; }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+  .btn { font: inherit; font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); max-width: 72ch; }
+
+  @media (max-width: 560px) { nav.toc ol { columns: 1; } .page { padding: 22px 14px 60px; } .finding, .sum { padding: 18px 16px; } }
+  @media print { nav.toc, .toolbar { display: none; } body { background: #fff; } .page { padding: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="backlink" href="index.html">&larr; Пропозиція Mycelia Tech (оцінка від 2 вересня)</a>
+    <div class="eyebrow">Промприлад.Реновація · Віка вже працює · 24 вересня 2026</div>
+    <h1>Чому болить голова на роботі</h1>
+    <p class="meta">Шукати причину більше не треба. Сусіди з <strong>іншої компанії</strong> почали скаржитися на голову після запуску виробництва, а у виробництва <strong>немає витяжки взагалі</strong>. Усе, що процес виділяє, лишається в приміщенні й далі йде в коридор. Сусідам дістається розбавлене — і їм уже погано. Тобі дістається нерозбавлене, вісім годин щодня.</p>
+
+    <nav class="toc" aria-label="Зміст">
+      <div class="eyebrow">Зміст</div>
+      <ol>
+        <li><a href="#diagnoz">Діагноз уже поставлений</a></li>
+        <li><a href="#povitrya">Що накопичується в повітрі</a></li>
+        <li><a href="#maska">Чому респіратор цього не вирішує</a></li>
+        <li><a href="#diyi">Що зробити</a></li>
+        <li><a href="#pravo">Право відмовитися від небезпечної роботи</a></li>
+        <li><a href="#pershoyu">Чому написати першою</a></li>
+        <li><a href="#lyst">Що написати Марті</a></li>
+        <li><a href="#zakon">Що порушується крім повітря</a></li>
+        <li><a href="#telefony">Телефони</a></li>
+        <li><a href="#rishennya">Чи варто тут працювати далі</a></li>
+        <li><a href="#korotko">Якщо коротко</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <h2 id="diagnoz">Діагноз уже поставлений</h2>
+
+  <div class="finding">
+    <span class="lbl">Ключовий факт</span>
+    <div class="big">Виробництво з інкубацією, сушінням, стерилізацією і хлоркою працює без витяжної вентиляції</div>
+    <p>Витяжка — не додаткова опція і не «зробимо потім». Для такого цеху це <strong>єдиний інженерний засіб захисту, який взагалі існує</strong>. Без неї повітря в приміщенні нікуди не дівається: CO₂ від міцелію, леткі речовини від субстрату, пара дезінфектантів, спори — усе накопичується протягом зміни, а надлишок виходить у коридор і на поверх.</p>
+  </div>
+
+  <div class="shift">
+    <div class="st">
+      <span class="when">До запуску</span>
+      <p>Та сама будівля, ті самі люди. Скарг на голову немає.</p>
+    </div>
+    <div class="arrow">&rarr;</div>
+    <div class="st after">
+      <span class="when">Після запуску</span>
+      <p>Голова під кінець дня — у тебе і в людей з іншої фірми на поверсі.</p>
+    </div>
+  </div>
+
+  <p>Збіг у часі показує, де джерело. Відсутність витяжки пояснює, чому воно доходить до сусідів. Дві обставини разом не лишають місця для інших версій, і відповідальність тут не власника будівлі, а <strong>компанії, яка створює викид</strong>. Промприлад не зобов'язаний лагодити чужу вентиляцію.</p>
+
+  <div class="callout">
+    <span class="h">Арифметика дози</span>
+    <p>Між твоїм робочим місцем і сусідами — стіни, двері, коридор і десятки метрів повітря. Усе це розбавляє. Якщо розбавленого вистачає, щоб у сторонніх людей під вечір боліла голова, то доза в самому приміщенні в рази вища. І кількість роботи тут ні до чого: доза вимірюється не тим, скільки ти працюєш руками, а тим, скільки годин ти цим дихаєш. Вісім годин — це повна доза.</p>
+  </div>
+
+  <h2 id="povitrya">Що саме накопичується в повітрі</h2>
+  <p>Без витяжки все перелічене копиться <strong>одночасно</strong>, і головний біль дає їхня сума. Але перший пункт стоїть окремо: він єдиний, що може вбити, і саме без вентиляції стає по-справжньому небезпечним.</p>
+
+  <div class="theory alarm">
+    <span class="tag t-red">Перевірити сьогодні</span>
+    <h3>Чадний газ, якщо в цеху є щось, що горить</h3>
+    <p>Без кольору, без запаху, без смаку. Витісняє кисень з крові, і головний біль — найперший симптом. У провітрюваному приміщенні невелике джерело CO просто розчиняється. <strong>У приміщенні без витяжки воно накопичується</strong> — саме так відбуваються смертельні отруєння.</p>
+    <dl>
+      <dt>Що шукати</dt>
+      <dd>Парогенератор або котел під автоклав. Теплова гармата чи газовий обігрівач в інкубаційній, щоб тримати 24–28&nbsp;°C. Генератор на час відключень — у приміщенні, в тамбурі або під вікном.</dd>
+      <dt>Якщо таке є</dt>
+      <dd>Це не «перевірити на тижні», а перевірити сьогодні. Поки не виміряно — не залишатися в приміщенні наодинці й не працювати при зачинених вікнах.</dd>
+      <dt>Чим міряти</dt>
+      <dd>Сигналізатор CO <strong>з цифровим дисплеєм</strong>, 500–1500 грн. Не «пищалка»: побутова сирена за стандартом EN&nbsp;50291 спрацьовує лише на 50&nbsp;ppm, що протрималися понад годину, — а голова болить уже від 10–30&nbsp;ppm постійних.</dd>
+    </dl>
+
+    <div class="scale" role="img" aria-label="Шкала чадного газу: до 9 ppm норма, 10–35 головний біль при тривалому перебуванні, 35–70 біль за одну-чотири години і нудота, понад 150 небезпечно для життя">
+      <div class="seg" style="--c: var(--green)"><b>0–9 ppm</b><span>Норма для приміщення</span></div>
+      <div class="seg" style="--c: var(--accent)"><b>10–35</b><span>Голова і втома при тривалому перебуванні. Сирена мовчить</span></div>
+      <div class="seg" style="--c: var(--red)"><b>35–70</b><span>Головний біль за 1–4 години, нудота</span></div>
+      <div class="seg" style="--c: var(--red)"><b>&gt;150</b><span>Небезпечно для життя. Виходити негайно</span></div>
+    </div>
+    <p class="scale-cap">Детектор класти на стіл, на рівні дихання. Не на підлогу і не під стелю: CO майже однакової густини з повітрям.</p>
+
+    <div class="callout">
+      <span class="h">Аналіз крові — тільки того самого дня</span>
+      <p>Карбоксигемоглобін (COHb), дорогою з роботи, у день коли болить. На свіжому повітрі половина виводиться за 4–5 годин: до ранку наступного дня аналіз буде чистим, навіть якщо вдень було отруєння. Норма для некурящої людини — до 2%.</p>
+    </div>
+    <div class="callout">
+      <span class="h">101 або 103 негайно, якщо</span>
+      <p>до голови додалися нудота і блювання, сплутаність, різка слабкість — або якщо стало погано кільком людям одночасно чи хтось знепритомнів.</p>
+    </div>
+  </div>
+
+  <div class="theory">
+    <span class="tag t-acc">Основний внесок</span>
+    <h3>CO₂ від міцелію</h3>
+    <p>Міцелій дихає. Кілька сотень кілограмів субстрату, що росте, безперервно віддають вуглекислий газ. У закритому приміщенні без витяжки лік іде на тисячі ppm уже до обіду — і картина сходиться ідеально: наростає до кінця дня, накриває всіх підряд, за ніч частково вивітрюється, у вихідні не болить.</p>
+    <div class="scale" role="img" aria-label="Шкала вуглекислого газу: 400–600 свіже повітря, 800–1000 верхня межа норми, 1000–2000 головний біль і сонливість, понад 2000 явне нездужання">
+      <div class="seg" style="--c: var(--green)"><b>400–600</b><span>Свіже повітря</span></div>
+      <div class="seg" style="--c: var(--green)"><b>800–1000</b><span>Верхня межа норми</span></div>
+      <div class="seg" style="--c: var(--accent)"><b>1000–2000</b><span>Голова, сонливість, падає концентрація</span></div>
+      <div class="seg" style="--c: var(--red)"><b>&gt;2000</b><span>Явне нездужання у більшості</span></div>
+    </div>
+    <p class="scale-cap">Датчик CO₂ (NDIR) — 1500–3000 грн. Одним приладом міряється і цех, і коридор, і офіс сусідів: три цифри закривають питання остаточно й документують його.</p>
+  </div>
+
+  <div class="theory">
+    <span class="tag t-acc">Пояснює запах</span>
+    <h3>Леткі речовини гриба і субстрату</h3>
+    <p>Міцелій, що росте, виділяє 1-октен-3-ол — той самий «грибний спирт», — плюс октанони, метилфурани, геосмін. Саме вони дають запах сирих грибів і погреба. У побуті нешкідливі, у виробничих обсягах без провітрювання подразнюють слизові й дають головний біль.</p>
+    <p>Окремо аміак: від субстрату з азотними добавками, від заражених партій і від відпрацьованого субстрату, якщо його тримають усередині. Різкий запах, ріже очі. Якщо в цеху чи коридорі пахне аміаком — це питання ставиться одразу.</p>
+  </div>
+
+  <div class="theory">
+    <span class="tag t-green">Не забути</span>
+    <h3>Дезінфектанти</h3>
+    <p>Вимога «100% стерильності» означає, що цех регулярно проливають хлорвмісними засобами, перекисом, спиртом. Без витяжки пари нікуди не дінуться до кінця зміни. І окремо: хлорвмісний засіб разом з кислотним дає хлор — це вже не про голову.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">І окремо — те, що стосується тільки тебе</h3>
+    <p style="margin:0">Спори до сусідів майже не долітають, а до тебе — так, і без витяжки вони теж накопичуються. Симптом у них інший, і стежити треба окремим списком: <strong>кашель, задишка при підйомі сходами, температура ввечері</strong>. Головна ознака — якщо у вихідні минає, а в понеділок повертається. Гіперчутливий пневмоніт («легеня грибника») на ранній стадії зворотний, на пізній — ні. Цей список іде до лікаря окремо від головного болю.</p>
+  </div>
+
+  <h2 id="maska">Чому респіратор цього не вирішує</h2>
+  <p>Найімовірніша відповідь на скаргу — «ось тобі маска». Це не рішення, і ось чому. В охороні праці засоби захисту мають жорсткий порядок: маска стоїть останньою, <strong>після</strong> вентиляції, а не замість неї.</p>
+
+  <div class="hier">
+    <div class="lvl"><span class="rank">1</span><div><b>Прибрати джерело</b><span>Виносити відпрацьований субстрат одразу, не тримати заражені партії в приміщенні, не робити вологу дезінфекцію в зачиненій кімнаті.</span></div></div>
+    <div class="lvl"><span class="rank">2</span><div><b>Вентиляція</b><span>Витяжка з інкубаційної та сушарки окремим каналом на вулицю. Це те, що зараз відсутнє, і те, що вирішує проблему для всіх одразу — і для тебе, і для сусідів.</span></div></div>
+    <div class="lvl"><span class="rank">3</span><div><b>Організація роботи</b><span>Менше часу в зоні, робота з відчиненими дверима, графік провітрювання, двоє людей замість одного на «брудних» операціях.</span></div></div>
+    <div class="lvl"><span class="rank">4</span><div><b>Засоби індивідуального захисту</b><span>Останній рубіж, а не заміна попереднім. І головне: <strong>жоден фільтрувальний респіратор не захищає від CO і CO₂</strong> — FFP3 затримує лише частинки. Проти газів маска не працює взагалі.</span></div></div>
+  </div>
+
+  <div class="callout">
+    <span class="h">Що це означає на практиці</span>
+    <p>Респіратор FFP3 потрібен і його треба вимагати — він захищає від спор і пилу. Але якщо головний біль від CO₂ або чадного газу, маска не змінить нічого. Питання витяжки вона не закриває.</p>
+  </div>
+
+  <h2 id="diyi">Що зробити</h2>
+
+  <h3>Сьогодні і завтра</h3>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox" id="a1"><label for="a1"><span class="t">Перевірити, чи є в цеху щось, що горить</span><span class="why">Парогенератор, котел, газовий обігрівач, теплова гармата, генератор. Якщо є — це найтерміновіший пункт на сторінці.</span></label></li>
+      <li><input type="checkbox" id="a2"><label for="a2"><span class="t">Купити сигналізатор CO з цифровим дисплеєм</span><span class="why">500–1500 грн. Принести, покласти на стіл. Дивитися на цифру зранку, в обід і перед виходом. Записувати.</span></label></li>
+      <li><input type="checkbox" id="a3"><label for="a3"><span class="t">Тримати вікна відчиненими весь день</span><span class="why">Наскрізне провітрювання — не рішення, але єдине, що є зараз. Поки немає витяжки, зачинене вікно = повна доза.</span></label></li>
+      <li><input type="checkbox" id="a4"><label for="a4"><span class="t">Здати кров на карбоксигемоглобін у день, коли болить</span><span class="why">Дорогою з роботи. Не наступного ранку — до ранку результат обнулиться сам.</span></label></li>
+      <li><input type="checkbox" id="a5"><label for="a5"><span class="t">Поговорити із сусідами</span><span class="why">З якого числа почалося, у скількох людей, чи писали вже в Промприлад. Їхні скарги — твій головний аргумент: одна ти «вразлива», а п'ятеро з різних фірм — це факт.</span></label></li>
+      <li><input type="checkbox" id="a6"><label for="a6"><span class="t">Написати Марті — сьогодні, письмово</span><span class="why">Текст у розділі «Що написати Марті». Усна скарга через місяць не існує, переписка існує.</span></label></li>
+    </ul>
+  </div>
+
+  <h3>Цього тижня</h3>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox" id="b1"><label for="b1"><span class="t">Вести щоденник — тиждень записів дає більше, ніж будь-який аналіз</span><span class="why">Таблиця нижче. Головне — де була, коли почалося, коли відпустило.</span></label></li>
+      <li><input type="checkbox" id="b2"><label for="b2"><span class="t">Запропонувати тимчасове рішення, а не тільки проблему</span><span class="why">Витяжний вентилятор у вікно інкубаційної — 2000–6000 грн з монтажем, ставиться за день. Це не повноцінна вентиляція, але знімає гостроту. Відмова від такої суми — сама по собі відповідь.</span></label></li>
+      <li><input type="checkbox" id="b3"><label for="b3"><span class="t">Вимагати респіратор FFP3 на сушіння і розкриття інкубації</span><span class="why">Коштом роботодавця. Пам'ятаючи, що від газів він не захищає.</span></label></li>
+      <li><input type="checkbox" id="b4"><label for="b4"><span class="t">Записатися на медогляд зі спірометрією</span><span class="why">Коштом роботодавця. Потрібна базова точка, з якою порівнювати через пів року.</span></label></li>
+      <li><input type="checkbox" id="b5"><label for="b5"><span class="t">Зібрати чеки на все, що купувала за свої</span><span class="why">Компенсація за чеком — обов'язок роботодавця, а не жест доброї волі.</span></label></li>
+    </ul>
+    <div class="toolbar">
+      <span>Відмітки зберігаються у цьому браузері.</span>
+      <button type="button" class="btn" id="reset">Скинути відмітки</button>
+    </div>
+  </div>
+
+  <h3>Щоденник симптомів</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>День</th><th>Коли почалося</th><th>Де була</th><th>Коли відпустило</th><th>CO, ppm</th></tr></thead>
+      <tbody>
+        <tr class="example"><td>приклад</td><td>пн, ~15:30</td><td>інкубаційна, 2 години поспіль</td><td>вдома близько 20:00</td><td class="cost">18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Далі — своєю рукою в блокноті. Сім днів поспіль, включно з вихідними: порожні рядки у вихідні — це половина діагнозу.</p>
+
+  <h2 id="pravo">Право відмовитися від небезпечної роботи</h2>
+  <p>Про це майже ніхто не знає, тому варто прочитати уважно. За статтею 6 Закону «Про охорону праці» працівник <strong>має право відмовитися від дорученої роботи, якщо склалася виробнича ситуація, небезпечна для його життя чи здоров'я</strong>. Треба негайно повідомити про це керівника — і за час простою, що виник не з вини працівника, <strong>зберігається середній заробіток</strong>.</p>
+  <p>Це не звільнення за власним бажанням і не прогул. Це законна відмова з повідомленням. Користуватися нею варто обережно й по суті: не «мені не подобається», а конкретна ситуація — наприклад, працює генератор чи пальник у приміщенні без витяжки, або детектор показує CO вище 35&nbsp;ppm. У таких випадках правильна дія — вийти, написати повідомлення керівнику й зафіксувати цифру.</p>
+  <div class="callout acc">
+    <span class="h">Просто знати, що це існує</span>
+    <p>Навіть якщо скористатися не доведеться, це змінює розмову. Людина, яка знає свої права, і людина, яка думає, що вибір лише між «терпіти» і «звільнятися», поводяться по-різному — і з ними поводяться по-різному теж.</p>
+  </div>
+
+  <h2 id="pershoyu">Чому про це варто написати першою</h2>
+  <p>Сусіди рано чи пізно напишуть у Промприлад. Власник будівлі прийде до Марти, і розмова буде жорсткою: викид у спільні приміщення — це підстава вимагати зупинити виробництво або розірвати оренду.</p>
+  <p>Твоє завдання — <strong>не опинитися тією, хто дізналася останньою і мовчала</strong>. Письмове звернення, надіслане зараз, ставить тебе на правильний бік цієї історії: ти не джерело проблеми, ти людина, яка першою її зафіксувала. Якщо дійде до перевірки чи пошуку винних, різниця між «писала в переписці з 24 вересня» і «нічого не казала» — величезна.</p>
+
+  <h2 id="lyst">Що написати Марті</h2>
+  <p>Спокійно, у формі питання і пропозиції, без звинувачень. Завдання не посваритися, а залишити слід і отримати відповідь. Головне повідомлення — перше.</p>
+
+  <div class="phrase">
+    <span class="when">Головне — про повітря</span>
+    <q>Марто, доброго дня. У мене під кінець робочого дня болить голова. Те саме кажуть люди із сусіднього офісу — з іншої компанії, — і почалося це в них після запуску нашого виробництва. Оскільки витяжки в цеху зараз немає, усе, що виділяється під час інкубації, сушіння й дезінфекції, лишається в приміщенні й виходить у коридор. Пропоную два кроки: виміряти CO і CO₂ в цеху та коридорі й поставити витяжний вентилятор в інкубаційній як тимчасове рішення, поки робиться нормальна вентиляція. Хочу підняти це зараз, поки сусіди не пішли з цим у Промприлад.</q>
+    <small>Тут усе одразу: факт, причина, дві конкретні дії і аргумент, чому це терміново для компанії, а не тільки для тебе. На пропозицію з рішенням відповідають інакше, ніж на скаргу.</small>
+  </div>
+
+  <div class="phrase">
+    <span class="when">Якщо в цеху є пальник або генератор</span>
+    <q>Марто, в цеху працює [парогенератор / обігрівач / генератор], а витяжки немає. Це ризик отруєння чадним газом. Прошу до вирішення питання не вмикати його при зачинених вікнах і поставити сигналізатор CO. Я принесла свій, показує [цифра] ppm.</q>
+    <small>Це та розмова, яку не відкладають. Цифра з детектора робить її предметною.</small>
+  </div>
+
+  <div class="phrase">
+    <span class="when">Про вихідний</span>
+    <q>У суботу вийти можу. Прошу оформити наказ і компенсацію — або подвійною оплатою, або додатковим днем відпочинку. Як вам зручніше?</q>
+    <small>Згода і умова в одній фразі. Відмовити важко, бо ти не відмовляєш.</small>
+  </div>
+
+  <div class="phrase">
+    <span class="when">Про покупки за свої</span>
+    <q>Я придбала [що саме] за власні кошти, чек додаю. Прошу компенсувати. Надалі, будь ласка, замовляйте витратні матеріали з рахунку компанії.</q>
+    <small>Один раз сказане закриває тему назавжди. Мовчання закріплює практику.</small>
+  </div>
+
+  <div class="phrase">
+    <span class="when">Про захист і медогляд</span>
+    <q>Для роботи з сухим матеріалом і вигрузки з сушарки потрібен респіратор FFP3 — звичайна маска не захищає. І, оскільки робота пов'язана з біологічним фактором, прошу організувати медогляд зі спірометрією. За законом це коштом роботодавця.</q>
+  </div>
+
+  <h2 id="zakon">Що порушується крім повітря</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:26%">Що відбувається</th><th>Що за законом</th><th style="width:20%">Норма</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Немає витяжної вентиляції у виробничому приміщенні</strong></td>
+          <td>Роботодавець зобов'язаний забезпечити безпечні умови праці й усунути шкідливі фактори <strong>технічними засобами</strong>, а не перекладати це на працівника. Вентиляція виробничих приміщень — обов'язкова вимога, а не побажання.</td>
+          <td class="law">ст. 153 КЗпП; ст. 13 ЗУ «Про охорону праці»</td>
+        </tr>
+        <tr>
+          <td>Просять вийти у вихідний</td>
+          <td>Компенсується <strong>або іншим оплачуваним днем відпочинку, або оплатою в подвійному розмірі</strong>. Що саме — за згодою сторін, тобто обираєш ти. Залучення оформлюється письмовим розпорядженням.</td>
+          <td class="law">ст. 71, 72 КЗпП</td>
+        </tr>
+        <tr>
+          <td>Просять залишитися після 18:00</td>
+          <td>Це надурочні. Оплата <strong>в подвійному розмірі годинної ставки</strong>. Відгулом надурочні компенсувати не можна — тільки грошима.</td>
+          <td class="law">ст. 62, 106 КЗпП</td>
+        </tr>
+        <tr>
+          <td>«Зараз війна, зараз у всіх так»</td>
+          <td>Воєнний стан зняв <strong>ліміти на кількість годин</strong> — це правда. Але він не скасував <strong>обов'язок їх оплачувати</strong>: статті 72 і 106 до переліку призупинених не входять. І він не скасував охорону праці взагалі.</td>
+          <td class="law">Закон 2136-IX, ст. 6</td>
+        </tr>
+        <tr>
+          <td>Купувати матеріали і захист за свої</td>
+          <td>Спецодяг, рукавички, респіратори, матеріали видаються <strong>безкоштовно, коштом роботодавця</strong>. Якщо купила сама — зобов'язані <strong>компенсувати за чеком</strong>.</td>
+          <td class="law">ст. 153 КЗпП; ст. 8 ЗУ «Про охорону праці»</td>
+        </tr>
+        <tr>
+          <td>Медогляду не було</td>
+          <td>На роботах з біологічним фактором попередній і періодичні огляди обов'язкові, <strong>коштом роботодавця</strong>, у робочий час зі збереженням зарплати.</td>
+          <td class="law">ст. 169 КЗпП; ст. 17 ЗУ «Про охорону праці»</td>
+        </tr>
+        <tr>
+          <td>Технолог приїхала на два дні і поїхала</td>
+          <td>Навчання, інструктаж і письмовий техпроцес — обов'язок роботодавця, із записом у журналі. Брак і помилки при роботі без регламенту — <strong>його ризик, а не твоя провина</strong>. Варто пам'ятати заздалегідь, до того як почнуть питати за результат.</td>
+          <td class="law">ст. 153 КЗпП; ст. 18 ЗУ «Про охорону праці»</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="telefony">Телефони</h2>
+  <div class="contacts">
+    <div class="contact"><div class="n">103</div><div class="l">Швидка. При нудоті, блюванні, сплутаності — не роздумуючи</div></div>
+    <div class="contact"><div class="n">101</div><div class="l">ДСНС. Підозра на чадний газ, запах гару, вихлоп у приміщенні</div></div>
+    <div class="contact"><div class="n">1545</div><div class="l">Урядова гаряча лінія. Звідси звернення йде в Держпраці</div></div>
+  </div>
+  <p class="note" style="margin-top:14px">У Держпраці можна звернутися письмово, в тому числі не розкриваючи себе перед роботодавцем. Це крайній крок: спочатку лист Марті, і тільки якщо відповіді немає — далі.</p>
+
+  <h2 id="rishennya">Чи варто тут працювати далі</h2>
+  <p>Це рішення не треба приймати сьогодні й не треба приймати через головний біль. Його треба прийняти через два-три тижні, подивившись не на слова, а на дії. Надішли повідомлення про повітря — і стеж за цим списком.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:32%">Що має статися</th><th style="width:16%">Ціна питання</th><th>Якщо не сталося</th></tr></thead>
+      <tbody>
+        <tr><td>Заміряли CO і CO₂ в цеху та коридорі</td><td class="cost">до 3 000 грн</td><td class="bad">Виробництво запускали, не рахуючи повітря, і рахувати не збираються</td></tr>
+        <tr><td>З'явився витяжний вентилятор як тимчасове рішення</td><td class="cost">2–6 тис. грн</td><td class="bad">Твоє здоров'я не вартує навіть цієї суми</td></tr>
+        <tr><td>Є план і строк нормальної вентиляції</td><td class="cost">десятки тис. грн</td><td class="bad">Проблему визнали, але вирішувати не будуть. Це відповідь на все питання</td></tr>
+        <tr><td>З'явився респіратор FFP3</td><td class="cost">300–800 грн</td><td class="bad">Захист працівника — не стаття витрат у цій компанії</td></tr>
+        <tr><td>Компенсували чеки</td><td class="cost">за фактом</td><td class="bad">Твої гроші вважають ресурсом компанії</td></tr>
+        <tr><td>Вихідний оформили наказом і оплатою</td><td class="cost">за фактом</td><td class="bad">Далі буде тільки більше і так само безкоштовно</td></tr>
+        <tr><td>Призначили медогляд</td><td class="cost">1–2 тис. грн</td><td class="bad">Якщо з легенями щось почнеться, доводити зв'язок з роботою буде нічим</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Колонка з цінами тут не випадково. Усе, крім повноцінної вентиляції, коштує копійки для компанії з європейським грантом. Вентиляція коштує реальних грошей — і саме тому відповідь на неї покаже, чи є в цьому бізнесі місце для людей, які в ньому працюють.</p>
+
+  <div class="views" style="margin-top:18px">
+    <div class="view">
+      <span class="let">A</span>
+      <h3>Написати, виміряти, дати строк</h3>
+      <p>Надіслати повідомлення сьогодні, купити детектор, вести щоденник, тримати вікна відчиненими. Два-три тижні дивитися на таблицю вище. Це чесний шанс і компанії, і собі — і водночас збір доказів, якщо шанс не спрацює.</p>
+    </div>
+    <div class="view">
+      <span class="let">B</span>
+      <h3>Перестати працювати безкоштовно, залишаючись на місці</h3>
+      <p>Не відмова і не конфлікт: кожне «вийдіть у суботу» просто супроводжується питанням про наказ і оплату. Законно, спокійно, і дуже швидко показує, як у компанії насправді влаштовані стосунки.</p>
+    </div>
+    <div class="view">
+      <span class="let">C</span>
+      <h3>Іти</h3>
+      <p>Підстави, за яких це вже не емоції: минули три тижні, а витяжки і заміру немає; до голови додалися кашель чи задишка; переробки й далі не оплачують. Ти на випробувальному — піти зараз коштує трьох днів попередження і майже нічого не коштує для трудової.</p>
+    </div>
+  </div>
+
+  <h2 id="korotko">Якщо коротко</h2>
+  <div class="sum">
+    <ol>
+      <li><strong>Причина знайдена.</strong> Виробництво без витяжки плюс скарги сусідів з іншої фірми, що почалися після запуску. Шукати більше нічого.</li>
+      <li><strong>Це відповідальність роботодавця, не будівлі.</strong> Джерело власне, і лагодити його має компанія.</li>
+      <li><strong>Ти отримуєш найбільшу дозу.</strong> Те, що дійшло до сусідів через стіни й коридор, уже розбавлене. І кількість роботи тут ні до чого — важливо, скільки годин ти дихаєш.</li>
+      <li><strong>Перше й найтерміновіше — чи є в цеху щось, що горить.</strong> Пальник без витяжки — це те, як стаються смертельні отруєння. Детектор CO за 500–1500 грн, аналіз крові того самого дня.</li>
+      <li><strong>Маска не замінює вентиляцію.</strong> FFP3 потрібен проти спор, але від CO і CO₂ не захищає жоден респіратор. Якщо у відповідь дадуть тільки маску — питання не вирішене.</li>
+      <li><strong>Поки витяжки немає — вікна відчинені весь день.</strong> Це не рішення, але це єдине, що працює зараз.</li>
+      <li><strong>Ти маєш право відмовитися від небезпечної роботи</strong> зі збереженням середнього заробітку, ст. 6 ЗУ «Про охорону праці». Просто знати, що це існує.</li>
+      <li><strong>Вихідні й переробки оплачуються в подвійному розмірі</strong>, захист і медогляд — коштом роботодавця, куплене за свої компенсують за чеком.</li>
+      <li><strong>Рішення приймай за таблицею вище, а не за самопочуттям.</strong> Головний біль — це сигнал перевірити, а не привід терпіти чи тікати.</li>
+    </ol>
+  </div>
+
+  <footer>
+    Зібрано 24 вересня 2026 за описом ситуації. Це не медичний висновок: при головному болю, що не минає, при кашлі чи задишці — до лікаря, а написане тут стане в пригоді як перелік того, що розповісти на прийомі. Посилання на КЗпП і Закон «Про охорону праці» подано станом на вересень 2026; окремі норми на період воєнного стану змінені Законом 2136-IX, тож перед зверненням до інспекції формулювання варто звірити. Ціни орієнтовні.
+    <br><br><a href="index.html">&larr; Повернутися до оцінки пропозиції</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var KEY = 'vikawork-povitrya-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.check input[type=checkbox]'));
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  boxes.forEach(function (b) {
+    if (state[b.id]) b.checked = true;
+    b.addEventListener('change', function () { state[b.id] = b.checked; save(); });
+  });
+  var reset = document.getElementById('reset');
+  if (reset) reset.addEventListener('click', function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    state = {}; save();
+  });
+})();
+</script>
+</body>
+</html>
